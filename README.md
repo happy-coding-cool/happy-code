@@ -1,7 +1,7 @@
 # happy-code
 [![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
-本项目将日常开发中一些优秀实践封装起来，以微服务技术组件形式赋能开发，致力于让代码变得简洁优雅，让开发变得简单高效，实现按小时下班，回家吃饭的小目标！
+本项目将日常开发中一些优秀实践封装起来，以微服务技术组件的形式赋能开发，致力于让代码变得简洁优雅，让开发变得简单高效，实现按时下班，回家吃饭的小目标！
 
 ## 如何使用
 ### 如何引入依赖
