@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-starter-parent</artifactId>
-        <version>Greenwich.RELEASE</version>
+        <version>Hoxton.SR8</version>
     </parent>
 
     <groupId>com.happy.code</groupId>
