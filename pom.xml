@@ -23,6 +23,7 @@
         <module>happy-code-dependencies</module>
         <module>happy-code-starters</module>
         <module>happy-code-parent</module>
+        <module>happy-code-samples</module>
     </modules>
 
 </project>
