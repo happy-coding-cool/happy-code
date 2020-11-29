@@ -17,7 +17,32 @@
 
     <name>happy-code</name>
     <description>微服务技术组件</description>
+    <url>https://github.com/happy-coding-cool/happy-code</url>
 
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>https://github.com/happy-coding-cool/happy-code</url>
+        <connection>scm:git:git:////github.com/happy-coding-cool/happy-code.git</connection>
+        <developerConnection>scm:git:ssh://git@//github.com/happy-coding-cool/happy-code.git</developerConnection>
+    </scm>
+
+    <issueManagement>
+        <system>Github</system>
+        <url>https://github.com/happy-coding-cool/happy-code/issues</url>
+    </issueManagement>
+    <developers>
+        <developer>
+            <name>pzsoftchen</name>
+            <email>pzsoftchen@163.com</email>
+        </developer>
+    </developers>
     <modules>
         <module>happy-code-base</module>
         <module>happy-code-dependencies</module>
