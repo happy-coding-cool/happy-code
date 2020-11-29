@@ -21,6 +21,7 @@
     <modules>
         <module>happy-code-base</module>
         <module>happy-code-dependencies</module>
+        <module>happy-code-starters</module>
         <module>happy-code-parent</module>
     </modules>
 

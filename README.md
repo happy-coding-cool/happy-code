@@ -24,7 +24,14 @@
 然后在 `dependencies` 中添加自己所需使用的依赖即可使用。
 
 
-## 组件
+## 模块介绍
+- happy-code-base
+```
+1. 基础类定义
+2. 基础业务异常定义
+```
+- happy-code-dependencies
+
 
 ## 版本更新记录
 ### V1.0.0 

@@ -10,13 +10,16 @@
         <artifactId>happy-code</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
+
     <name>happy-code-dependencies</name>
     <artifactId>happy-code-dependencies</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <description>依赖管理</description>
+
     <properties>
         <java.version>1.8</java.version>
+        <happy-code.version>1.0.0-SNAPSHOT</happy-code.version>
         <spring-cloud-alibaba.version>2.2.3.RELEASE</spring-cloud-alibaba.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
