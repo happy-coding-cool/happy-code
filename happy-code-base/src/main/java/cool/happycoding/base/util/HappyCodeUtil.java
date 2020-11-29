@@ -1,7 +1,7 @@
-package com.happy.code.base.util;
+package cool.happycoding.base.util;
 
-import com.happy.code.base.common.CodeMessage;
-import com.happy.code.base.exception.BizException;
+import cool.happycoding.base.common.CodeMessage;
+import cool.happycoding.base.exception.BizException;
 
 /**
  * description

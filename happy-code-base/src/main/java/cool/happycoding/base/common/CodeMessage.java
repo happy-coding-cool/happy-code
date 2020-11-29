@@ -1,4 +1,4 @@
-package com.happy.code.base.common;
+package cool.happycoding.base.common;
 
 /**
  * description

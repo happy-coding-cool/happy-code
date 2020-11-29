@@ -1,7 +1,7 @@
-package com.happy.code.base.exception;
+package cool.happycoding.base.exception;
 
 import cn.hutool.core.map.MapUtil;
-import com.happy.code.base.common.CodeMessage;
+import cool.happycoding.base.common.CodeMessage;
 import lombok.Data;
 
 import java.util.Map;
