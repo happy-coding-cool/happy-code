@@ -47,6 +47,11 @@
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
             </dependency>
+            <dependency>
+                <groupId>cool.happycoding</groupId>
+                <artifactId>happy-code-starter-web</artifactId>
+                <version>${happy-code.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <build>
@@ -67,7 +72,7 @@
                 <configuration>
                     <archive>
                         <manifestEntries>
-                            <Implementation-Revision>${happy-boot.version}</Implementation-Revision>
+                            <Implementation-Revision>${happy-code.version}</Implementation-Revision>
                         </manifestEntries>
                     </archive>
                 </configuration>

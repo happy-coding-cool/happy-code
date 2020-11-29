@@ -4,17 +4,18 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>cool.happycoding</groupId>
-        <artifactId>happy-code-parent</artifactId>
+        <artifactId>happy-code-samples</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../happy-code-parent</relativePath>
     </parent>
-    <artifactId>happy-code-samples</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
 
-    <name>happy-code-samples</name>
-    <description>happy组件使用示例</description>
-    <modules>
-        <module>happy-code-starter-web-sample</module>
-    </modules>
+    <artifactId>happy-code-starter-web-sample</artifactId>
+    <name>happy-code-starter-web-sample</name>
+    <description>web组件使用示例</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>cool.happycoding</groupId>
+            <artifactId>happy-code-starter-web</artifactId>
+        </dependency>
+    </dependencies>
 </project>
