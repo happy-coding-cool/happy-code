@@ -14,8 +14,16 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+        <dependency>
             <groupId>cool.happycoding</groupId>
             <artifactId>happy-code-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cool.happycoding</groupId>
+            <artifactId>happy-code-starter-swagger</artifactId>
         </dependency>
     </dependencies>
 </project>
