@@ -5,13 +5,12 @@
 
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.happy.code</groupId>
+        <groupId>cool.happycoding</groupId>
         <artifactId>happy-code-dependencies</artifactId>
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../happy-code-dependencies</relativePath>
     </parent>
 
-    <groupId>com.happy.code</groupId>
     <name>happy-code-parent</name>
     <artifactId>happy-code-parent</artifactId>
     <version>1.0.0-SNAPSHOT</version>
