@@ -1,6 +1,6 @@
 package cool.happycoding.base.result;
 
-import cool.happycoding.base.common.ResultCode;
+import cool.happycoding.base.common.CodeMessage;
 
 /**
  * description
@@ -20,8 +20,8 @@ public class BaseResult<T> extends Result {
         this.data =  data;
     }
 
-    public BaseResult(ResultCode resultCode, T data){
-        super(resultCode);
+    public BaseResult(CodeMessage codeMessage, T data){
+        super(codeMessage);
         this.data = data;
     }
 
@@ -29,12 +29,12 @@ public class BaseResult<T> extends Result {
         super(code, message);
     }
 
-    public BaseResult(ResultCode resultCode){
-        super(resultCode);
+    public BaseResult(CodeMessage codeMessage){
+        super(codeMessage);
     }
 
     public static  BaseResult<?> success(){
-        return new BaseResult<>(ResultCode.SUCCESSFUL);
+        return new BaseResult<>(CodeMessage.SUCCESSFUL);
     }
 
     public static <T> BaseResult<T> success(T data){
@@ -45,8 +45,8 @@ public class BaseResult<T> extends Result {
         return new BaseResult<>(code, message);
     }
 
-    public static  BaseResult<?> fail(ResultCode resultCode){
-        return new BaseResult<>(resultCode);
+    public static  BaseResult<?> fail(CodeMessage codeMessage){
+        return new BaseResult<>(codeMessage);
     }
 
     public void setData(T data){
