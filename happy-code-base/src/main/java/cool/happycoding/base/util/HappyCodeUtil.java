@@ -1,6 +1,6 @@
 package cool.happycoding.base.util;
 
-import cool.happycoding.base.common.CodeMessage;
+import cool.happycoding.base.common.ResultCode;
 import cool.happycoding.base.exception.BizException;
 
 /**
@@ -15,7 +15,7 @@ public final class HappyCodeUtil {
      * @param condition
      * @param error
      */
-    public static void check(boolean condition, CodeMessage error) {
+    public static void check(boolean condition, ResultCode error) {
         if (condition) {
             throw new BizException(error);
         }

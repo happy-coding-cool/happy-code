@@ -7,7 +7,7 @@ package cool.happycoding.base.common;
  *
  * @author lanlanhappy 2020/11/28 6:06 下午
  */
-public interface CodeMessage {
+public interface ResultCode {
 
     String SUCCESSFUL = "0";
     String SUCCESSFUL_MESSAGE = "success";

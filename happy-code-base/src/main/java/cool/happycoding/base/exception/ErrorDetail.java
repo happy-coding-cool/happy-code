@@ -1,6 +1,6 @@
 package cool.happycoding.base.exception;
 
-import cool.happycoding.base.common.CodeMessage;
+import cool.happycoding.base.common.ResultCode;
 import cool.happycoding.base.result.BaseResult;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,13 +26,27 @@ public class ErrorDetail implements Serializable {
 
     /**
      * 构造异常详情
-     * @param codeMessage
+     * @param resultCode
      * @param path
      * @param detail
      * @return
      */
-    public static BaseResult<ErrorDetail> build(CodeMessage codeMessage, String path, Map<String, Object> detail){
-        BaseResult<ErrorDetail> errorDetail = new BaseResult<>(codeMessage);
+    public static BaseResult<ErrorDetail> build(ResultCode resultCode, String path, Map<String, Object> detail){
+        BaseResult<ErrorDetail> errorDetail = new BaseResult<>(resultCode);
+        errorDetail.setData(ErrorDetail.builder().path(path).detail(detail).build());
+        return errorDetail;
+    }
+
+    /**
+     * 构造异常详情
+     * @param code
+     * @param message
+     * @param path
+     * @param detail
+     * @return
+     */
+    public static BaseResult<ErrorDetail> build(String code, String message, String path, Map<String, Object> detail){
+        BaseResult<ErrorDetail> errorDetail = new BaseResult<>(code, message);
         errorDetail.setData(ErrorDetail.builder().path(path).detail(detail).build());
         return errorDetail;
     }

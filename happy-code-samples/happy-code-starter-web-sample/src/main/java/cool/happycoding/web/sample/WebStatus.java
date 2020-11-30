@@ -1,13 +1,13 @@
 package cool.happycoding.web.sample;
 
-import cool.happycoding.base.common.CodeMessage;
+import cool.happycoding.base.common.ResultCode;
 
 /**
  * description
  *
  * @author lanlanhappy 2020/11/30 9:18 下午
  */
-public enum WebStatus implements CodeMessage {
+public enum WebStatus implements ResultCode {
 
     /**
      * 参数错误

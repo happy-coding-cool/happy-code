@@ -1,6 +1,6 @@
 package cool.happycoding.base.result;
 
-import cool.happycoding.base.common.CodeMessage;
+import cool.happycoding.base.common.ResultCode;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -13,17 +13,17 @@ import java.io.Serializable;
 @Data
 public class Result implements Serializable {
 
-    private String resultCode = CodeMessage.SUCCESSFUL;
-    private String resultMessage = CodeMessage.SUCCESSFUL_MESSAGE;
+    private String resultCode = ResultCode.SUCCESSFUL;
+    private String resultMessage = ResultCode.SUCCESSFUL_MESSAGE;
     private Long timestamp;
 
     public Result(){
         this.timestamp = System.currentTimeMillis();
     }
 
-    public Result (CodeMessage codeMessage){
-        this.resultCode = codeMessage.getCode();
-        this.resultMessage = codeMessage.getMessage();
+    public Result (ResultCode resultCode){
+        this.resultCode = resultCode.getCode();
+        this.resultMessage = resultCode.getMessage();
         this.timestamp = System.currentTimeMillis();
     }
 
