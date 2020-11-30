@@ -24,6 +24,13 @@ public class ErrorDetail implements Serializable {
     private String path;
     private Map<String, Object> detail;
 
+    /**
+     * 构造异常详情
+     * @param codeMessage
+     * @param path
+     * @param detail
+     * @return
+     */
     public static BaseResult<ErrorDetail> build(CodeMessage codeMessage, String path, Map<String, Object> detail){
         BaseResult<ErrorDetail> errorDetail = new BaseResult<>(codeMessage);
         errorDetail.setData(ErrorDetail.builder().path(path).detail(detail).build());
