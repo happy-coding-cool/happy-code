@@ -13,6 +13,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 /**
  * 验证是否为身份证号码（18位中国）<br>
  * 出生日期只支持到到2999年
+ * @author other
  */
 @Documented
 @Retention(RUNTIME)

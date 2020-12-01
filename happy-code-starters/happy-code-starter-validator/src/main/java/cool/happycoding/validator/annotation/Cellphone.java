@@ -12,6 +12,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
  * 验证是否为手机号码（中国）
+ * @author other
  */
 @Documented
 @Retention(RUNTIME)

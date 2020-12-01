@@ -13,6 +13,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 /**
  * 验证是否为UUID<br>
  * 包括带横线标准格式和不带横线的简单模式
+ * @author other
  */
 @Documented
 @Retention(RUNTIME)

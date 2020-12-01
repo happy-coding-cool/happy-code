@@ -12,6 +12,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
  * 验证是否为中国车牌号
+ * @author other
  */
 @Documented
 @Retention(RUNTIME)

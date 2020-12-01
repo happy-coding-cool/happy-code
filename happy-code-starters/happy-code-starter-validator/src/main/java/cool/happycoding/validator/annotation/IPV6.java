@@ -12,6 +12,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
  * 验证是否为IPV6地址
+ * @author other
  */
 @Documented
 @Retention(RUNTIME)
