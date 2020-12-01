@@ -1,7 +1,6 @@
 package cool.happycoding.web.exception;
 
 import cool.happycoding.base.exception.BizException;
-import cool.happycoding.base.exception.ErrorDetail;
 import cool.happycoding.base.result.BaseResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;

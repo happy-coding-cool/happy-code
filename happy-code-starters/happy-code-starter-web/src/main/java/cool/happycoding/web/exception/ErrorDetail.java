@@ -1,4 +1,4 @@
-package cool.happycoding.base.exception;
+package cool.happycoding.web.exception;
 
 import cool.happycoding.base.common.ResultCode;
 import cool.happycoding.base.result.BaseResult;
@@ -22,7 +22,7 @@ import java.util.Map;
 public class ErrorDetail implements Serializable {
 
     private String path;
-    private Map<String, Object> detail;
+    private Map<String, Object> error;
 
     /**
      * 构造异常详情
@@ -33,7 +33,7 @@ public class ErrorDetail implements Serializable {
      */
     public static BaseResult<ErrorDetail> build(ResultCode resultCode, String path, Map<String, Object> detail){
         BaseResult<ErrorDetail> errorDetail = new BaseResult<>(resultCode);
-        errorDetail.setData(ErrorDetail.builder().path(path).detail(detail).build());
+        errorDetail.setData(ErrorDetail.builder().path(path).error(detail).build());
         return errorDetail;
     }
 
@@ -47,7 +47,7 @@ public class ErrorDetail implements Serializable {
      */
     public static BaseResult<ErrorDetail> build(String code, String message, String path, Map<String, Object> detail){
         BaseResult<ErrorDetail> errorDetail = new BaseResult<>(code, message);
-        errorDetail.setData(ErrorDetail.builder().path(path).detail(detail).build());
+        errorDetail.setData(ErrorDetail.builder().path(path).error(detail).build());
         return errorDetail;
     }
 
