@@ -58,6 +58,11 @@
                 <artifactId>happy-code-starter-swagger</artifactId>
                 <version>${happy-code.version}</version>
             </dependency>
+            <dependency>
+                <groupId>cool.happycoding</groupId>
+                <artifactId>happy-code-starter-validator</artifactId>
+                <version>${happy-code.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <build>

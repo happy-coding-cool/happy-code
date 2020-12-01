@@ -18,6 +18,7 @@
     <modules>
         <module>happy-code-starter-web</module>
         <module>happy-code-starter-swagger</module>
+        <module>happy-code-starter-validator</module>
     </modules>
 
     <dependencies>
