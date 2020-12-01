@@ -16,5 +16,6 @@
     <description>happy组件使用示例</description>
     <modules>
         <module>happy-code-starter-web-sample</module>
+        <module>happy-code-starter-validator-sample</module>
     </modules>
 </project>

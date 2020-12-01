@@ -1,4 +1,4 @@
-package cool.happycoding.web.sample;
+package cool.happycoding.validator.sample;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,11 +6,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * description
  *
- * @author lanlanhappy 2020/11/29 5:34 下午
+ * @author lanlanhappy 2020/12/01 10:23 下午
  */
 @SpringBootApplication
-public class HappyWebSampleApplication {
+public class HappyValidatorApplication {
+
     public static void main(String[] args) {
-        SpringApplication.run(HappyWebSampleApplication.class, args);
+        SpringApplication.run(HappyValidatorApplication.class, args);
     }
 }
