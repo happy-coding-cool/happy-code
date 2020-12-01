@@ -6,7 +6,9 @@ import cn.hutool.core.util.StrUtil;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-
+/**
+ * @author other
+ */
 public class UUIDValidator implements ConstraintValidator<UUID, String> {
 
 	private boolean notNull;

@@ -6,7 +6,10 @@ import cn.hutool.core.util.StrUtil;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-
+/**
+ * @author other
+ */
+@SuppressWarnings("all")
 public class IPV6Validator implements ConstraintValidator<IPV6, String> {
 
 	private boolean notNull;

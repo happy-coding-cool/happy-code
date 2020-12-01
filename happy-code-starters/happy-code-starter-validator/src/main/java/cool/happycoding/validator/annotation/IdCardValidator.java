@@ -5,7 +5,9 @@ import cn.hutool.core.util.StrUtil;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
-
+/**
+ * @author other
+ */
 public class IdCardValidator implements ConstraintValidator<IdCard, String> {
 
 	private boolean notNull;

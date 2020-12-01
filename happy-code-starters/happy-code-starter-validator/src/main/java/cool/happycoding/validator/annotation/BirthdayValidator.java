@@ -11,6 +11,9 @@ import java.time.temporal.TemporalAccessor;
 import java.util.Date;
 
 
+/**
+ * @author other
+ */
 public class BirthdayValidator implements ConstraintValidator<Birthday, Object> {
 
 	private boolean notNull;
