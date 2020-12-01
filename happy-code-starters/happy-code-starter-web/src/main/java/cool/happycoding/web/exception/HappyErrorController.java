@@ -37,6 +37,7 @@ public class HappyErrorController extends AbstractErrorController {
     public BaseResult<ErrorDetail> handleError(HttpServletRequest request) {
         WebRequest webRequest = new ServletWebRequest(request);
         Throwable throwable = errorAttributes.getError(webRequest);
+        // 当异常类型为BizException时，则直接抛出由统一的异常拦截进行处理
         if (throwable instanceof BizException){
             throw (BizException)throwable;
         }else{
