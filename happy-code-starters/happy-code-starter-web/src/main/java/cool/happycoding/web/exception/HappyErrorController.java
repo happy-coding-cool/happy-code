@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.web.servlet.error.AbstractErrorController;
 import org.springframework.boot.web.error.ErrorAttributeOptions;
 import org.springframework.boot.web.servlet.error.ErrorAttributes;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.ServletWebRequest;
@@ -32,7 +33,7 @@ public class HappyErrorController extends AbstractErrorController {
         this.errorAttributes = errorAttributes;
     }
 
-    @RequestMapping(value = PATH)
+    @RequestMapping(value = PATH, produces = MediaType.APPLICATION_JSON_VALUE)
     public BaseResult<ErrorDetail> handleError(HttpServletRequest request) {
         WebRequest webRequest = new ServletWebRequest(request);
         Throwable throwable = errorAttributes.getError(webRequest);
