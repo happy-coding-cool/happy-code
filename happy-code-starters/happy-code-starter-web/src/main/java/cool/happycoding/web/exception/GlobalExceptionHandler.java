@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -29,6 +31,32 @@ import static cool.happycoding.base.common.HappyStatus.REQUEST_VALIDATION_FAILED
 @Slf4j
 @ControllerAdvice
 public class GlobalExceptionHandler {
+
+    @ResponseBody
+    @ExceptionHandler(ConstraintViolationException.class)
+    public BaseResult<ErrorDetail> handleConstraintViolationException(ConstraintViolationException ex, HttpServletRequest request) {
+        String path = request.getRequestURI();
+        Map<String, Object> error = ex.getConstraintViolations()
+                .stream()
+                // 解决 key 值相同的问题
+                .collect(Collectors.groupingBy(cv->cv.getPropertyPath().toString()))
+                .entrySet().stream()
+                .collect(Collectors.toMap(Map.Entry::getKey, entry->constraint(entry.getValue())));
+        log.error("Validation error:{}", error);
+        log.error("exception: ", ex);
+        return ErrorDetail.build(REQUEST_VALIDATION_FAILED, path, error);
+    }
+
+    private String constraint(List<ConstraintViolation<?>> errorList){
+        if (CollUtil.isEmpty(errorList)){
+            return "无错误提示";
+        }else{
+            return errorList.stream().map(fieldError -> {
+                String message = fieldError.getMessage();
+                return isEmpty(message) ? "无错误提示" : message;
+            }).collect(Collectors.joining("；"));
+        }
+    }
 
     /**
      * 统一处理 BizException
