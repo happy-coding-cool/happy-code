@@ -11,7 +11,7 @@
 <dependencyManagement>
     <dependencies>
         <dependency>
-            <groupId>cool.happycoding</groupId>
+            <groupId>cool.happycoding.code</groupId>
             <artifactId>happy-code-dependencies</artifactId>
             <version>1.0.0.RELEASE</version>
             <type>pom</type>
