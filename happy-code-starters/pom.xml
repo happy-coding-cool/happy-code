@@ -19,6 +19,8 @@
         <module>happy-code-starter-web</module>
         <module>happy-code-starter-swagger</module>
         <module>happy-code-starter-validator</module>
+        <module>happy-code-starter-mybatis</module>
+        <module>happy-code-starter-user</module>
     </modules>
 
     <dependencies>
