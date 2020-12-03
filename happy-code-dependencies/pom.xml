@@ -27,6 +27,7 @@
         <fastjson.version>1.2.73</fastjson.version>
         <guava.version>28.0-jre</guava.version>
         <knife4j.version>2.0.5</knife4j.version>
+        <mybatis-plus.version>3.4.0</mybatis-plus.version>
     </properties>
 
     <dependencyManagement>
@@ -61,6 +62,16 @@
             <dependency>
                 <groupId>cool.happycoding</groupId>
                 <artifactId>happy-code-starter-validator</artifactId>
+                <version>${happy-code.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cool.happycoding</groupId>
+                <artifactId>happy-code-starter-mybatis</artifactId>
+                <version>${happy-code.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cool.happycoding</groupId>
+                <artifactId>happy-code-starter-user</artifactId>
                 <version>${happy-code.version}</version>
             </dependency>
         </dependencies>
