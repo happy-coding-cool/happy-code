@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  cool.happycoding.web.HappyWebAutoConfiguration
+  cool.happycoding.code.web.HappyWebAutoConfiguration

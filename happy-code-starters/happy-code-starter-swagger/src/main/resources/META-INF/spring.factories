@@ -1,1 +1,1 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=cool.happycoding.swagger.HappySwaggerAutoConfiguration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=cool.happycoding.code.swagger.HappySwaggerAutoConfiguration

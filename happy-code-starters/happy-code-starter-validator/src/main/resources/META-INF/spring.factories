@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  cool.happycoding.validator.HappyValidatorAutoConfiguration
+  cool.happycoding.code.validator.HappyValidatorAutoConfiguration
