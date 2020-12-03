@@ -9,7 +9,11 @@ public enum  HappyStatus implements ResultCode {
     /**
      * 参数校验失败
      */
-    REQUEST_VALIDATION_FAILED("400", "请求数据验证失败")
+    REQUEST_VALIDATION_FAILED("400", "请求数据验证失败"),
+    /**
+     * 系统错误
+     */
+    INTERNAL_SYSTEM_ERROR("500","系统错误")
     ;
     String code;
     String message;
