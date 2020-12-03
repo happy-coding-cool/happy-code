@@ -1,7 +1,7 @@
 happy:
   code:
     swagger:
-      base-package: cool.happycoding.web.sample
+      base-package: cool.happycoding.code.web.sample
       enable: true
       group: happy-code-starter-web-sample
       title: web组件使用示例

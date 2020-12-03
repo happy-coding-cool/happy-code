@@ -1,7 +1,7 @@
 happy:
   code:
     swagger:
-      base-package: cool.happycoding.validator.sample
+      base-package: cool.happycoding.code.validator.sample
       enable: true
       group: happy-code-starter-validator-sample
       title: web组件使用示例
