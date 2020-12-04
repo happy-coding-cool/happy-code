@@ -2,6 +2,8 @@ package cool.happycoding.code.user.sample.rest;
 
 import cool.happycoding.code.base.result.BaseResult;
 import cool.happycoding.code.base.user.User;
+import cool.happycoding.code.user.CurrentUser;
+import cool.happycoding.code.user.DefaultUser;
 import cool.happycoding.code.user.context.UserContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,5 +19,10 @@ public class UserContextController {
     @GetMapping("defaultUser")
     public BaseResult<User> defaultUser(){
         return BaseResult.success(UserContextHolder.getUser());
+    }
+
+    @GetMapping("currentUser")
+    public BaseResult<DefaultUser> currentUser(@CurrentUser DefaultUser defaultUser){
+        return BaseResult.success(defaultUser);
     }
 }
