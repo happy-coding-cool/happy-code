@@ -12,5 +12,5 @@ import lombok.ToString;
 @Data
 @ToString
 public class Entity implements E {
-    private String id;
+
 }

@@ -37,7 +37,6 @@ public class HappyMybatisAutoConfiguration {
         return mybatisPlusInterceptor;
     }
 
-
     @Bean
     public MybatisPlusPropertiesCustomizer mybatisPlusPropertiesCustomizer(HappyMybatisProperties happyMybatisProperties){
         return properties -> {

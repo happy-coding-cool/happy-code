@@ -13,5 +13,5 @@ import lombok.ToString;
 @Data
 @ToString
 public class DTO implements DT {
-    private String id;
+
 }
