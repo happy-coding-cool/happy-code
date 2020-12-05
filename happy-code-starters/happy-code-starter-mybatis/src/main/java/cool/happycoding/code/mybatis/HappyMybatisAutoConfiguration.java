@@ -39,8 +39,11 @@ public class HappyMybatisAutoConfiguration {
 
 
     @Bean
-    public MybatisPlusPropertiesCustomizer mybatisPlusPropertiesCustomizer(){
-        return properties -> properties.getGlobalConfig().setBanner(Boolean.FALSE);
+    public MybatisPlusPropertiesCustomizer mybatisPlusPropertiesCustomizer(HappyMybatisProperties happyMybatisProperties){
+        return properties -> {
+            properties.getGlobalConfig().setBanner(Boolean.FALSE);
+            properties.getGlobalConfig().getDbConfig().setIdType(happyMybatisProperties.getIdType());
+        };
     }
 
 }

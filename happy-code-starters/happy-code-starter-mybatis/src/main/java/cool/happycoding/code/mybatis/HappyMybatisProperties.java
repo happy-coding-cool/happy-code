@@ -1,5 +1,6 @@
 package cool.happycoding.code.mybatis;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
@@ -45,6 +46,11 @@ public class HappyMybatisProperties {
      * 启用多租户时，指定哪些表不需要租户隔离
      */
     private String[] ignoreTables;
+
+    /**
+     * 主键生成策略,默认：ASSIGN_ID
+     */
+    private IdType idType = IdType.ASSIGN_ID;
 
 
 }
