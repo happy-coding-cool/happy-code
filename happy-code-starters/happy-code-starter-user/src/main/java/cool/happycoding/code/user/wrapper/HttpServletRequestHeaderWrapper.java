@@ -1,4 +1,4 @@
-package cool.happycoding.code.user;
+package cool.happycoding.code.user.wrapper;
 
 import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.util.StrUtil;
