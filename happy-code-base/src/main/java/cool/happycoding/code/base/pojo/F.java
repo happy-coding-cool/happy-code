@@ -1,16 +1,12 @@
 package cool.happycoding.code.base.pojo;
 
-import lombok.Data;
-import lombok.ToString;
+import java.io.Serializable;
 
 /**
  * description
  *
  * @author lanlanhappy 2020/10/04 9:24 上午
  */
-@Data
-@ToString
-public class Form implements F {
-
+public interface F extends Serializable {
 
 }

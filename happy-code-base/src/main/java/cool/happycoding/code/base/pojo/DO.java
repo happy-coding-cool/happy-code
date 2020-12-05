@@ -1,8 +1,7 @@
 package cool.happycoding.code.base.pojo;
 
+import lombok.Data;
 import lombok.ToString;
-
-import java.io.Serializable;
 
 /**
  * <p>
@@ -11,6 +10,7 @@ import java.io.Serializable;
  *
  * @author lanlanhappy 2020/12/05 1:23 下午
  */
+@Data
 @ToString
-public class DO implements Serializable {
+public class DO implements D {
 }
