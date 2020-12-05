@@ -2,17 +2,17 @@ package cool.happycoding.code.mybatis;
 
 import com.baomidou.mybatisplus.autoconfigure.MybatisPlusPropertiesCustomizer;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
-import com.baomidou.mybatisplus.extension.plugins.inner.BlockAttackInnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.InnerInterceptor;
-import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
-import org.springframework.beans.factory.ObjectProvider;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import com.google.common.collect.Lists;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
 import java.util.List;
+
+import static cool.happycoding.code.mybatis.InnerInterceptorHolder.blockAttackInnerInterceptor;
+import static cool.happycoding.code.mybatis.InnerInterceptorHolder.paginationInnerInterceptor;
 
 /**
  * description
@@ -25,27 +25,18 @@ import java.util.List;
 public class HappyMybatisAutoConfiguration {
 
     @Bean
-    public PaginationInnerInterceptor paginationInnerInterceptor(HappyMybatisProperties happyMybatisProperties){
-        PaginationInnerInterceptor paginationInnerInterceptor = new PaginationInnerInterceptor();
-        paginationInnerInterceptor.setMaxLimit(happyMybatisProperties.getLimit());
-        paginationInnerInterceptor.setOverflow(happyMybatisProperties.isOverflow());
-        return paginationInnerInterceptor;
-    }
-
-    @Bean
-    @ConditionalOnProperty(name = HappyMybatisProperties.HAPPY_MYBATIS_PREFIX+".enable-block-attack", havingValue = "true")
-    public BlockAttackInnerInterceptor blockAttackInnerInterceptor(){
-        return new BlockAttackInnerInterceptor();
-    }
-
-
-    @Bean
-    public MybatisPlusInterceptor mybatisPlusInterceptor(ObjectProvider<List<InnerInterceptor>> innerInterceptorProvider){
-        List<InnerInterceptor> innerInterceptors = innerInterceptorProvider.getIfAvailable();
+    public MybatisPlusInterceptor mybatisPlusInterceptor(HappyMybatisProperties happyMybatisProperties){
         MybatisPlusInterceptor mybatisPlusInterceptor = new MybatisPlusInterceptor();
-        mybatisPlusInterceptor.setInterceptors(innerInterceptors);
+        List<InnerInterceptor> interceptors = Lists.newArrayList();
+        if (happyMybatisProperties.isEnableBlockAttack()) {
+            interceptors.add(blockAttackInnerInterceptor());
+        }
+        // 分页插件要放到所有interceptor之后
+        interceptors.add(paginationInnerInterceptor(happyMybatisProperties));
+        mybatisPlusInterceptor.setInterceptors(interceptors);
         return mybatisPlusInterceptor;
     }
+
 
     @Bean
     public MybatisPlusPropertiesCustomizer mybatisPlusPropertiesCustomizer(){
