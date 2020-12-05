@@ -21,6 +21,7 @@
         <module>happy-code-starter-validator</module>
         <module>happy-code-starter-mybatis</module>
         <module>happy-code-starter-user</module>
+        <module>happy-code-starter-log</module>
     </modules>
 
     <dependencies>
