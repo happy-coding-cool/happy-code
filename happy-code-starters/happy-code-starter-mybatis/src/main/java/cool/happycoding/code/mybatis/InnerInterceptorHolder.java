@@ -8,7 +8,7 @@ import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerIntercept
  *
  * @author lanlanhappy 2020/12/05 1:13 下午
  */
-public class InnerInterceptorHolder {
+class InnerInterceptorHolder {
 
     /**
      * 分页插件
