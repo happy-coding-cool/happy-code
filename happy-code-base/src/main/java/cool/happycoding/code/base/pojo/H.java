@@ -49,7 +49,7 @@ public interface H extends Serializable {
      * @return
      */
     default <D, S> List<D> copy(List<S> sourceList, Class<D> clazz){
-        return sourceList.stream()
+        return sourceList.parallelStream()
                 .map(e->copy(e, clazz))
                 .collect(Collectors.toList());
     }
