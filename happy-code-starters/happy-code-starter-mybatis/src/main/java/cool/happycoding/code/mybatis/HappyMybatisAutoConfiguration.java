@@ -1,9 +1,11 @@
 package cool.happycoding.code.mybatis;
 
 import com.baomidou.mybatisplus.autoconfigure.MybatisPlusPropertiesCustomizer;
+import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.InnerInterceptor;
 import com.google.common.collect.Lists;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -43,6 +45,17 @@ public class HappyMybatisAutoConfiguration {
             properties.getGlobalConfig().setBanner(Boolean.FALSE);
             properties.getGlobalConfig().getDbConfig().setIdType(happyMybatisProperties.getIdType());
         };
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public AutoFieldFillHandler autoFieldFillHandler(){
+        return new DefaultAutoFieldFillHandler();
+    }
+
+    @Bean
+    public MetaObjectHandler metaObjectHandler(AutoFieldFillHandler autoFieldFillHandler){
+        return new HappyMybatisMetaObjectHandler(autoFieldFillHandler);
     }
 
 }

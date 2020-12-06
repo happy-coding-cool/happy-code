@@ -1,5 +1,6 @@
 package cool.happycoding.code.base.util;
 
+import cn.hutool.core.util.StrUtil;
 import cool.happycoding.code.base.common.ResultCode;
 import cool.happycoding.code.base.exception.BizException;
 
@@ -21,4 +22,12 @@ public final class HappyCodeUtil {
         }
     }
 
+    /**
+     * @param originalVal
+     * @param defaultVal
+     * @return
+     */
+    public static String ifBlankDefault(String originalVal, String defaultVal) {
+        return StrUtil.isBlank(originalVal) ? defaultVal : originalVal;
+    }
 }
