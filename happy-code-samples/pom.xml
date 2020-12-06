@@ -18,5 +18,6 @@
         <module>happy-code-starter-web-sample</module>
         <module>happy-code-starter-user-sample</module>
         <module>happy-code-starter-validator-sample</module>
+        <module>happy-code-starter-mybatis-sample</module>
     </modules>
 </project>
