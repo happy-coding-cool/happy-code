@@ -1,8 +1,12 @@
 package cool.happycoding.code.base.util;
 
+import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.StrUtil;
 import cool.happycoding.code.base.common.ResultCode;
 import cool.happycoding.code.base.exception.BizException;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * description
@@ -29,5 +33,20 @@ public final class HappyCodeUtil {
      */
     public static String ifBlankDefault(String originalVal, String defaultVal) {
         return StrUtil.isBlank(originalVal) ? defaultVal : originalVal;
+    }
+
+
+    /**
+     * list 转换
+     * @param sourceList
+     * @param clazz
+     * @param <D>
+     * @param <S>
+     * @return
+     */
+    public static  <D, S> List<D> copy(List<S> sourceList, Class<D> clazz){
+        return sourceList.stream()
+                .map(e-> BeanUtil.copyProperties(e, clazz))
+                .collect(Collectors.toList());
     }
 }

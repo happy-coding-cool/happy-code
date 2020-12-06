@@ -40,17 +40,4 @@ public interface H extends Serializable {
         return copy(source, clazz, CopyOptions.create());
     }
 
-    /**
-     * list 转换
-     * @param sourceList
-     * @param clazz
-     * @param <D>
-     * @param <S>
-     * @return
-     */
-    default <D, S> List<D> copy(List<S> sourceList, Class<D> clazz){
-        return sourceList.stream()
-                .map(e->copy(e, clazz))
-                .collect(Collectors.toList());
-    }
 }
