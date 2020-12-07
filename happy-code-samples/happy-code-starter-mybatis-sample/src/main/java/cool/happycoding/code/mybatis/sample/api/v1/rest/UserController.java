@@ -36,4 +36,13 @@ public class UserController {
         log.debug("list with userForm:{}", userForm);
         return ListResult.success(userService.list(userForm));
     }
+
+    @ApiOperation(value = "保存User", notes = "保存user")
+    @PostMapping(value = "/save")
+    public BaseResult<UserDTO> save(@RequestBody UserForm userForm) {
+        log.debug("list with userForm:{}", userForm);
+        return ListResult.success(userService.save(userForm));
+    }
+
+
 }

@@ -31,4 +31,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         List<User> users = this.list(queryWrapper);
         return HappyCodeUtil.copy(users, UserDTO.class);
     }
+
+    @Override
+    public UserDTO save(UserForm userForm) {
+        User user = userForm.toEntity(User.class);
+        this.save(user);
+        return user.toDTO(UserDTO.class);
+    }
 }

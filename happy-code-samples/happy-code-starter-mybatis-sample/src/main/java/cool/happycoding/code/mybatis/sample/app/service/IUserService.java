@@ -27,4 +27,11 @@ public interface IUserService extends IService<User> {
      * @return
      */
     List<UserDTO> list(UserForm userForm);
+
+    /**
+     * 保存用户
+     * @param userForm
+     * @return
+     */
+    UserDTO save(UserForm userForm);
 }
