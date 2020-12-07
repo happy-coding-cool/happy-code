@@ -12,4 +12,9 @@ public interface Constants {
      * <p>年-月-日 时:分:秒（标准北京时间）
      */
     String DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
+
+    /**
+     * 执行时间超过3s，则打出警告日志
+     */
+    long WARN_TIME_INTERVAL_MILLS = 3000;
 }
