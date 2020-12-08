@@ -26,6 +26,10 @@
             <artifactId>happy-code-starter-swagger</artifactId>
         </dependency>
         <dependency>
+            <groupId>cool.happycoding</groupId>
+            <artifactId>happy-code-starter-log</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>1.4.197</version>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+
+    <!-- 系统名称等-->
+    <springProperty scope="context" name="system.name" source="happy.code.log.system.name"/>
+    <!-- 模块名称等 -->
+    <springProperty scope="context" name="modules.name" source="happy.code.log.modules.name"/>
+
+    <springProperty scope="context" name="spring.profiles.active" source="spring.profiles.active"/>
+    <springProperty scope="context" name="spring.application.name" source="spring.application.name"/>
+    <springProperty scope="context" name="node.ip" source="MY_NODE_IP"/>
+    <springProperty scope="context" name="pod.name" source="MY_POD_NAME"/>
+    <springProperty scope="context" name="pod.ip" source="MY_POD_IP"/>
+    <springProperty scope="context" name="node.name" source="MY_NODE_NAME"/>
+
+
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <!--格式化输出：%d示日期，%thread示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
+<!--            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] [%X{trace-id}] [%X{span-id}] [env:${spring.profiles.active}] %-5level %logger{36} - %msg%n-->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] [env:${spring.profiles.active}] %-5level %logger{36} - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 滚动策略-->
+        <RollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>
+                logs/${system.name}_${modules.name}_${spring.application.name}_business_%d{yyyy-MM-dd_HH}_%i.log
+            </fileNamePattern>
+            <!-- 每100mb进行一次压缩-->
+            <maxFileSize>100mb</maxFileSize>
+            <!-- 最多保留720个小时内的日志 即30天-->
+            <maxHistory>720</maxHistory>
+            <!-- 总日志超过5gb 会自动清除历史日志文件-->
+            <totalSizeCap>5gb</totalSizeCap>
+        </RollingPolicy>
+
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] [env:${spring.profiles.active}] [nodeIp:${node.ip}]
+                [nodeName:${node.name}] [podIp:${pod.ip}] [podName:${pod.name}]
+                [applicationName:${spring.application.name}] %-5level %logger{36} - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org.apache.http.impl.conn.PoolingHttpClientConnectionManager" level="error"/>
+
+    <springProfile name="local">
+        <root level="debug">
+            <appender-ref ref="console"/>
+            <appender-ref ref="file"/>
+        </root>
+    </springProfile>
+
+    <springProfile name="!local">
+        <root level="info">
+            <appender-ref ref="console"/>
+            <appender-ref ref="file"/>
+        </root>
+    </springProfile>
+</configuration>
