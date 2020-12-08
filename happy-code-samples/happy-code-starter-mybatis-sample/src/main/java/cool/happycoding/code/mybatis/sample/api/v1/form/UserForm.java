@@ -1,6 +1,7 @@
 package cool.happycoding.code.mybatis.sample.api.v1.form;
 
 import cool.happycoding.code.mybatis.base.BaseForm;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -13,6 +14,7 @@ import java.math.BigDecimal;
 @Data
 public class UserForm extends BaseForm {
 
+    @ApiModelProperty(required = true)
     private String name;
     private Integer age;
     private String gender;
