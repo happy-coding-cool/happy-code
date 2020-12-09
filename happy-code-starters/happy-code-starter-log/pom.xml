@@ -13,10 +13,6 @@
     <description>log组件</description>
 
     <dependencies>
-<!--        <dependency>-->
-<!--            <groupId>com.nepxion</groupId>-->
-<!--            <artifactId>discovery-plugin-strategy-starter-service</artifactId>-->
-<!--            <version>6.0.7</version>-->
-<!--        </dependency>-->
+
     </dependencies>
 </project>
