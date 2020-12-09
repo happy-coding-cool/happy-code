@@ -6,14 +6,12 @@
     <springProperty scope="context" name="system.name" source="happy.code.log.system.name"/>
     <!-- 模块名称等 -->
     <springProperty scope="context" name="modules.name" source="happy.code.log.modules.name"/>
-
     <springProperty scope="context" name="spring.profiles.active" source="spring.profiles.active"/>
     <springProperty scope="context" name="spring.application.name" source="spring.application.name"/>
     <springProperty scope="context" name="node.ip" source="MY_NODE_IP"/>
     <springProperty scope="context" name="pod.name" source="MY_POD_NAME"/>
     <springProperty scope="context" name="pod.ip" source="MY_POD_IP"/>
     <springProperty scope="context" name="node.name" source="MY_NODE_NAME"/>
-
 
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
@@ -37,7 +35,6 @@
             <!-- 总日志超过5gb 会自动清除历史日志文件-->
             <totalSizeCap>5gb</totalSizeCap>
         </RollingPolicy>
-
         <encoder>
             <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] [env:${spring.profiles.active}] [nodeIp:${node.ip}]
                 [nodeName:${node.name}] [podIp:${pod.ip}] [podName:${pod.name}]
@@ -48,17 +45,9 @@
 
     <logger name="org.apache.http.impl.conn.PoolingHttpClientConnectionManager" level="error"/>
 
-    <springProfile name="local">
-        <root level="debug">
-            <appender-ref ref="console"/>
-            <appender-ref ref="file"/>
-        </root>
-    </springProfile>
+    <root level="info">
+        <appender-ref ref="console"/>
+        <appender-ref ref="file"/>
+    </root>
 
-    <springProfile name="!local">
-        <root level="info">
-            <appender-ref ref="console"/>
-            <appender-ref ref="file"/>
-        </root>
-    </springProfile>
 </configuration>
