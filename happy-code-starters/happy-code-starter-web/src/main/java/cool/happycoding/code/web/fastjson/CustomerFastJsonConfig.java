@@ -6,6 +6,7 @@ import cool.happycoding.code.web.HappyWebProperties;
 import cool.happycoding.code.web.fastjson.deserializer.FastJsonDateDeserializer;
 import cool.happycoding.code.web.fastjson.serializer.FastJsonBigDecimalAsPlainSerializer;
 import cool.happycoding.code.web.fastjson.serializer.FastJsonDateSerializer;
+import cool.happycoding.code.web.fastjson.serializer.FastJsonLongAsPlainSerializer;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -46,6 +47,9 @@ public class CustomerFastJsonConfig {
         }
         if (happyWebProperties.getSerializer().isEnableBigDecimalAsPlain()){
             fastJsonConfig.getSerializeConfig().put(BigDecimal.class, new FastJsonBigDecimalAsPlainSerializer());
+        }
+        if (happyWebProperties.getSerializer().isEnableLongAsPlain()){
+            fastJsonConfig.getSerializeConfig().put(Long.class, new FastJsonLongAsPlainSerializer());
         }
         return fastJsonConfig;
     }

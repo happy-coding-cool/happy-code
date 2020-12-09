@@ -32,6 +32,10 @@ public class HappyWebProperties {
          */
         private boolean enableBigDecimalAsPlain = true;
         /**
+         * 是否启用Long类型字段统一序列化
+         */
+        private boolean enableLongAsPlain = true;
+        /**
          * 默认日期格式
          */
         private String dateFormat = Constants.DATE_TIME_FORMAT;
