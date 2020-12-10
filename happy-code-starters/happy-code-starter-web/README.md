@@ -24,8 +24,7 @@ compile 'cool.happycoding:happy-code-starter-web'
 - 定义了序列化/反序列化的实现为: Fastjson
     - 针对日期类型做了字符串的序列化/反序列的定义
     - 针对Long/BigDecimal类型数据在进行序列化时做了转字符串的处理
-- 定义了rest接口的交互格式规范
-    - BaseResult<T> 适用于返回单个对象的场景    
+- 定义了rest接口的交互格式规范   
     - BaseResult<T> 适用于返回单个对象的场景
     - ListResult<T> 适用于返回列表对象的场景
     - PageResult<T> 适用于返回分页对象的场景  
