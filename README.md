@@ -32,6 +32,7 @@
     - happy-code-starter-log
     - happy-code-starter-mybatis
     - happy-code-starter-user
+    - [happy-code-starter-swagger](happy-code-starters/happy-code-starter-swagger/README.md)
     - [happy-code-starter-validator](happy-code-starters/happy-code-starter-validator/README.md)
     - [happy-code-starter-web](happy-code-starters/happy-code-starter-web/README.md)
 
@@ -59,7 +60,7 @@
 
 ## 参考
 - [Spring-Cloud-Alibaba版本说明](https://github.com/alibaba/spring-cloud-alibaba/wiki/%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E)
-- [Swagger-bootstrap-ui](https://github.com/xiaoymin/swagger-bootstrap-ui/blob/master/README_zh.md)
+- [knife4j](https://gitee.com/xiaoym/knife4j)
 - [hutool](https://hutool.cn/)
 - [mybatis](https://mybatis.org/mybatis-3/zh/index.html)
 - [mybatis-plus](https://baomidou.com/guide/#%E7%89%B9%E6%80%A7)
