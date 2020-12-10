@@ -23,20 +23,28 @@
 
 然后在 `dependencies` 中添加自己所需使用的依赖即可使用。
 
-
 ## 模块介绍
 - happy-code-base
-```
-1. 基础类定义
-2. 基础业务异常定义
-```
 - happy-code-dependencies
-
+- happy-code-parent
+- happy-code-samples
+- happy-code-starters
+    - happy-code-starter-log
+    - happy-code-starter-mybatis
+    - happy-code-starter-user
+    - happy-code-starter-validator
+    - happy-code-starter-web
 
 ## 版本更新记录
-### V1.0.0 
-- 初始版本
-- 规范依赖体系和版本
+### 1.0.0 
+- feat: 初始版本
+- feat: 规范依赖体系和版本
+- feat: 封装web组件规定序列化/反序列化方式，封装前后端交互规范、全局异常处理规范
+- feat: 封装validator组件，用于请求的入参校验
+- feat: 封装swagger组件，用于接口文档的管理
+- feat: 封装user组件，提供一个用于封装用户信息的UserContext
+- feat: 封装mybatis组件，引入mybatis-plus，实现Entity对象规范定义
+- feat: 封装log组件，规范log配置
 
 ## 框架选型
 - spring Cloud Hoxton.SR8
@@ -47,7 +55,7 @@
 - hutool 5.3.9
 - fastjson 1.2.73
 - guava 28.0-jre
-- knife4j 2.0.5
+- knife4j 3.0.2
 
 ## 参考
 - [Spring-Cloud-Alibaba版本说明](https://github.com/alibaba/spring-cloud-alibaba/wiki/%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E)
