@@ -32,7 +32,7 @@
     - happy-code-starter-log
     - happy-code-starter-mybatis
     - happy-code-starter-user
-    - happy-code-starter-validator
+    - [happy-code-starter-validator](happy-code-starters/happy-code-starter-validator/README.md)
     - [happy-code-starter-web](happy-code-starters/happy-code-starter-web/README.md)
 
 ## 版本更新记录
