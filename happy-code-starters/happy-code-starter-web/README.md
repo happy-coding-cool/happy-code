@@ -12,7 +12,6 @@
    <groupId>cool.happycoding</groupId>
    <artifactId>happy-code-starter-web</artifactId>
 </dependency>
-
 ```    
 
 - Gradle
@@ -30,7 +29,7 @@ compile 'cool.happycoding:happy-code-starter-web'
     - BaseResult<T> 适用于返回单个对象的场景
     - ListResult<T> 适用于返回列表对象的场景
     - PageResult<T> 适用于返回分页对象的场景  
-- 定义统一了异常封装处理，并做了如下约定
+- 定义统一的异常封装处理，并做了如下约定
     - 每一个异常都必须要定义明确的错误编码，异常信息的封装请实现 ResultCode 接口
     - 业务异常直接使用BizException即可，如需自定义，请继承该异常
     - 建议使用抛异常的方式来代替业务状态的维护(即：在进行业务逻辑校验时，不合法的逻辑，直接按异常处理)
