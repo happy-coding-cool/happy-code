@@ -22,6 +22,8 @@
         <module>happy-code-starter-mybatis</module>
         <module>happy-code-starter-user</module>
         <module>happy-code-starter-log</module>
+        <module>happy-code-starter-mq</module>
+        <module>happy-code-starter-cache</module>
     </modules>
 
     <dependencies>

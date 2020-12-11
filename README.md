@@ -35,6 +35,8 @@
     - [happy-code-starter-swagger](happy-code-starters/happy-code-starter-swagger/README.md)
     - [happy-code-starter-validator](happy-code-starters/happy-code-starter-validator/README.md)
     - [happy-code-starter-web](happy-code-starters/happy-code-starter-web/README.md)
+    - happy-code-starter-mq
+    - happy-code-starter-cache
 
 ## 版本更新记录
 ### 1.0.0 

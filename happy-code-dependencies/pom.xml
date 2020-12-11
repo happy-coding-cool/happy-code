@@ -79,6 +79,16 @@
                 <artifactId>happy-code-starter-log</artifactId>
                 <version>${happy-code.version}</version>
             </dependency>
+            <dependency>
+                <groupId>cool.happycoding</groupId>
+                <artifactId>happy-code-starter-mq</artifactId>
+                <version>${happy-code.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cool.happycoding</groupId>
+                <artifactId>happy-code-starter-cache</artifactId>
+                <version>${happy-code.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <build>
