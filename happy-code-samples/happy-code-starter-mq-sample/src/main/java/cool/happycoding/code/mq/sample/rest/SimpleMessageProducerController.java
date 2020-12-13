@@ -88,7 +88,7 @@ public class SimpleMessageProducerController {
     public BaseResult<Order> broadcastOrder(@RequestBody Order order){
         order.setOrderDate(DateUtil.date());
         order.setOrderId(IdUtil.simpleUUID());
-        rocketMQTemplate.convertAndSend("simple-topic:broadcast", order, message -> {
+        rocketMQTemplate.convertAndSend("broadcast-topic:broadcast", order, message -> {
             log.info("headers:{}, message:{}", message.getHeaders(), message.getPayload().getClass());
             return message;
         });

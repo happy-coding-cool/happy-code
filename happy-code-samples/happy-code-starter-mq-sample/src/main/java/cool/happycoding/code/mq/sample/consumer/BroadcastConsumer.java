@@ -16,8 +16,8 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 @RocketMQMessageListener(
-        topic="simple-topic",
-        consumerGroup = "simple-group",
+        topic="broadcast-topic",
+        consumerGroup = "broadcast-group",
         selectorType= SelectorType.TAG,
         selectorExpression="broadcast",
         messageModel= MessageModel.BROADCASTING)
