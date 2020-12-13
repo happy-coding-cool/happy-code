@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.spring.core.RocketMQTemplate;
+import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,27 +16,29 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
- *     顺序消息
+ *     事务消息
  * </p>
  *
- * @author lanlanhappy 2020/12/13 12:39 下午
+ * @author lanlanhappy 2020/12/13 3:14 下午
  */
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("order-producer")
-public class OrderMessageProducerController {
+@RequestMapping("transaction-producer")
+public class TransactionMessageProducerController {
 
     private final RocketMQTemplate rocketMQTemplate;
 
-    @PostMapping("sync-order-message")
-    @ApiOperation(value = "顺序消息-同步")
-    public BaseResult<?> order(@RequestBody Order order){
-        for (int i = 0; i < 7; i++) {
-            order.setOrderDate(DateUtil.date());
-            order.setOrderId(i+"");
-            rocketMQTemplate.syncSendOrderly("order-topic:order", order, order.getOrderId());
-        }
-        return BaseResult.success();
+    @PostMapping("transaction-order")
+    @ApiOperation(value = "事务消息")
+    public BaseResult<?> transactionOrder(@RequestBody Order order){
+        order.setOrderDate(DateUtil.date());
+        order.setOrderId(IdUtil.simpleUUID());
+        rocketMQTemplate.sendMessageInTransaction("transaction-topic:tx",
+                MessageBuilder
+                        .withPayload(order)
+                        .build(),
+                order.getOrderId());
+        return BaseResult.success(order);
     }
 }

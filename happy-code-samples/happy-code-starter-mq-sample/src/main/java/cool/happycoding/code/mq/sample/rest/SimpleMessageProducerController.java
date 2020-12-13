@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * description
+ * <p>
+ *     普通消息
+ * </p>
  *
  * @author lanlanhappy 2020/12/13 11:43 上午
  */
