@@ -20,5 +20,6 @@
         <module>happy-code-starter-validator-sample</module>
         <module>happy-code-starter-mybatis-sample</module>
         <module>happy-code-starter-mq-sample</module>
+        <module>happy-code-starter-stream-mq-sample</module>
     </modules>
 </project>

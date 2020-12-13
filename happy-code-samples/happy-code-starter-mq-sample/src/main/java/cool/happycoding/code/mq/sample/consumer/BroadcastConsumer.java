@@ -19,10 +19,11 @@ import org.springframework.stereotype.Component;
         topic="simple-topic",
         consumerGroup = "simple-group",
         selectorType= SelectorType.TAG,
-        selectorExpression="simple")
-public class OrderConsumer implements RocketMQListener<Order> {
+        selectorExpression="broadcast",
+        messageModel= MessageModel.BROADCASTING)
+public class BroadcastConsumer implements RocketMQListener<Order> {
     @Override
     public void onMessage(Order message) {
-        log.info("order message:{}", message);
+        log.info("order broadcast message:{}", message);
     }
 }

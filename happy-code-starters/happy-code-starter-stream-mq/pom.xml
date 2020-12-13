@@ -8,15 +8,14 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>happy-code-starter-mq</artifactId>
-    <name>happy-code-starter-mq</name>
+    <artifactId>happy-code-starter-stream-mq</artifactId>
+    <name>happy-code-starter-stream-mq</name>
     <description>mq组件</description>
 
     <dependencies>
         <dependency>
-            <groupId>org.apache.rocketmq</groupId>
-            <artifactId>rocketmq-spring-boot-starter</artifactId>
-            <version>${rocketmq-starter.version}</version>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-stream-rocketmq</artifactId>
         </dependency>
     </dependencies>
 </project>

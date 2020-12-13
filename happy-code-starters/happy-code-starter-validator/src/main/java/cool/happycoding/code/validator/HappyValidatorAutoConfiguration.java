@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.validation.ValidationAutoConfigura
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 import java.util.Map;
@@ -34,6 +35,7 @@ public class HappyValidatorAutoConfiguration {
     }
 
     @Bean
+    @Primary
     public LocalValidatorFactoryBean defaultValidator(){
         LocalValidatorFactoryBean localValidatorFactoryBean = new LocalValidatorFactoryBean();
         localValidatorFactoryBean.setProviderClass(HibernateValidator.class);
