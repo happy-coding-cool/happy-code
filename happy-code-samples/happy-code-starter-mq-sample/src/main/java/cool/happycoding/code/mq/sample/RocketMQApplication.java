@@ -9,10 +9,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author lanlanhappy 2020/12/12 5:17 下午
  */
 @SpringBootApplication
-public class RocketProducerApplication {
+public class RocketMQApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(RocketProducerApplication.class, args);
+        SpringApplication.run(RocketMQApplication.class, args);
     }
 
 }
