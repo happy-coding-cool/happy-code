@@ -26,7 +26,7 @@ compile 'cool.happycoding:happy-code-starter-mq'
 #### 使用
 - 普通消息三种发送方式：同步，异步，单向(参考sample工程:SimpleMessageProducerController)
 - 收发顺序消息(参考sample工程：OrderMessageProducerController)
-- 订阅消息集群,广播()
+- 订阅消息集群,广播
 - 收发事务消息
 - 收发延迟消息
 - 收发定时消息
