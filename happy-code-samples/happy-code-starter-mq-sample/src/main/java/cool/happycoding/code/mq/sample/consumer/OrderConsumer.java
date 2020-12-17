@@ -2,7 +2,6 @@ package cool.happycoding.code.mq.sample.consumer;
 
 import cool.happycoding.code.mq.sample.domain.Order;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.rocketmq.spring.annotation.MessageModel;
 import org.apache.rocketmq.spring.annotation.RocketMQMessageListener;
 import org.apache.rocketmq.spring.annotation.SelectorType;
 import org.apache.rocketmq.spring.core.RocketMQListener;

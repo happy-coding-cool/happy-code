@@ -9,3 +9,5 @@ happy:
         email: happycoding@aliyun.com
         url: https://github.com/happy-coding-cool/happy-code/issues
         name: lanlanhappy
+server:
+  port: 8081
