@@ -5,14 +5,14 @@
     <parent>
         <groupId>cool.happycoding</groupId>
         <artifactId>happy-code-parent</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>1.0.0.RELEASE</version>
         <relativePath>../happy-code-parent</relativePath>
     </parent>
 
     <artifactId>happy-code-base</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0.RELEASE</version>
 
-    <name>happy-boot-code</name>
+    <name>happy-code-base</name>
     <description>基础开发框架组件基础依赖</description>
 
     <dependencies>
