@@ -13,7 +13,7 @@
         <dependency>
             <groupId>cool.happycoding.code</groupId>
             <artifactId>happy-code-dependencies</artifactId>
-            <version>1.0.0.RELEASE</version>
+            <version>1.0.1-SNAPSHOT</version>
             <type>pom</type>
             <scope>import</scope>
         </dependency>
@@ -39,6 +39,9 @@
     - happy-code-starter-cache
 
 ## 版本更新记录
+### 1.0.1-SNAPSHOT[current]
+
+
 ### 1.0.0 
 - feat: 初始版本
 - feat: 规范依赖体系和版本
