@@ -27,7 +27,6 @@
 - happy-code-base
 - happy-code-dependencies
 - happy-code-parent
-- happy-code-samples
 - happy-code-starters
     - happy-code-starter-log
     - [happy-code-starter-mybatis](happy-code-starters/happy-code-starter-mybatis/README.md)
