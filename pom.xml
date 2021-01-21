@@ -21,7 +21,6 @@
     <properties>
         <!--组件版本-->
         <happy-code.version>1.0.1-SNAPSHOT</happy-code.version>
-
         <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
         <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
         <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
@@ -35,7 +34,6 @@
         <module>happy-code-dependencies</module>
         <module>happy-code-starters</module>
         <module>happy-code-parent</module>
-        <module>happy-code-samples</module>
     </modules>
 
     <build>
