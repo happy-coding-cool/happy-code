@@ -26,7 +26,7 @@ public class UserContextProperties {
     /**
      * 用户Id字段名
      */
-    private String userIdField = "user-id";
+    private String userIdField = "x-user-id";
 
     /**
      * filter order 优先级
