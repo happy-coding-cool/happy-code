@@ -11,8 +11,16 @@
     <artifactId>happy-code-starter-cache</artifactId>
     <name>happy-code-starter-cache</name>
     <description>cache组件</description>
-
     <dependencies>
-
+        <dependency>
+            <groupId>com.alicp.jetcache</groupId>
+            <artifactId>jetcache-starter-redis-springdata</artifactId>
+            <version>${jetcache.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+            <version>${commons-pool2.version}</version>
+        </dependency>
     </dependencies>
 </project>

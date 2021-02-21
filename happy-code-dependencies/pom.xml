@@ -35,6 +35,8 @@
         <spock.version>1.3-groovy-2.5</spock.version>
         <cglib-nodep.version>3.3.0</cglib-nodep.version>
         <rocketmq-starter.version>2.1.1</rocketmq-starter.version>
+        <jetcache.version>2.6.0</jetcache.version>
+        <commons-pool2.version>2.9.0</commons-pool2.version>
     </properties>
 
     <dependencyManagement>
