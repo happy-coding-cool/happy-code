@@ -34,14 +34,15 @@
     - [happy-code-starter-swagger](happy-code-starters/happy-code-starter-swagger/README.md)
     - [happy-code-starter-validator](happy-code-starters/happy-code-starter-validator/README.md)
     - [happy-code-starter-web](happy-code-starters/happy-code-starter-web/README.md)
+    - [happy-code-starter-cache](happy-code-starters/happy-code-starter-cache/README.md)
     - happy-code-starter-mq
-    - happy-code-starter-cache
 
 ## 版本更新记录
 ### 1.0.1-SNAPSHOT[current]
+- feat: 引入jetcache完善cache组件
 
 
-### 1.0.0 
+### 1.0.0.RELEASE 
 - feat: 初始版本
 - feat: 规范依赖体系和版本
 - feat: 封装web组件规定序列化/反序列化方式，封装前后端交互规范、全局异常处理规范
@@ -61,6 +62,7 @@
 - fastjson 1.2.73
 - guava 28.0-jre
 - knife4j 3.0.2
+- jetcache 2.6.0
 
 ## 参考
 - [Spring-Cloud-Alibaba版本说明](https://github.com/alibaba/spring-cloud-alibaba/wiki/%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E)
