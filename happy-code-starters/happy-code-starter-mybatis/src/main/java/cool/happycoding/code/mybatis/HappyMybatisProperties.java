@@ -5,6 +5,8 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 
+import java.util.List;
+
 /**
  * description
  *
@@ -28,7 +30,7 @@ public class HappyMybatisProperties {
     protected boolean overflow = Boolean.FALSE;
 
     /**
-     * 是否启用多租户
+     * 是否启用多租户，默认：不启用
      */
     private boolean enableTenant = Boolean.FALSE;
 
@@ -38,6 +40,11 @@ public class HappyMybatisProperties {
     private boolean enableBlockAttack = Boolean.TRUE;
 
     /**
+     * 启用乐观锁,默认：关闭
+     */
+    private boolean enableVersion = false;
+
+    /**
      *  启用多租户时，指定表的租户字段名，默认：tenant_id
      */
     private String tenantIdColumn = "tenant_id";
@@ -45,7 +52,7 @@ public class HappyMybatisProperties {
     /**
      * 启用多租户时，指定哪些表不需要租户隔离
      */
-    private String[] ignoreTables;
+    private List<String> ignoreTables;
 
     /**
      * 主键生成策略,默认：ASSIGN_ID
