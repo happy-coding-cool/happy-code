@@ -30,7 +30,7 @@ public class FastJsonLongAsPlainSerializer implements ObjectSerializer {
             return;
         }
 
-        // 超过对long类型强制转化成string
+        // 对long类型强制转化成string
         if (!excludeFieldNames.contains(StrUtil.toString(fieldName))){
             serializer.getWriter().writeString(Long.toString((Long) object));
         }else{

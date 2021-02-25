@@ -50,4 +50,21 @@ public class HappyWebProperties {
         private boolean enableDate = true;
     }
 
+    /**
+     * 类型:fastjson、jackson2
+     */
+    private ConverterType converterType = ConverterType.fastjson;
+
+    public enum ConverterType{
+
+        /**
+         * fast-json
+         */
+        fastjson,
+
+        /**
+         * jackson2
+         */
+        jackson2;
+    }
 }
