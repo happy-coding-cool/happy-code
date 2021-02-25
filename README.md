@@ -40,6 +40,7 @@
 ## 版本更新记录
 ### 1.0.1-SNAPSHOT[current]
 - feat: 引入jetcache完善cache组件
+- feat: 完善mybatis组件引入乐观锁定义支持
 
 
 ### 1.0.0.RELEASE 
