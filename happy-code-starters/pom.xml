@@ -26,6 +26,8 @@
         <module>happy-code-starter-stream-mq</module>
         <module>happy-code-starter-cache</module>
         <module>happy-code-starter-test</module>
+        <module>happy-code-starter-excel</module>
+        <module>happy-code-starter-store</module>
     </modules>
 
     <dependencies>

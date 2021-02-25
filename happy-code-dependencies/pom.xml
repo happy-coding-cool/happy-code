@@ -35,6 +35,7 @@
         <spock.version>1.3-groovy-2.5</spock.version>
         <cglib-nodep.version>3.3.0</cglib-nodep.version>
         <rocketmq-starter.version>2.1.1</rocketmq-starter.version>
+        <easyexcel.version>2.2.6</easyexcel.version>
         <jetcache.version>2.6.0</jetcache.version>
         <commons-pool2.version>2.9.0</commons-pool2.version>
     </properties>
@@ -80,6 +81,16 @@
             <dependency>
                 <groupId>cool.happycoding</groupId>
                 <artifactId>happy-code-starter-swagger</artifactId>
+                <version>${happy-code.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cool.happycoding</groupId>
+                <artifactId>happy-code-starter-excel</artifactId>
+                <version>${happy-code.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cool.happycoding</groupId>
+                <artifactId>happy-code-starter-store</artifactId>
                 <version>${happy-code.version}</version>
             </dependency>
             <dependency>
