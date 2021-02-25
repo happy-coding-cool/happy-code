@@ -31,10 +31,7 @@ public class UserContextLoadInnerFilter implements UserInnerFilter {
     public void filter(HttpServletRequest request) {
         String userId = request.getHeader(userContextProperties.getUserIdField());
         log.info("request header user-id:{}", userId);
-        User user = null;
-        if (StrUtil.isNotBlank(userId)) {
-            user = userContextService.loadUserDetail(userId);
-        }
+        User user = userContextService.loadUserDetail(userId);
         if (ObjectUtil.isNull(user)) {
             user = DefaultUser.defaultUser(userContextProperties.getDefaultUserId(), userContextProperties.getDefaultUserName());
         }
