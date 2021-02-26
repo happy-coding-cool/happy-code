@@ -1,5 +1,7 @@
 package cool.happycoding.code.user.context;
 
+import com.alibaba.ttl.TransmittableThreadLocal;
+
 /**
  * description
  *
@@ -7,7 +9,8 @@ package cool.happycoding.code.user.context;
  */
 public class ThreadLocalContextHolderStrategy<Context> implements ContextHolderStrategy<Context>{
 
-    private final ThreadLocal<Context> contextHolder = new ThreadLocal<>();
+    private final ThreadLocal<Context> contextHolder = new TransmittableThreadLocal<>();
+
     @Override
     public void clearContext() {
         contextHolder.remove();
