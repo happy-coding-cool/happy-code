@@ -66,9 +66,11 @@
 - guava 28.0-jre
 - knife4j 3.0.2
 - jetcache 2.6.0
+- transmittable-thread-local 2.9.0
 
 ## 参考
 - [Spring-Cloud-Alibaba版本说明](https://github.com/alibaba/spring-cloud-alibaba/wiki/%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E)
+- [transmittable-thread-local](https://github.com/alibaba/transmittable-thread-local)
 - [knife4j](https://gitee.com/xiaoym/knife4j)
 - [hutool](https://hutool.cn/)
 - [mybatis](https://mybatis.org/mybatis-3/zh/index.html)
