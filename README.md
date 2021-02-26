@@ -41,6 +41,8 @@
 ### 1.0.1-SNAPSHOT[current]
 - feat: 引入jetcache完善cache组件
 - feat: 完善mybatis组件引入乐观锁定义支持
+- feat: 引入阿里ThreadLocal组件
+- feat: 定义默认线程池(happyThreadPoolExecutor)，解决线程切换时上下文传递问题
 
 
 ### 1.0.0.RELEASE 
