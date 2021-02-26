@@ -1,5 +1,6 @@
 package cool.happycoding.code.web.exception;
 
+import cn.hutool.core.util.StrUtil;
 import com.google.common.collect.ImmutableMap;
 import cool.happycoding.code.base.exception.BizException;
 import cool.happycoding.code.base.result.BaseResult;
@@ -45,7 +46,7 @@ public class HappyErrorController extends AbstractErrorController {
             int status = (int) attributes.get("status");
             String error = (String) attributes.get("error");
             String path = (String) attributes.get("path");
-            return ErrorDetail.build(String.valueOf(status), error, path, ImmutableMap.of("detail", error));
+            return ErrorDetail.build(String.valueOf(status), error, path, ImmutableMap.of("detail", StrUtil.blankToDefault(error, throwable.getMessage())));
         }
     }
 
