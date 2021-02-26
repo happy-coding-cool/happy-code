@@ -1,7 +1,9 @@
 package cool.happycoding.code.web;
 
+import cn.hutool.core.thread.ExecutorBuilder;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
+import com.alibaba.ttl.threadpool.TtlExecutors;
 import cool.happycoding.code.web.fastjson.CustomerFastJsonConfig;
 import cool.happycoding.code.web.exception.GlobalExceptionHandler;
 import cool.happycoding.code.web.exception.HappyErrorController;
@@ -26,6 +28,10 @@ import org.springframework.web.servlet.DispatcherServlet;
 
 import javax.servlet.Servlet;
 import java.util.List;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 /**
  * description
@@ -76,5 +82,22 @@ public class HappyWebAutoConfiguration {
         timeIntervalFilter.addUrlPatterns("/*");
         timeIntervalFilter.setOrder(Ordered.HIGHEST_PRECEDENCE);
         return timeIntervalFilter;
+    }
+
+    @Bean("happyThreadPoolExecutor")
+    public Executor happyThreadPoolExecutor(HappyWebProperties happyWebProperties) {
+        ExecutorService executorService = ExecutorBuilder
+                .create()
+                .setCorePoolSize(happyWebProperties.getPool().getCorePoolSize())
+                .setMaxPoolSize(happyWebProperties.getPool().getMaxPoolSize())
+                .setAllowCoreThreadTimeOut(happyWebProperties.getPool().isAllowCoreThreadTimeOut())
+                .setKeepAliveTime(TimeUnit.MILLISECONDS.toNanos(happyWebProperties.getPool().getKeepAliveTime()))
+                .useArrayBlockingQueue(happyWebProperties.getPool().getQueueCapacity())
+                .setHandler(new ThreadPoolExecutor.AbortPolicy()).setThreadFactory(r -> {
+                    Thread thread = new Thread(r);
+                    thread.setName(String.format("happy-code-pool %s", thread.getId()));
+                    return thread;
+                }).build();
+        return TtlExecutors.getTtlExecutor(executorService);
     }
 }
