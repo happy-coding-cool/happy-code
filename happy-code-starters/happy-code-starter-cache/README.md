@@ -23,6 +23,8 @@ compile 'cool.happycoding:happy-code-starter-cache'
 - 引入JetCache (jetcache-starter-redis-springdata) 组件
 - 简化注解使用和配置
 - 二级缓存使用redis并采用lettuce客户端连接(该方式为Spring boot 2.x连接redis的默认方式)
+- JetCache 理论上是支持两级缓存的，即本地缓存(Caffeine)+加远端缓存(Redis)，但比较遗憾的是，JetCache并未提供本地缓存和远端缓存同步的机制(此处需要自行扩展)，
+  因此在分布式环境下会存在本地和远端缓存的数据一致性问题，组件已经提供该扩展解决了该问题
 
 #### 配置项
 连接配置，采用spring-data-redis原生配置即可：
@@ -64,11 +66,6 @@ compile 'cool.happycoding:happy-code-starter-cache'
 
 
 #### 使用
-> JetCache 理论上是支持两级缓存的，即本地缓存(Caffeine)+加远端缓存(Redis)，
-> 但比较遗憾的是，JetCache并未提供本地缓存和远端缓存同步的机制(此处需要自行扩展)，因此在分布式环境下会存在本地和远端缓存的数据一致性问题，
-> 由于时间关系本组件还未能提供该扩展，因此大家在使用该组件时(除非明确不会带来一致性问题)，否则请不要指定CacheType的类型(默认为 remote)，
-> 等待后续组件扩展同步机制后，再考虑启用
-
 ##### 入门
 - 在启动类上添加 @EnableBnCache启用cache能力
 - 通过@CreateCache注解创建一个缓存实例，默认超时时间是100秒
