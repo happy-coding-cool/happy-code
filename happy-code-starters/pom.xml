@@ -4,9 +4,8 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>cool.happycoding</groupId>
-        <artifactId>happy-code-parent</artifactId>
+        <artifactId>happy-code</artifactId>
         <version>1.0.1-SNAPSHOT</version>
-        <relativePath>../happy-code-parent</relativePath>
     </parent>
     <artifactId>happy-code-starters</artifactId>
     <version>1.0.1-SNAPSHOT</version>

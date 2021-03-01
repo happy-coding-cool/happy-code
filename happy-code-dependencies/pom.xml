@@ -6,11 +6,10 @@
     <modelVersion>4.0.0</modelVersion>
     <!-- 依赖的spring-boot的版本 -->
     <parent>
-        <groupId>cool.happycoding</groupId>
-        <artifactId>happy-code</artifactId>
-        <version>1.0.1-SNAPSHOT</version>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-parent</artifactId>
+        <version>Hoxton.SR8</version>
     </parent>
-
     <name>happy-code-dependencies</name>
     <artifactId>happy-code-dependencies</artifactId>
     <version>1.0.1-SNAPSHOT</version>
@@ -23,6 +22,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <!--框架依赖-->
+        <happy-code.version>1.0.1-SNAPSHOT</happy-code.version>
         <spring.cloud.version>Hoxton.SR8</spring.cloud.version>
         <spring.boot.version>2.3.2.RELEASE</spring.boot.version>
         <spring-cloud-alibaba.version>2.2.3.RELEASE</spring-cloud-alibaba.version>
@@ -139,7 +139,6 @@
                 <artifactId>happy-code-starter-test</artifactId>
                 <version>${happy-code.version}</version>
             </dependency>
-
         </dependencies>
     </dependencyManagement>
 </project>
