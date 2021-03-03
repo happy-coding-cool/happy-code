@@ -5,23 +5,16 @@
 
 ## 如何使用
 ### 如何引入依赖
-如果需要使用已发布的版本，在 `dependencyManagement` 中添加如下配置。
-
-```xml
-<dependencyManagement>
-    <dependencies>
-        <dependency>
-            <groupId>cool.happycoding</groupId>
-            <artifactId>happy-code-dependencies</artifactId>
-            <version>1.0.1-SNAPSHOT</version>
-            <type>pom</type>
-            <scope>import</scope>
-        </dependency>
-    </dependencies>
-</dependencyManagement>
+在pom.xml的配置中添加父级依赖
 ```
-
-然后在 `dependencies` 中添加自己所需使用的依赖即可使用。
+    <parent>
+        <groupId>cool.happycoding</groupId>
+        <artifactId>happy-code-parent</artifactId>
+        <version>1.0.1-SNAPSHOT</version>
+    </parent>
+```
+然后在 `dependencies` 中添加自己所需使用的依赖即可使用
+注意: 引入该parent之后，在添加happy-code,spring-boot,spring cloud,spring alibaba cloud 组件时均不需要再指定版本号
 
 ## 模块介绍
 - happy-code-base
