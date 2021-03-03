@@ -1,14 +1,18 @@
 package cool.happycoding.code.web;
 
+import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.thread.ExecutorBuilder;
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import com.alibaba.ttl.threadpool.TtlExecutors;
 import cool.happycoding.code.web.fastjson.CustomerFastJsonConfig;
 import cool.happycoding.code.web.exception.GlobalExceptionHandler;
 import cool.happycoding.code.web.exception.HappyErrorController;
+import cool.happycoding.code.web.fastjson.FastJsonConfigCustomizer;
 import cool.happycoding.code.web.filter.TimeIntervalFilter;
 import cool.happycoding.code.web.jackson2.CustomerJackson2Config;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -66,11 +70,19 @@ public class HappyWebAutoConfiguration {
     @Bean
     @ConditionalOnClass({JSON.class, HttpMessageConverter.class})
     @ConditionalOnProperty(name = HappyWebProperties.HAPPY_WEB_PREFIX + ".converter-type", havingValue = "fastjson", matchIfMissing = true)
-    public HttpMessageConverters fastJsonHttpMessageConverter(HappyWebProperties happyWebProperties){
+    public HttpMessageConverters fastJsonHttpMessageConverter(HappyWebProperties happyWebProperties,
+                                                              ObjectProvider<List<FastJsonConfigCustomizer>> fastJsonConfigCustomizerProvider){
         FastJsonHttpMessageConverter fastConverter = new FastJsonHttpMessageConverter();
         List<MediaType> supportedMediaTypes = MediaType.parseMediaTypes(HappyWebProperties.DEFAULT_MEDIA_TYPE);
         fastConverter.setSupportedMediaTypes(supportedMediaTypes);
-        fastConverter.setFastJsonConfig(new CustomerFastJsonConfig(happyWebProperties).fastJsonConfig());
+        FastJsonConfig fastJsonConfig = new CustomerFastJsonConfig(happyWebProperties).fastJsonConfig();
+        List<FastJsonConfigCustomizer> fastJsonConfigCustomizers = fastJsonConfigCustomizerProvider.getIfAvailable();
+        if (CollUtil.isNotEmpty(fastJsonConfigCustomizers)){
+            assert fastJsonConfigCustomizers != null;
+            fastJsonConfigCustomizers
+                    .forEach(fastJsonConfigCustomizer -> fastJsonConfigCustomizer.customize(fastJsonConfig));
+        }
+        fastConverter.setFastJsonConfig(fastJsonConfig);
         return new HttpMessageConverters(fastConverter);
     }
 

@@ -23,8 +23,6 @@ public class FastJsonBigDecimalAsPlainSerializer implements ObjectSerializer {
             serializer.getWriter().writeNull();
             return;
         }
-        if (fieldType == BigDecimal.class){
-            out.writeString(((BigDecimal)object).toPlainString());
-        }
+        out.writeString(((BigDecimal)object).toPlainString());
     }
 }

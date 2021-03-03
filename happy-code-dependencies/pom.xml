@@ -28,7 +28,7 @@
         <spring-cloud-alibaba.version>2.2.3.RELEASE</spring-cloud-alibaba.version>
         <!--公共包依赖-->
         <hutool.version>5.3.9</hutool.version>
-        <fastjson.version>1.2.73</fastjson.version>
+        <fastjson.version>1.2.75</fastjson.version>
         <guava.version>28.0-jre</guava.version>
         <knife4j.version>3.0.2</knife4j.version>
         <mybatis-plus.version>3.4.0</mybatis-plus.version>

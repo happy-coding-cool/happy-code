@@ -36,7 +36,8 @@
 - feat: 完善mybatis组件引入乐观锁定义支持
 - feat: 引入阿里ThreadLocal组件
 - feat: 定义默认线程池(happyThreadPoolExecutor)，解决线程切换时上下文传递问题
-
+- feat: web组件提供自定fastjson 序列化/反序列化配置扩展FastJsonConfigCustomizer
+- refactor: 更改组件依赖的继承体系，该改动会造成依赖不兼容的问题，按照新的配置方式进行调整即可
 
 ### 1.0.0.RELEASE 
 - feat: 初始版本
@@ -59,6 +60,7 @@
 - guava 28.0-jre
 - knife4j 3.0.2
 - jetcache 2.6.0
+- fastjson 1.2.75
 - transmittable-thread-local 2.9.0
 
 ## 参考

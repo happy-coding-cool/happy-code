@@ -30,9 +30,6 @@ public class FastJsonDateSerializer implements ObjectSerializer {
             serializer.getWriter().writeNull();
             return;
         }
-
-        if (fieldType == Date.class){
-            out.writeString(DateUtil.format((Date)object, dateFormat));
-        }
+        out.writeString(DateUtil.format((Date)object, dateFormat));
     }
 }
