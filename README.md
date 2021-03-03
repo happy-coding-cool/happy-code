@@ -70,3 +70,4 @@
 - [hutool](https://hutool.cn/)
 - [mybatis](https://mybatis.org/mybatis-3/zh/index.html)
 - [mybatis-plus](https://baomidou.com/guide/#%E7%89%B9%E6%80%A7)
+- [jetcache](https://github.com/alibaba/jetcache/wiki/Home_CN)
