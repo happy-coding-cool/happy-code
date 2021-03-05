@@ -10,6 +10,8 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 import java.util.Map;
 
+import static cn.hutool.core.collection.CollUtil.isEmpty;
+
 /**
  * <p>异常信息定义</p>
  *
@@ -31,7 +33,20 @@ public class ErrorDetail implements Serializable {
      * @return
      */
     public static Result error(ResultCode resultCode, String path){
-        return error(resultCode, path, null);
+        return error(resultCode.getCode(), resultCode.getMessage(), path);
+    }
+
+    /**
+     * 构造异常详情
+     * @param code
+     * @param message
+     * @param path
+     * @return
+     */
+    public static Result error(String code, String message, String path){
+        Result result = Result.failure(code, message);
+        result.setErrorData(ErrorDetail.builder().path(path).build());
+        return result;
     }
 
     /**

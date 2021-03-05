@@ -68,7 +68,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(BizException.class)
     public Result handleAppException(BizException ex, HttpServletRequest request) {
         log.error("exception:", ex);
-        return ErrorDetail.error(ex.getError(), request.getRequestURI(), ex.getErrorData());
+        return ErrorDetail.error(ex.getErrCode(), ex.getErrMessage(), request.getRequestURI());
     }
 
     /**

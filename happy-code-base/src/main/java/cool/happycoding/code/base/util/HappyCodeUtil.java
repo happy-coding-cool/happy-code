@@ -3,7 +3,9 @@ package cool.happycoding.code.base.util;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.StrUtil;
 import cool.happycoding.code.base.common.ResultCode;
+import cool.happycoding.code.base.exception.Assert;
 import cool.happycoding.code.base.exception.BizException;
+import cool.happycoding.code.base.exception.ExceptionFactory;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,9 +23,7 @@ public final class HappyCodeUtil {
      * @param error
      */
     public static void check(boolean condition, ResultCode error) {
-        if (condition) {
-            throw new BizException(error);
-        }
+        Assert.isFalse(condition, error.getCode(), error.getMessage());
     }
 
     /**
