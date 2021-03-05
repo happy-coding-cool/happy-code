@@ -1,5 +1,9 @@
 package cool.happycoding.code.base.exception;
 
+import cn.hutool.core.collection.CollUtil;
+import cn.hutool.core.map.MapUtil;
+import cool.happycoding.code.base.common.ResultCode;
+
 import java.util.Collection;
 import java.util.Map;
 
@@ -25,6 +29,16 @@ import java.util.Map;
  */
 public abstract class Assert {
 
+    private static final String DEFAULT_ERR_CODE = "BIZ_ERROR";
+
+    public static void isTrue(boolean expression,ResultCode resultCode){
+        isTrue(expression, resultCode.getCode(), resultCode.getMessage());
+    }
+
+    public static void isTrue(boolean expression, String errMessage) {
+        isTrue(expression, DEFAULT_ERR_CODE, errMessage);
+    }
+
     /**
      * Assert a boolean expression, throwing {@code BizException}
      *
@@ -38,9 +52,17 @@ public abstract class Assert {
      * @throws BizException if expression is {@code false}
      */
     public static void isTrue(boolean expression, String errorCode, String errMessage) {
-        if (!expression) {
+        if (expression) {
             throw new BizException(errorCode, errMessage);
         }
+    }
+
+    public static void isFalse(boolean expression, ResultCode resultCode) {
+        isFalse(expression, resultCode.getCode(), resultCode.getMessage());
+    }
+
+    public static void isFalse(boolean expression, String errMessage) {
+        isFalse(expression, DEFAULT_ERR_CODE, errMessage);
     }
 
     /**
@@ -53,77 +75,23 @@ public abstract class Assert {
      * This is more intuitive than isTure.
      */
     public static void isFalse(boolean expression, String errorCode, String errMessage) {
-        if (expression) {
-            throw new BizException(errorCode, errMessage);
-        }
+        isTrue(!expression, errorCode, errMessage);
     }
 
-    public static void isTrue(boolean expression, String errMessage) {
-        if (!expression) {
-            throw new BizException(errMessage);
-        }
+    public static void isNull(Object object, String errorCode, String errMessage) {
+        isTrue(object == null, errorCode, errMessage);
     }
 
-    public static void isFalse(boolean expression, String errMessage) {
-        if (expression) {
-            throw new BizException(errMessage);
-        }
+    public static void isNull(Object object, String errMessage) {
+        isNull(object, DEFAULT_ERR_CODE, errMessage);
     }
 
-    public static void isTrue(boolean expression) {
-        isTrue(expression, "[Assertion failed] Must be true");
+    public static void isEmpty(Collection<?> collection, String errorCode, String errMessage) {
+        isTrue(CollUtil.isEmpty(collection), errorCode, errMessage);
     }
 
-    public static void isFalse(boolean expression) {
-        isFalse(expression, "[Assertion failed] Must be false");
-    }
-
-    public static void notNull(Object object, String errorCode, String errMessage) {
-        if (object == null) {
-            throw new BizException(errorCode, errMessage);
-        }
-    }
-
-    public static void notNull(Object object, String errMessage) {
-        if (object == null) {
-            throw new BizException(errMessage);
-        }
-    }
-
-    public static void notNull(Object object) {
-        notNull(object, "[Assertion failed] Must not null");
-    }
-
-    public static void notEmpty(Collection<?> collection, String errorCode, String errMessage) {
-        if (collection == null || collection.size() <= 0) {
-            throw new BizException(errorCode, errMessage);
-        }
-    }
-
-    public static void notEmpty(Collection<?> collection, String errMessage) {
-        if (collection == null || collection.size() <= 0) {
-            throw new BizException(errMessage);
-        }
-    }
-
-    public static void notEmpty(Collection<?> collection) {
-        notEmpty(collection, "[Assertion failed] Collection must not be empty: it must contain at least 1 element");
-    }
-
-    public static void notEmpty(Map<?, ?> map, String errorCode, String errMessage) {
-        if (map == null || map.isEmpty()) {
-            throw new BizException(errorCode, errMessage);
-        }
-    }
-
-    public static void notEmpty(Map<?, ?> map, String errMessage) {
-        if (map == null || map.isEmpty()) {
-            throw new BizException(errMessage);
-        }
-    }
-
-    public static void notEmpty(Map<?, ?> map) {
-        notEmpty(map, "[Assertion failed] Map must not be empty: it must contain at least one entry");
+    public static void isEmpty(Collection<?> collection, String errMessage) {
+        isEmpty(collection, DEFAULT_ERR_CODE, errMessage);
     }
 
 }

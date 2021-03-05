@@ -23,7 +23,7 @@ public final class HappyCodeUtil {
      * @param error
      */
     public static void check(boolean condition, ResultCode error) {
-        Assert.isFalse(condition, error.getCode(), error.getMessage());
+        Assert.isTrue(condition, error.getCode(), error.getMessage());
     }
 
     /**
