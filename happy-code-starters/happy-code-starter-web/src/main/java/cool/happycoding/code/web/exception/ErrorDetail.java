@@ -1,7 +1,7 @@
 package cool.happycoding.code.web.exception;
 
 import cool.happycoding.code.base.common.ResultCode;
-import cool.happycoding.code.base.result.BaseResult;
+import cool.happycoding.code.base.result.Result;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -30,10 +30,8 @@ public class ErrorDetail implements Serializable {
      * @param path
      * @return
      */
-    public static BaseResult<ErrorDetail> build(ResultCode resultCode, String path){
-        BaseResult<ErrorDetail> errorDetail = new BaseResult<>(resultCode);
-        errorDetail.setData(ErrorDetail.builder().path(path).build());
-        return errorDetail;
+    public static Result error(ResultCode resultCode, String path){
+        return error(resultCode, path, null);
     }
 
     /**
@@ -43,10 +41,8 @@ public class ErrorDetail implements Serializable {
      * @param detail
      * @return
      */
-    public static BaseResult<ErrorDetail> build(ResultCode resultCode, String path, Map<String, Object> detail){
-        BaseResult<ErrorDetail> errorDetail = new BaseResult<>(resultCode);
-        errorDetail.setData(ErrorDetail.builder().path(path).error(detail).build());
-        return errorDetail;
+    public static Result error(ResultCode resultCode, String path, Map<String, Object> detail){
+        return error(resultCode.getCode(), resultCode.getMessage(), path, detail);
     }
 
     /**
@@ -57,10 +53,10 @@ public class ErrorDetail implements Serializable {
      * @param detail
      * @return
      */
-    public static BaseResult<ErrorDetail> build(String code, String message, String path, Map<String, Object> detail){
-        BaseResult<ErrorDetail> errorDetail = new BaseResult<>(code, message);
-        errorDetail.setData(ErrorDetail.builder().path(path).error(detail).build());
-        return errorDetail;
+    public static Result error(String code, String message, String path, Map<String, Object> detail){
+        Result result = Result.failure(code, message);
+        result.setErrorData(ErrorDetail.builder().path(path).error(detail).build());
+        return result;
     }
 
 }

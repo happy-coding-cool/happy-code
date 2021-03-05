@@ -4,6 +4,7 @@ import cn.hutool.core.util.StrUtil;
 import com.google.common.collect.ImmutableMap;
 import cool.happycoding.code.base.exception.BizException;
 import cool.happycoding.code.base.result.BaseResult;
+import cool.happycoding.code.base.result.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.web.servlet.error.AbstractErrorController;
 import org.springframework.boot.web.error.ErrorAttributeOptions;
@@ -35,7 +36,7 @@ public class HappyErrorController extends AbstractErrorController {
     }
 
     @RequestMapping(value = PATH, produces = MediaType.APPLICATION_JSON_VALUE)
-    public BaseResult<ErrorDetail> handleError(HttpServletRequest request) {
+    public Result handleError(HttpServletRequest request) {
         WebRequest webRequest = new ServletWebRequest(request);
         Throwable throwable = errorAttributes.getError(webRequest);
         // 当异常类型为BizException时，则直接抛出由统一的异常拦截进行处理
@@ -46,7 +47,7 @@ public class HappyErrorController extends AbstractErrorController {
             int status = (int) attributes.get("status");
             String error = (String) attributes.get("error");
             String path = (String) attributes.get("path");
-            return ErrorDetail.build(String.valueOf(status), error, path, ImmutableMap.of("detail", StrUtil.blankToDefault(error, throwable.getMessage())));
+            return ErrorDetail.error(String.valueOf(status), error, path, ImmutableMap.of("detail", StrUtil.blankToDefault(error, throwable.getMessage())));
         }
     }
 

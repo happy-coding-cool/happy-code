@@ -3,7 +3,7 @@ package cool.happycoding.code.web.exception;
 import cn.hutool.core.collection.CollUtil;
 import cool.happycoding.code.base.common.HappyStatus;
 import cool.happycoding.code.base.exception.BizException;
-import cool.happycoding.code.base.result.BaseResult;
+import cool.happycoding.code.base.result.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -34,7 +34,7 @@ public class GlobalExceptionHandler {
 
     @ResponseBody
     @ExceptionHandler(ConstraintViolationException.class)
-    public BaseResult<ErrorDetail> handleConstraintViolationException(ConstraintViolationException ex, HttpServletRequest request) {
+    public Result handleConstraintViolationException(ConstraintViolationException ex, HttpServletRequest request) {
         String path = request.getRequestURI();
         Map<String, Object> error = ex.getConstraintViolations()
                 .stream()
@@ -44,7 +44,7 @@ public class GlobalExceptionHandler {
                 .collect(Collectors.toMap(Map.Entry::getKey, entry->constraint(entry.getValue())));
         log.error("Validation error:{}", error);
         log.error("exception: ", ex);
-        return ErrorDetail.build(REQUEST_VALIDATION_FAILED, path, error);
+        return ErrorDetail.error(REQUEST_VALIDATION_FAILED, path, error);
     }
 
     private String constraint(List<ConstraintViolation<?>> errorList){
@@ -66,9 +66,9 @@ public class GlobalExceptionHandler {
      */
     @ResponseBody
     @ExceptionHandler(BizException.class)
-    public BaseResult<ErrorDetail> handleAppException(BizException ex, HttpServletRequest request) {
+    public Result handleAppException(BizException ex, HttpServletRequest request) {
         log.error("exception:", ex);
-        return ErrorDetail.build(ex.getError(), request.getRequestURI(), ex.getErrorData());
+        return ErrorDetail.error(ex.getError(), request.getRequestURI(), ex.getErrorData());
     }
 
     /**
@@ -79,7 +79,7 @@ public class GlobalExceptionHandler {
      */
     @ResponseBody
     @ExceptionHandler({MethodArgumentNotValidException.class})
-    public BaseResult<ErrorDetail> handleInvalidRequest(MethodArgumentNotValidException ex, HttpServletRequest request) {
+    public Result handleInvalidRequest(MethodArgumentNotValidException ex, HttpServletRequest request) {
 
         String path = request.getRequestURI();
         Map<String, Object> error = ex.getBindingResult()
@@ -91,7 +91,7 @@ public class GlobalExceptionHandler {
 
         log.error("Validation error for [{}]: {}", ex.getParameter().getParameterType().getName(), error);
         log.error("exception:", ex);
-        return ErrorDetail.build(REQUEST_VALIDATION_FAILED, path, error);
+        return ErrorDetail.error(REQUEST_VALIDATION_FAILED, path, error);
     }
 
     private String validMessage(List<FieldError> errorList){
@@ -113,10 +113,10 @@ public class GlobalExceptionHandler {
      */
     @ResponseBody
     @ExceptionHandler(Throwable.class)
-    public BaseResult<ErrorDetail> handleGeneralException(Throwable ex, HttpServletRequest request) {
+    public Result handleGeneralException(Throwable ex, HttpServletRequest request) {
         String path = request.getRequestURI();
         log.error("exception: ", ex);
-        return ErrorDetail.build(HappyStatus.INTERNAL_SYSTEM_ERROR, path);
+        return ErrorDetail.error(HappyStatus.INTERNAL_SYSTEM_ERROR, path);
     }
 
 }
