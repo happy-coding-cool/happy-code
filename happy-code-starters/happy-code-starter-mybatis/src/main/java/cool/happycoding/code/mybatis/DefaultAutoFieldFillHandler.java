@@ -1,6 +1,6 @@
 package cool.happycoding.code.mybatis;
 
-import static cool.happycoding.code.base.util.HappyCodeUtil.ifBlankDefault;
+import static cn.hutool.core.util.StrUtil.blankToDefault;
 
 /**
  * description
@@ -10,27 +10,27 @@ import static cool.happycoding.code.base.util.HappyCodeUtil.ifBlankDefault;
 public class DefaultAutoFieldFillHandler implements AutoFieldFillHandler{
     @Override
     public String createdBy() {
-        return ifBlankDefault(currentUser().getUserName(), DEFAULT_USERNAME);
+        return blankToDefault(currentUser().getUserName(), DEFAULT_USERNAME);
     }
 
     @Override
     public String createdById() {
-        return ifBlankDefault(currentUser().getUserId(), DEFAULT_USER_ID);
+        return blankToDefault(currentUser().getUserId(), DEFAULT_USER_ID);
     }
 
     @Override
     public String updatedBy() {
-        return ifBlankDefault(currentUser().getUserName(), DEFAULT_USERNAME);
+        return blankToDefault(currentUser().getUserName(), DEFAULT_USERNAME);
     }
 
     @Override
     public String updatedById() {
-        return ifBlankDefault(currentUser().getUserId(), DEFAULT_USER_ID);
+        return blankToDefault(currentUser().getUserId(), DEFAULT_USER_ID);
     }
 
     @Override
     public String tenantId() {
-        return ifBlankDefault(currentUser().tenantId(), DEFAULT_TENANT_ID);
+        return blankToDefault(currentUser().tenantId(), DEFAULT_TENANT_ID);
     }
 }
 

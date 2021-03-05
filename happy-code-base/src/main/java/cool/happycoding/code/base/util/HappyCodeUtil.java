@@ -32,7 +32,7 @@ public final class HappyCodeUtil {
      * @return
      */
     public static String ifBlankDefault(String originalVal, String defaultVal) {
-        return StrUtil.isBlank(originalVal) ? defaultVal : originalVal;
+        return StrUtil.blankToDefault(originalVal, defaultVal);
     }
 
 
