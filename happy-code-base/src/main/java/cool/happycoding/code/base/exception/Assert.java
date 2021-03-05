@@ -1,11 +1,9 @@
 package cool.happycoding.code.base.exception;
 
 import cn.hutool.core.collection.CollUtil;
-import cn.hutool.core.map.MapUtil;
 import cool.happycoding.code.base.common.ResultCode;
 
 import java.util.Collection;
-import java.util.Map;
 
 /**
  * Assertion utility class that assists in validating arguments.
@@ -31,30 +29,28 @@ public abstract class Assert {
 
     private static final String DEFAULT_ERR_CODE = "BIZ_ERROR";
 
-    public static void isTrue(boolean expression,ResultCode resultCode){
-        isTrue(expression, resultCode.getCode(), resultCode.getMessage());
+    public static void isNull(Object object, ResultCode resultCode) {
+        isNull(object, resultCode.getCode(), resultCode.getMessage());
     }
 
-    public static void isTrue(boolean expression, String errMessage) {
-        isTrue(expression, DEFAULT_ERR_CODE, errMessage);
+    public static void isNull(Object object, String errMessage) {
+        isNull(object, DEFAULT_ERR_CODE, errMessage);
     }
 
-    /**
-     * Assert a boolean expression, throwing {@code BizException}
-     *
-     * for example
-     *
-     * <pre class="code">Assert.isTrue(i != 0, errorCode.B_ORDER_illegalNumber, "The order number can not be zero");</pre>
-     *
-     * @param expression a boolean expression
-     * @param errorCode
-     * @param errMessage the exception message to use if the assertion fails
-     * @throws BizException if expression is {@code false}
-     */
-    public static void isTrue(boolean expression, String errorCode, String errMessage) {
-        if (expression) {
-            throw new BizException(errorCode, errMessage);
-        }
+    public static void isNull(Object object, String errorCode, String errMessage) {
+        isTrue(object == null, errorCode, errMessage);
+    }
+
+    public static void isEmpty(Collection<?> collection, ResultCode resultCode) {
+        isEmpty(collection, resultCode.getCode(), resultCode.getMessage());
+    }
+
+    public static void isEmpty(Collection<?> collection, String errMessage) {
+        isEmpty(collection, DEFAULT_ERR_CODE, errMessage);
+    }
+
+    public static void isEmpty(Collection<?> collection, String errorCode, String errMessage) {
+        isTrue(CollUtil.isEmpty(collection), errorCode, errMessage);
     }
 
     public static void isFalse(boolean expression, ResultCode resultCode) {
@@ -65,33 +61,29 @@ public abstract class Assert {
         isFalse(expression, DEFAULT_ERR_CODE, errMessage);
     }
 
-    /**
-     * Assert a boolean expression, if expression is true, throwing {@code BizException}
-     *
-     * for example
-     *
-     * <pre class="code">Assert.isFalse(i == 0, errorCode.B_ORDER_illegalNumber, "The order number can not be zero");</pre>
-     *
-     * This is more intuitive than isTure.
-     */
     public static void isFalse(boolean expression, String errorCode, String errMessage) {
         isTrue(!expression, errorCode, errMessage);
     }
 
-    public static void isNull(Object object, String errorCode, String errMessage) {
-        isTrue(object == null, errorCode, errMessage);
+    public static void isTrue(boolean expression,ResultCode resultCode){
+        isTrue(expression, resultCode.getCode(), resultCode.getMessage());
     }
 
-    public static void isNull(Object object, String errMessage) {
-        isNull(object, DEFAULT_ERR_CODE, errMessage);
+    public static void isTrue(boolean expression, String errMessage) {
+        isTrue(expression, DEFAULT_ERR_CODE, errMessage);
     }
 
-    public static void isEmpty(Collection<?> collection, String errorCode, String errMessage) {
-        isTrue(CollUtil.isEmpty(collection), errorCode, errMessage);
-    }
-
-    public static void isEmpty(Collection<?> collection, String errMessage) {
-        isEmpty(collection, DEFAULT_ERR_CODE, errMessage);
+    /**
+     * Assert a boolean expression, throwing {@code BizException}
+     * @param expression a boolean expression
+     * @param errorCode
+     * @param errMessage the exception message to use if the assertion fails
+     * @throws BizException if expression is {@code true}
+     */
+    public static void isTrue(boolean expression, String errorCode, String errMessage) {
+        if (expression) {
+            throw new BizException(errorCode, errMessage);
+        }
     }
 
 }
