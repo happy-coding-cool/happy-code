@@ -40,6 +40,7 @@
 - feat: 定义默认线程池(happyThreadPoolExecutor)，解决线程切换时上下文传递问题
 - feat: web组件提供自定fastjson 序列化/反序列化配置扩展FastJsonConfigCustomizer
 - refactor: 更改组件依赖的继承体系，该改动会造成依赖不兼容的问题，按照新的配置方式进行调整即可
+- refactor: 参照cola架构对异常和返回值封装进行优化
 
 ### 1.0.0.RELEASE 
 - feat: 初始版本
@@ -73,3 +74,4 @@
 - [mybatis](https://mybatis.org/mybatis-3/zh/index.html)
 - [mybatis-plus](https://baomidou.com/guide/#%E7%89%B9%E6%80%A7)
 - [jetcache](https://github.com/alibaba/jetcache/wiki/Home_CN)
+- [COLA](https://github.com/alibaba/COLA)
