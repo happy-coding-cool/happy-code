@@ -1,6 +1,5 @@
 package cool.happycoding.code.validator.annotation;
 
-import cn.hutool.core.lang.Validator;
 import cn.hutool.core.util.StrUtil;
 
 import javax.validation.ConstraintValidator;
