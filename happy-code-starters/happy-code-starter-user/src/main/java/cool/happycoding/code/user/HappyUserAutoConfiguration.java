@@ -3,11 +3,13 @@ package cool.happycoding.code.user;
 import cool.happycoding.code.base.user.UserContextService;
 import cool.happycoding.code.user.context.UserContextLoadInnerFilter;
 import cool.happycoding.code.user.filter.UserContextLoadFilter;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.OrderComparator;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -32,11 +34,21 @@ public class HappyUserAutoConfiguration implements WebMvcConfigurer {
     }
 
     @Bean
-    public FilterRegistrationBean<UserContextLoadFilter> filterRegistrationBean(UserContextService userContextService,
+    public UserInnerFilter userInnerFilter(UserContextService userContextService,
+                                           UserContextProperties userContextProperties){
+        return new UserContextLoadInnerFilter(userContextService, userContextProperties);
+    }
+
+    @Bean
+    public FilterRegistrationBean<UserContextLoadFilter> filterRegistrationBean(ObjectProvider<List<UserInnerFilter>> userInnerFilterProvider,
+                                                                                UserContextService userContextService,
                                                                                 UserContextProperties userContextProperties){
         FilterRegistrationBean<UserContextLoadFilter> registrationBean = new FilterRegistrationBean<>();
-        UserInnerFilter userInnerFilter = new UserContextLoadInnerFilter(userContextService, userContextProperties);
-        registrationBean.setFilter(new UserContextLoadFilter(userInnerFilter));
+        List<UserInnerFilter> userInnerFilters = userInnerFilterProvider.getIfAvailable();
+        if (userInnerFilters != null) {
+            OrderComparator.sort(userInnerFilters);
+        }
+        registrationBean.setFilter(new UserContextLoadFilter(userInnerFilters));
         registrationBean.addUrlPatterns("/*");
         registrationBean.setName("userContextLoadFilter");
         registrationBean.setOrder(userContextProperties.getFilterOrder());

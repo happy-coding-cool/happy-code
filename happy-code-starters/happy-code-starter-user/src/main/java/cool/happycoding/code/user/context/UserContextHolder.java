@@ -1,5 +1,7 @@
 package cool.happycoding.code.user.context;
 
+import cool.happycoding.code.base.context.ContextHolderStrategy;
+import cool.happycoding.code.base.context.ThreadLocalContextHolderStrategy;
 import cool.happycoding.code.base.user.User;
 
 /**
@@ -9,7 +11,8 @@ import cool.happycoding.code.base.user.User;
  */
 public class UserContextHolder {
 
-    private static volatile ContextHolderStrategy<User> context = new ThreadLocalContextHolderStrategy<>();
+    private static volatile ContextHolderStrategy<User> context
+            = new ThreadLocalContextHolderStrategy<>();
 
     void setContext(ContextHolderStrategy<User> context){
         UserContextHolder.context = context;

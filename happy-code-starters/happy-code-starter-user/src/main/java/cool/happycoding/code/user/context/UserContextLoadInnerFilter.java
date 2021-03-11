@@ -39,6 +39,11 @@ public class UserContextLoadInnerFilter implements UserInnerFilter {
     }
 
     @Override
+    public void post() {
+        UserContextHolder.clear();
+    }
+
+    @Override
     public int getOrder() {
         return userContextProperties.getFilterOrder();
     }

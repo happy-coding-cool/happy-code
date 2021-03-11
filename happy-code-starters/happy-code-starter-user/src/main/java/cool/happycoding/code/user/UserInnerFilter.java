@@ -17,6 +17,9 @@ public interface UserInnerFilter extends Ordered {
      */
     void filter(HttpServletRequest request);
 
-
+    /**
+     * 后置逻辑
+     */
+    default void post(){}
 }
 

@@ -6,6 +6,7 @@ import cool.happycoding.code.user.context.UserContextHolder;
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * <p>
@@ -16,19 +17,19 @@ import java.io.IOException;
  */
 public class UserContextLoadFilter implements Filter {
 
-    private final UserInnerFilter userInnerFilter;
+    private final List<UserInnerFilter> userInnerFilters;
 
-    public UserContextLoadFilter(UserInnerFilter userInnerFilter){
-        this.userInnerFilter = userInnerFilter;
+    public UserContextLoadFilter(List<UserInnerFilter> userInnerFilters){
+        this.userInnerFilters = userInnerFilters;
     }
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain) throws IOException, ServletException {
         try {
-            userInnerFilter.filter((HttpServletRequest)request);
+            userInnerFilters.forEach(userInnerFilter -> userInnerFilter.filter((HttpServletRequest)request));
             filterChain.doFilter(request, response);
         } finally {
-            UserContextHolder.clear();
+            userInnerFilters.forEach(UserInnerFilter::post);
         }
     }
 }
