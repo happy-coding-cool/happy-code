@@ -3,7 +3,6 @@ package cool.happycoding.code.web.exception;
 import cn.hutool.core.util.StrUtil;
 import com.google.common.collect.ImmutableMap;
 import cool.happycoding.code.base.exception.BizException;
-import cool.happycoding.code.base.result.BaseResult;
 import cool.happycoding.code.base.result.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.web.servlet.error.AbstractErrorController;
