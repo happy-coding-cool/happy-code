@@ -12,6 +12,7 @@ import cool.happycoding.code.web.exception.HappyErrorController;
 import cool.happycoding.code.web.fastjson.FastJsonConfigCustomizer;
 import cool.happycoding.code.web.filter.TimeIntervalFilter;
 import cool.happycoding.code.web.jackson2.CustomerJackson2Config;
+import cool.happycoding.code.web.jackson2.Jackson2ConfigCustomizer;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
@@ -63,8 +64,16 @@ public class HappyWebAutoConfiguration {
 
     @Bean
     @ConditionalOnProperty(name = HappyWebProperties.HAPPY_WEB_PREFIX + ".converter-type", havingValue = "jackson2")
-    public Jackson2ObjectMapperBuilderCustomizer jackson2ObjectMapperBuilderCustomizer(HappyWebProperties happyWebProperties){
-        return new CustomerJackson2Config(happyWebProperties);
+    public Jackson2ObjectMapperBuilderCustomizer jackson2ObjectMapperBuilderCustomizer(HappyWebProperties happyWebProperties,
+                                                                                       ObjectProvider<List<Jackson2ConfigCustomizer>> jackson2ConfigCustomizerProvider){
+        CustomerJackson2Config customerJackson2Config = new CustomerJackson2Config(happyWebProperties);
+        List<Jackson2ConfigCustomizer> jackson2ConfigCustomizers = jackson2ConfigCustomizerProvider.getIfAvailable();
+        if (CollUtil.isNotEmpty(jackson2ConfigCustomizers)){
+            assert jackson2ConfigCustomizers != null;
+            jackson2ConfigCustomizers
+                    .forEach(jackson2ConfigCustomizer -> jackson2ConfigCustomizer.customize(customerJackson2Config));
+        }
+        return customerJackson2Config;
     }
 
     @Bean
