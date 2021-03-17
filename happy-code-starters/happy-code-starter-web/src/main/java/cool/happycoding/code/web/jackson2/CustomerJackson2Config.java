@@ -42,19 +42,18 @@ public class CustomerJackson2Config implements Jackson2ObjectMapperBuilderCustom
     public void customize(Jackson2ObjectMapperBuilder jacksonObjectMapperBuilder) {
 
         if (happyWebProperties.getDeserializer().isEnableDate()){
-            jacksonObjectMapperBuilder.deserializers(new Jackson2DateDeserializer());
-            jacksonObjectMapperBuilder.deserializers(new Jackson2LocalDateTimeDeserializer());
+            jsonDeserializers.add(new Jackson2DateDeserializer());
+            jsonDeserializers.add(new Jackson2LocalDateTimeDeserializer());
         }
         if (happyWebProperties.getSerializer().isEnableDate()){
-            jacksonObjectMapperBuilder.serializers(new Jackson2DateSerializer(happyWebProperties.getSerializer().getDateFormat()));
-            jacksonObjectMapperBuilder.serializers(new Jackson2LocalDateTimeSerializer(happyWebProperties.getSerializer().getDateFormat()));
+            jsonSerializers.add(new Jackson2DateSerializer(happyWebProperties.getSerializer().getDateFormat()));
+            jsonSerializers.add(new Jackson2LocalDateTimeSerializer(happyWebProperties.getSerializer().getDateFormat()));
         }
         if (happyWebProperties.getSerializer().isEnableBigDecimalAsPlain()){
-            jacksonObjectMapperBuilder.serializers(new Jackson2BigDecimalAsPlainSerializer());
+            jsonSerializers.add(new Jackson2BigDecimalAsPlainSerializer());
         }
-
         if (happyWebProperties.getSerializer().isEnableLongAsPlain()){
-            jacksonObjectMapperBuilder.serializers(new Jackson2LongAsPlainSerializer());
+            jsonSerializers.add(new Jackson2LongAsPlainSerializer());
         }
 
         if (CollUtil.isNotEmpty(jsonDeserializers)){

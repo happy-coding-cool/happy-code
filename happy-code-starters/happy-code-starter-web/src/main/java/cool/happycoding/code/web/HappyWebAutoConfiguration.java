@@ -66,13 +66,16 @@ public class HappyWebAutoConfiguration {
     @ConditionalOnProperty(name = HappyWebProperties.HAPPY_WEB_PREFIX + ".converter-type", havingValue = "jackson2")
     public Jackson2ObjectMapperBuilderCustomizer jackson2ObjectMapperBuilderCustomizer(HappyWebProperties happyWebProperties,
                                                                                        ObjectProvider<List<Jackson2ConfigCustomizer>> jackson2ConfigCustomizerProvider){
+
         CustomerJackson2Config customerJackson2Config = new CustomerJackson2Config(happyWebProperties);
         List<Jackson2ConfigCustomizer> jackson2ConfigCustomizers = jackson2ConfigCustomizerProvider.getIfAvailable();
+
         if (CollUtil.isNotEmpty(jackson2ConfigCustomizers)){
             assert jackson2ConfigCustomizers != null;
             jackson2ConfigCustomizers
                     .forEach(jackson2ConfigCustomizer -> jackson2ConfigCustomizer.customize(customerJackson2Config));
         }
+
         return customerJackson2Config;
     }
 
