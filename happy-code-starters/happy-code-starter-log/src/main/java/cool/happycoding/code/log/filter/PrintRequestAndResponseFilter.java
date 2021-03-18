@@ -35,7 +35,6 @@ public class PrintRequestAndResponseFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String requestUri = request.getRequestURI();
         if (!match(requestUri, happyLogProperties.getExcludes())){
-            // TODO 需要打印
             HappyServletRequestWrapper requestWrapper = new HappyServletRequestWrapper(request);
             HappyServletResponseWrapper responseWrapper = new HappyServletResponseWrapper(response);
             filterChain.doFilter(requestWrapper, responseWrapper);

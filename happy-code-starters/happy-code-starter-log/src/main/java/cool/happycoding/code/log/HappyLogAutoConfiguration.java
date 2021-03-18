@@ -1,8 +1,10 @@
 package cool.happycoding.code.log;
 
 import cool.happycoding.code.log.filter.MdcParamFilter;
+import cool.happycoding.code.log.filter.PrintRequestAndResponseFilter;
 import cool.happycoding.code.log.filter.TimeIntervalFilter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -32,6 +34,7 @@ public class HappyLogAutoConfiguration {
     }
 
     @Bean
+    @ConditionalOnProperty(name = HappyLogProperties.HAPPY_LOG_PREFIX + ".enable-mdc", havingValue = "true")
     public FilterRegistrationBean<MdcParamFilter> mdcParamFilter(MdcParamCollector mdcParamCollector) {
         FilterRegistrationBean<MdcParamFilter>  mdcParamFilter = new FilterRegistrationBean<>();
         mdcParamFilter.setFilter(new MdcParamFilter(mdcParamCollector));
@@ -42,12 +45,23 @@ public class HappyLogAutoConfiguration {
     }
 
     @Bean
+    @ConditionalOnProperty(name = HappyLogProperties.HAPPY_LOG_PREFIX + ".enable-exe-time", havingValue = "true")
     public FilterRegistrationBean<TimeIntervalFilter> timeIntervalFilter() {
         FilterRegistrationBean<TimeIntervalFilter> timeIntervalFilter = new FilterRegistrationBean<>();
         timeIntervalFilter.setFilter(new TimeIntervalFilter());
         timeIntervalFilter.setName("timeIntervalFilter");
         timeIntervalFilter.addUrlPatterns("/*");
-        timeIntervalFilter.setOrder(Ordered.HIGHEST_PRECEDENCE + 8);
+        timeIntervalFilter.setOrder(Ordered.HIGHEST_PRECEDENCE + 5);
         return timeIntervalFilter;
+    }
+
+    @Bean
+    public FilterRegistrationBean<PrintRequestAndResponseFilter> printRequestAndResponseFilter(HappyLogProperties happyLogProperties) {
+        FilterRegistrationBean<PrintRequestAndResponseFilter>  printRequestAndResponseFilter = new FilterRegistrationBean<>();
+        printRequestAndResponseFilter.setFilter(new PrintRequestAndResponseFilter(happyLogProperties));
+        printRequestAndResponseFilter.setName("printRequestAndResponseFilter");
+        printRequestAndResponseFilter.addUrlPatterns("/*");
+        printRequestAndResponseFilter.setOrder(Ordered.HIGHEST_PRECEDENCE + 10);
+        return printRequestAndResponseFilter;
     }
 }
