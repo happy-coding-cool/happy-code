@@ -6,11 +6,10 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import com.alibaba.ttl.threadpool.TtlExecutors;
-import cool.happycoding.code.web.fastjson.CustomerFastJsonConfig;
 import cool.happycoding.code.web.exception.GlobalExceptionHandler;
 import cool.happycoding.code.web.exception.HappyErrorController;
+import cool.happycoding.code.web.fastjson.CustomerFastJsonConfig;
 import cool.happycoding.code.web.fastjson.FastJsonConfigCustomizer;
-import cool.happycoding.code.web.filter.TimeIntervalFilter;
 import cool.happycoding.code.web.jackson2.CustomerJackson2Config;
 import cool.happycoding.code.web.jackson2.Jackson2ConfigCustomizer;
 import org.springframework.beans.factory.ObjectProvider;
@@ -22,11 +21,9 @@ import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
 import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilderCustomizer;
 import org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.error.ErrorAttributes;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.Ordered;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.servlet.DispatcherServlet;
@@ -98,15 +95,7 @@ public class HappyWebAutoConfiguration {
         return new HttpMessageConverters(fastConverter);
     }
 
-    @Bean
-    public FilterRegistrationBean<TimeIntervalFilter> timeIntervalFilter() {
-        FilterRegistrationBean<TimeIntervalFilter> timeIntervalFilter = new FilterRegistrationBean<>();
-        timeIntervalFilter.setFilter(new TimeIntervalFilter());
-        timeIntervalFilter.setName("timeIntervalFilter");
-        timeIntervalFilter.addUrlPatterns("/*");
-        timeIntervalFilter.setOrder(Ordered.HIGHEST_PRECEDENCE);
-        return timeIntervalFilter;
-    }
+
 
     @Bean("happyThreadPoolExecutor")
     public Executor happyThreadPoolExecutor(HappyWebProperties happyWebProperties) {

@@ -9,7 +9,7 @@ package cool.happycoding.code.web.jackson2;
 public interface Jackson2ConfigCustomizer {
     /**
      * 加载 个性化序列化/反序列化的配置
-     * @param customerJackson2Config
+     * @param jackson2Config
      */
-    void customize(CustomerJackson2Config customerJackson2Config);
+    void customize(CustomerJackson2Config jackson2Config);
 }

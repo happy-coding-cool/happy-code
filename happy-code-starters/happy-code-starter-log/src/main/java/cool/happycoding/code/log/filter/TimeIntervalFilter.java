@@ -1,4 +1,4 @@
-package cool.happycoding.code.web.filter;
+package cool.happycoding.code.log.filter;
 
 import cn.hutool.core.date.TimeInterval;
 import lombok.extern.slf4j.Slf4j;
@@ -6,8 +6,6 @@ import lombok.extern.slf4j.Slf4j;
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
-
-import static cool.happycoding.code.web.Constants.WARN_TIME_INTERVAL_MILLS;
 
 /**
  * <p>
@@ -18,6 +16,12 @@ import static cool.happycoding.code.web.Constants.WARN_TIME_INTERVAL_MILLS;
  */
 @Slf4j
 public class TimeIntervalFilter implements Filter {
+
+
+    /**
+     * 执行时间超过3s，则打出警告日志
+     */
+    private static final long WARN_TIME_INTERVAL_MILLS = 3000;
 
     /**
      * 计算方法执行时间
@@ -40,7 +44,6 @@ public class TimeIntervalFilter implements Filter {
         }else{
             log.info("RequestUri:[{}] , execute spend:[{}]ms", requestUri, mills);
         }
-
     }
 }
 

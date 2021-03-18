@@ -13,8 +13,4 @@ public interface Constants {
      */
     String DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
-    /**
-     * 执行时间超过3s，则打出警告日志
-     */
-    long WARN_TIME_INTERVAL_MILLS = 3000;
 }
