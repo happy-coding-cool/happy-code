@@ -47,7 +47,7 @@ public class HappyLogAutoConfiguration {
         timeIntervalFilter.setFilter(new TimeIntervalFilter());
         timeIntervalFilter.setName("timeIntervalFilter");
         timeIntervalFilter.addUrlPatterns("/*");
-        timeIntervalFilter.setOrder(Ordered.HIGHEST_PRECEDENCE + 1);
+        timeIntervalFilter.setOrder(Ordered.HIGHEST_PRECEDENCE + 8);
         return timeIntervalFilter;
     }
 }

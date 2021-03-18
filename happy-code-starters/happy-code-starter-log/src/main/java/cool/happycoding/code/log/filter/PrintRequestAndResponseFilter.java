@@ -6,7 +6,9 @@ import cool.happycoding.code.log.handler.PrintRequestParamHandler;
 import cool.happycoding.code.log.handler.PrintResponseHandler;
 import cool.happycoding.code.log.wrapper.HappyServletRequestWrapper;
 import cool.happycoding.code.log.wrapper.HappyServletResponseWrapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.AntPathMatcher;
+import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +23,7 @@ import java.util.List;
  *
  * @author lanlanhappy 2021/03/18 9:58 上午
  */
-public class PrintRequestAndResponseFilter implements Filter {
+public class PrintRequestAndResponseFilter extends OncePerRequestFilter {
 
     private final HappyLogProperties happyLogProperties;
 
@@ -30,15 +32,13 @@ public class PrintRequestAndResponseFilter implements Filter {
     }
 
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        HttpServletRequest httpServletRequest = (HttpServletRequest)request;
-        HttpServletResponse httpServletResponse = (HttpServletResponse)response;
-        String requestUri = httpServletRequest.getRequestURI();
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+        String requestUri = request.getRequestURI();
         if (!match(requestUri, happyLogProperties.getExcludes())){
             // TODO 需要打印
-            HappyServletRequestWrapper requestWrapper = new HappyServletRequestWrapper(httpServletRequest);
-            HappyServletResponseWrapper responseWrapper = new HappyServletResponseWrapper(httpServletResponse);
-            chain.doFilter(requestWrapper, responseWrapper);
+            HappyServletRequestWrapper requestWrapper = new HappyServletRequestWrapper(request);
+            HappyServletResponseWrapper responseWrapper = new HappyServletResponseWrapper(response);
+            filterChain.doFilter(requestWrapper, responseWrapper);
             if (happyLogProperties.isEnablePrintHeader()){
                 new PrintHeaderHandler(requestWrapper).print();
             }
@@ -49,7 +49,7 @@ public class PrintRequestAndResponseFilter implements Filter {
                 new PrintResponseHandler(responseWrapper).print();
             }
         }else{
-            chain.doFilter(request, response);
+            filterChain.doFilter(request, response);
         }
     }
 
