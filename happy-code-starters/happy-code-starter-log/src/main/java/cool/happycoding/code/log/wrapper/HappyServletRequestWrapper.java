@@ -1,6 +1,7 @@
 package cool.happycoding.code.log.wrapper;
 
 import cn.hutool.core.collection.IterUtil;
+import cn.hutool.core.util.StrUtil;
 import lombok.SneakyThrows;
 import org.springframework.http.HttpHeaders;
 import org.springframework.web.util.ContentCachingRequestWrapper;
@@ -44,7 +45,22 @@ public class HappyServletRequestWrapper extends ContentCachingRequestWrapper {
     public String params(){
         HttpServletRequest request = (HttpServletRequest)this.getRequest();
         String queryString = request.getQueryString();
-        return "[request param = " + queryString + "," + "request body = " + getMessagePayload() + "]";
+        StringBuilder stringBuilder = new StringBuilder();
+        if (StrUtil.isNotBlank(queryString)){
+            stringBuilder
+                    .append("queryString = ")
+                    .append(queryString)
+                    .append(",");
+        }
+        for (Iterator<String> iterator = IterUtil.asIterator(request.getParameterNames()); iterator.hasNext();){
+            String name = iterator.next();
+            stringBuilder
+                    .append(name)
+                    .append("=")
+                    .append(request.getParameter(name))
+                    .append(",");
+        }
+        return "[request param = " + stringBuilder.toString() + " request body = " + getMessagePayload() + "]";
     }
 
     private String getMessagePayload() {
