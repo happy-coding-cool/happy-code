@@ -56,7 +56,7 @@ compile 'cool.happycoding:happy-code-starter-cache'
 其他配置项
 
     ## 统计间隔 默认 30 min 等同于 jetcache.statIntervalMinutes
-    happy.code.cache.bn.boot.cache.stat-interval-minutes
+    happy.code.cache.stat-interval-minutes
     ## 等同于 jetcache.hiddenPackages
     happy.code.cache.hidden-packages
     ## 以毫秒为单位，指定多长时间没有访问，就让缓存失效，默认30min，当前只有本地缓存支持，等同于：jetcache.local.defalut.expireAfterAccessInMillis
@@ -67,7 +67,7 @@ compile 'cool.happycoding:happy-code-starter-cache'
 
 #### 使用
 ##### 入门
-- 在启动类上添加 @EnableBnCache启用cache能力
+- 在启动类上添加 @EnableHappyCache启用cache能力
 - 通过@CreateCache注解创建一个缓存实例，默认超时时间是100秒
 ```
 @CreateCache(name="tes" expire = 100)

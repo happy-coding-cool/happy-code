@@ -45,9 +45,9 @@ compile 'cool.happycoding:happy-code-starter-mybatis'
 #### 配置项
 
     ## 查询最大条数限制，-1为不限制，默认：-1 即不限制
-    bn.boot.mybatis.limit
+    happy.code.mybatis.limit
     ## 溢出总页数后是否进行处理，默认 false即查询超出总页数返回空；若为true则按照第1页处理
-    bn.boot.mybatis.overflow
+    happy.code.mybatis.overflow
     ## 配置主键生成策略，默认：ASSIGN_ID
     happy.code.mybatis.id-type
     
