@@ -23,7 +23,7 @@
 - happy-code-dependencies
 - happy-code-parent
 - happy-code-starters
-    - happy-code-starter-log
+    - [happy-code-starter-log](happy-code-starters/happy-code-starter-log/README.md)
     - [happy-code-starter-mybatis](happy-code-starters/happy-code-starter-mybatis/README.md)
     - [happy-code-starter-user](happy-code-starters/happy-code-starter-user/README.md)
     - [happy-code-starter-swagger](happy-code-starters/happy-code-starter-swagger/README.md)
