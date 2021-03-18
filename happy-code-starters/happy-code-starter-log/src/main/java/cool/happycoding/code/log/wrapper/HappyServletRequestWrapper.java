@@ -43,6 +43,7 @@ public class HappyServletRequestWrapper extends ContentCachingRequestWrapper {
     }
 
     public String params(){
+
         HttpServletRequest request = (HttpServletRequest)this.getRequest();
         String queryString = request.getQueryString();
         StringBuilder stringBuilder = new StringBuilder();
