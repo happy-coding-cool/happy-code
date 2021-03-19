@@ -1,5 +1,8 @@
 package cool.happycoding.code.log.wrapper;
 
+import cn.hutool.core.util.CharsetUtil;
+import cn.hutool.core.util.StrUtil;
+import org.springframework.http.MediaType;
 import org.springframework.web.util.ContentCachingResponseWrapper;
 
 import javax.servlet.http.HttpServletResponse;
@@ -25,6 +28,9 @@ public class HappyServletResponseWrapper extends ContentCachingResponseWrapper {
         byte[] buf = getContentAsByteArray();
         if (buf.length > 0) {
             try {
+                if (StrUtil.equalsAnyIgnoreCase(getContentType(), MediaType.APPLICATION_JSON_VALUE)){
+                    return new String(buf, CharsetUtil.CHARSET_UTF_8);
+                }
                 return new String(buf, getCharacterEncoding());
             }catch (UnsupportedEncodingException ex) {
                 return "[unknown]";

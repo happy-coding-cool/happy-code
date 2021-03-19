@@ -39,7 +39,7 @@ public class HappyServletRequestWrapper extends ContentCachingRequestWrapper {
             String name = iterator.next();
             headers.set(name, request.getHeader(name));
         }
-        return "[headers = " + headers.toString()+"]";
+        return "headers = " + headers.toString();
     }
 
     public String params(){
@@ -61,7 +61,7 @@ public class HappyServletRequestWrapper extends ContentCachingRequestWrapper {
                     .append(request.getParameter(name))
                     .append(",");
         }
-        return "[request param = " + stringBuilder.toString() + " request body = " + getMessagePayload() + "]";
+        return "[request param = " + stringBuilder.toString() + ", request body = " + getMessagePayload() + "]";
     }
 
     private String getMessagePayload() {

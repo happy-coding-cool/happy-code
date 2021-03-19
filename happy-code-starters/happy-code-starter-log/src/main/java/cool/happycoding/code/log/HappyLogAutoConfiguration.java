@@ -34,7 +34,7 @@ public class HappyLogAutoConfiguration {
     }
 
     @Bean
-    @ConditionalOnProperty(name = HappyLogProperties.HAPPY_LOG_PREFIX + ".enable-mdc", havingValue = "true")
+    @ConditionalOnProperty(name = HappyLogProperties.HAPPY_LOG_PREFIX + ".enable-mdc", havingValue = "true", matchIfMissing = true)
     public FilterRegistrationBean<MdcParamFilter> mdcParamFilter(MdcParamCollector mdcParamCollector) {
         FilterRegistrationBean<MdcParamFilter>  mdcParamFilter = new FilterRegistrationBean<>();
         mdcParamFilter.setFilter(new MdcParamFilter(mdcParamCollector));
@@ -45,7 +45,7 @@ public class HappyLogAutoConfiguration {
     }
 
     @Bean
-    @ConditionalOnProperty(name = HappyLogProperties.HAPPY_LOG_PREFIX + ".enable-exe-time", havingValue = "true")
+    @ConditionalOnProperty(name = HappyLogProperties.HAPPY_LOG_PREFIX + ".enable-exe-time", havingValue = "true", matchIfMissing = true)
     public FilterRegistrationBean<TimeIntervalFilter> timeIntervalFilter() {
         FilterRegistrationBean<TimeIntervalFilter> timeIntervalFilter = new FilterRegistrationBean<>();
         timeIntervalFilter.setFilter(new TimeIntervalFilter());

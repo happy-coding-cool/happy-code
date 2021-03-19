@@ -6,11 +6,11 @@ import cool.happycoding.code.log.handler.PrintRequestParamHandler;
 import cool.happycoding.code.log.handler.PrintResponseHandler;
 import cool.happycoding.code.log.wrapper.HappyServletRequestWrapper;
 import cool.happycoding.code.log.wrapper.HappyServletResponseWrapper;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import javax.servlet.*;
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -37,7 +37,7 @@ public class PrintRequestAndResponseFilter extends OncePerRequestFilter {
         if (!match(requestUri, happyLogProperties.getExcludes())){
             HappyServletRequestWrapper requestWrapper = new HappyServletRequestWrapper(request);
             HappyServletResponseWrapper responseWrapper = new HappyServletResponseWrapper(response);
-            doFilterInternal(requestWrapper,  responseWrapper, filterChain);
+            filterChain.doFilter(requestWrapper, responseWrapper);
             if (happyLogProperties.isEnablePrintHeader()){
                 new PrintHeaderHandler(requestWrapper).print();
             }
@@ -47,6 +47,7 @@ public class PrintRequestAndResponseFilter extends OncePerRequestFilter {
             if (happyLogProperties.isEnablePrintResponse()){
                 new PrintResponseHandler(responseWrapper).print();
             }
+            responseWrapper.copyBodyToResponse();
         }else{
             filterChain.doFilter(request, response);
         }
