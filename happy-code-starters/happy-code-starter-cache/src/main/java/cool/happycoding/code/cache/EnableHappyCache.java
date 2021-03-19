@@ -9,7 +9,11 @@ import org.springframework.core.annotation.AliasFor;
 import java.lang.annotation.*;
 
 /**
- * description
+ * <p>
+ *     在定义组合注解时需要将被组合注解的属性，全部代理掉避免丢失原注解属性导致的注解解析问题
+ *     如：EnableMethodCache注解里有：basePackages,proxyTargetClass,mode,order 四个属性
+ *     就需要在 EnableHappyCache 注解定义里全部代理掉
+ * </p>
  *
  * @author lanlanhappy 2021/02/21 11:34 上午
  */
