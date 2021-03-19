@@ -1,6 +1,5 @@
 package cool.happycoding.code.log.handler;
 
-import com.alibaba.fastjson.JSONObject;
 import cool.happycoding.code.log.wrapper.HappyServletRequestWrapper;
 import lombok.extern.slf4j.Slf4j;
 
@@ -21,6 +20,6 @@ public class PrintHeaderHandler extends AbstractPrintHandler{
 
     @Override
     public void print() {
-        log.info("*** *** request headers:{}", requestWrapper.headers());
+        log.info("*** request headers:{}", requestWrapper.headers());
     }
 }

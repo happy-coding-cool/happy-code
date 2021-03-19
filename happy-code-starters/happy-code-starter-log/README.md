@@ -25,6 +25,8 @@ compile 'cool.happycoding:happy-code-starter-log'
 - 提供了打印请求响应时间间隔特性
 - 提供MDC设置特性
 - 提供打印请求/响应数据的特性
+
+注：由于返回的结果类型可能无法打印，因此组件只是提供了对返回类型为json的结果
  
 #### 配置项
 ```

@@ -20,6 +20,6 @@ public class PrintRequestParamHandler extends AbstractPrintHandler{
 
     @Override
     public void print() {
-        log.info("*** *** request context type:{}, body:{}", requestWrapper.getContentType(), requestWrapper.params());
+        log.info("*** request context type:{}, body:{}", requestWrapper.getContentType(), requestWrapper.params());
     }
 }

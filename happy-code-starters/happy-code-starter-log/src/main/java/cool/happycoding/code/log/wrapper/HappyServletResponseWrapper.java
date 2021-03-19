@@ -6,7 +6,6 @@ import org.springframework.http.MediaType;
 import org.springframework.web.util.ContentCachingResponseWrapper;
 
 import javax.servlet.http.HttpServletResponse;
-import java.io.UnsupportedEncodingException;
 
 /**
  * description
@@ -27,14 +26,10 @@ public class HappyServletResponseWrapper extends ContentCachingResponseWrapper {
     public String response(){
         byte[] buf = getContentAsByteArray();
         if (buf.length > 0) {
-            try {
-                if (StrUtil.equalsAnyIgnoreCase(getContentType(), MediaType.APPLICATION_JSON_VALUE)){
-                    return new String(buf, CharsetUtil.CHARSET_UTF_8);
-                }
-                return new String(buf, getCharacterEncoding());
-            }catch (UnsupportedEncodingException ex) {
-                return "[unknown]";
+            if (StrUtil.equalsAnyIgnoreCase(getContentType(), MediaType.APPLICATION_JSON_VALUE)){
+                return new String(buf, CharsetUtil.CHARSET_UTF_8);
             }
+            return "[unknown]";
         }
         return "null";
     }
