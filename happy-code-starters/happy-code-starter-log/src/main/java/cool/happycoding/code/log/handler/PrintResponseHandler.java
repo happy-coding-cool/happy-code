@@ -20,6 +20,6 @@ public class PrintResponseHandler extends AbstractPrintHandler{
 
     @Override
     public void print() {
-        log.info("*** *** response context type:{}  body :{}", responseWrapper.getContentType(), responseWrapper.response());
+        log.info("*** *** response context type:{},  body :{}", responseWrapper.getContentType(), responseWrapper.response());
     }
 }
