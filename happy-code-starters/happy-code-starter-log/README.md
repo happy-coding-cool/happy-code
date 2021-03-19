@@ -52,5 +52,5 @@ compile 'cool.happycoding:happy-code-starter-log'
 
     
 #### 参考资料
-无
+- [Slf4j-MDC](http://logback.qos.ch/manual/mdc.html)
   
