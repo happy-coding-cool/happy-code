@@ -37,7 +37,7 @@ public class PrintRequestAndResponseFilter extends OncePerRequestFilter {
         if (!match(requestUri, happyLogProperties.getExcludes())){
             HappyServletRequestWrapper requestWrapper = new HappyServletRequestWrapper(request);
             HappyServletResponseWrapper responseWrapper = new HappyServletResponseWrapper(response);
-            filterChain.doFilter(requestWrapper, responseWrapper);
+            doFilterInternal(requestWrapper,  responseWrapper, filterChain);
             if (happyLogProperties.isEnablePrintHeader()){
                 new PrintHeaderHandler(requestWrapper).print();
             }
