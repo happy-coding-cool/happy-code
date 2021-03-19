@@ -24,6 +24,7 @@ public class MdcParamFilter implements Filter {
         try {
             mdcParamCollector.mdcParams()
                     .forEach(MDC::put);
+            chain.doFilter(request, response);
         }finally {
             MDC.clear();
         }
