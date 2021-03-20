@@ -14,14 +14,6 @@ import java.util.Collection;
  * allow {@code null} arguments, {@code Assert} can be used to validate that
  * contract.
  *
- * For example:
- *
- * <pre class="code">
- * Assert.notNull(clazz, "The class must not be null");
- * Assert.isTrue(i > 0, "The value must be greater than zero");</pre>
- *
- * This class is empowered by  {@link org.springframework.util.Assert}
- *
  * @author Frank Zhang
  * @date 2019-01-13 11:49 AM
  */
@@ -76,7 +68,7 @@ public abstract class Assert {
     /**
      * Assert a boolean expression, throwing {@code BizException}
      * @param expression a boolean expression
-     * @param errorCode
+     * @param errorCode 错误编码
      * @param errMessage the exception message to use if the assertion fails
      * @throws BizException if expression is {@code true}
      */

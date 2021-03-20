@@ -19,17 +19,17 @@ public final class HappyCodeUtil {
 
     /**
      * 用于对业务条件进行判断
-     * @param condition
-     * @param error
+     * @param condition 条件
+     * @param error 错误码定义
      */
     public static void check(boolean condition, ResultCode error) {
         Assert.isTrue(condition, error.getCode(), error.getMessage());
     }
 
     /**
-     * @param originalVal
-     * @param defaultVal
-     * @return
+     * @param originalVal 原值
+     * @param defaultVal 默认值
+     * @return string
      */
     public static String ifBlankDefault(String originalVal, String defaultVal) {
         return StrUtil.blankToDefault(originalVal, defaultVal);
@@ -38,11 +38,11 @@ public final class HappyCodeUtil {
 
     /**
      * list 转换
-     * @param sourceList
-     * @param clazz
-     * @param <D>
-     * @param <S>
-     * @return
+     * @param sourceList 原数据列表
+     * @param clazz 转换的数据类型
+     * @param <D> 泛型
+     * @param <S> 泛型
+     * @return 返回转换后的列表
      */
     public static  <D, S> List<D> copy(List<S> sourceList, Class<D> clazz){
         return sourceList.stream()

@@ -14,13 +14,13 @@ public interface ContextHolderStrategy<Context> {
 
     /**
      * 获取上下文
-     * @return
+     * @return context
      */
     Context getContext();
 
     /**
      * 删除上下文
-     * @param context
+     * @param context context
      */
     void setContext(Context context);
 

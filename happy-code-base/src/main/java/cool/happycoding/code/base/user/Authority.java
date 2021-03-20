@@ -10,7 +10,7 @@ import java.io.Serializable;
 public interface Authority extends Serializable {
     /**
      * 获取授权
-     * @return
+     * @return string
      */
     String getAuthority();
 }

@@ -14,31 +14,31 @@ public interface User extends Serializable {
 
     /**
      * 获取userId
-     * @return
+     * @return str
      */
     String getUserId();
 
     /**
      * 获取userName
-     * @return
+     * @return str
      */
     String getUserName();
 
     /**
      * 获取密码
-     * @return
+     * @return str
      */
     String getPassword();
 
     /**
      * 获取权限
-     * @return
+     * @return str
      */
     default Collection<? extends Authority> getAuthorities(){ return Lists.newArrayList(); }
 
     /**
      * 用户所在的租户
-     * @return
+     * @return str
      */
     default String tenantId(){
         return "null";

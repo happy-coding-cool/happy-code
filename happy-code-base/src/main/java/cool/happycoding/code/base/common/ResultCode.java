@@ -20,13 +20,13 @@ public interface ResultCode {
 
     /**
      * result code
-     * @return
+     * @return code
      */
     String getCode();
 
     /**
      * result message
-     * @return
+     * @return message
      */
     String getMessage();
 }
