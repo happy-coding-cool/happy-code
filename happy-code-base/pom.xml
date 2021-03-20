@@ -4,17 +4,13 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>cool.happycoding</groupId>
-        <artifactId>happy-code-parent</artifactId>
+        <artifactId>happy-code</artifactId>
         <version>1.0.1-SNAPSHOT</version>
-        <relativePath>../happy-code-parent</relativePath>
     </parent>
 
     <artifactId>happy-code-base</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
-
     <name>happy-code-base</name>
     <description>基础开发框架组件基础依赖</description>
-
     <dependencies>
         <dependency>
             <groupId>org.projectlombok</groupId>

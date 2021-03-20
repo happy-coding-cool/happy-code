@@ -11,6 +11,5 @@
     </parent>
     <name>happy-code-parent</name>
     <artifactId>happy-code-parent</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 </project>
