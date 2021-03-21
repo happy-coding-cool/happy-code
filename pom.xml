@@ -12,7 +12,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>cool.happycoding</groupId>
     <artifactId>happy-code</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.1.RELEASE</version>
     <packaging>pom</packaging>
 
     <name>happy-code</name>
@@ -28,7 +28,7 @@
 
     <properties>
         <!--组件版本-->
-        <happy-code.version>1.0.1-SNAPSHOT</happy-code.version>
+        <happy-code.version>1.0.1.RELEASE</happy-code.version>
         <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
         <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
         <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
@@ -40,7 +40,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <!--框架依赖-->
-        <happy-code.version>1.0.1-SNAPSHOT</happy-code.version>
+        <happy-code.version>1.0.1.RELEASE</happy-code.version>
         <spring.cloud.version>Hoxton.SR8</spring.cloud.version>
         <spring.boot.version>2.3.2.RELEASE</spring.boot.version>
         <spring-cloud-alibaba.version>2.2.3.RELEASE</spring-cloud-alibaba.version>
@@ -160,88 +160,62 @@
         </dependencies>
     </dependencyManagement>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                    <optimize>true</optimize>
-                    <compilerArgument>-parameters</compilerArgument>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <configuration>
-                    <archive>
-                        <manifestEntries>
-                            <Implementation-Revision>${happy-code.version}</Implementation-Revision>
-                        </manifestEntries>
-                    </archive>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>attach-sources</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <!--去除javadoc合法性校验：jdk 1.8-->
-                <configuration>
-                    <additionalJOptions>
-                        <additionalJOption>-Xdoclint:none</additionalJOption>
-                    </additionalJOptions>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>attach-javadocs</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-        <resources>
-            <resource>
-                <filtering>false</filtering>
-                <directory>src/main/java</directory>
-                <includes>
-                    <!--src/main/java目录下的xml文件也打包-->
-                    <include>**/*.xml</include>
-                </includes>
-            </resource>
-            <resource>
-                <filtering>false</filtering>
-                <directory>src/test/java</directory>
-                <includes>
-                    <!--src/main/java目录下的xml文件也打包-->
-                    <include>**/*.xml</include>
-                </includes>
-            </resource>
-            <resource>
-                <filtering>false</filtering>
-                <directory>src/main/resources</directory>
-            </resource>
-        </resources>
-    </build>
     <profiles>
         <profile>
-            <id>release</id>
+            <id>sonatype-oss-release</id>
             <build>
                 <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <configuration>
+                            <source>${java.version}</source>
+                            <target>${java.version}</target>
+                            <optimize>true</optimize>
+                            <compilerArgument>-parameters</compilerArgument>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-jar-plugin</artifactId>
+                        <configuration>
+                            <archive>
+                                <manifestEntries>
+                                    <Implementation-Revision>${happy-code.version}</Implementation-Revision>
+                                </manifestEntries>
+                            </archive>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <!--去除javadoc合法性校验：jdk 1.8-->
+                        <configuration>
+                            <additionalJOptions>
+                                <additionalJOption>-Xdoclint:none</additionalJOption>
+                            </additionalJOptions>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
@@ -256,6 +230,28 @@
                         </executions>
                     </plugin>
                 </plugins>
+                <resources>
+                    <resource>
+                        <filtering>false</filtering>
+                        <directory>src/main/java</directory>
+                        <includes>
+                            <!--src/main/java目录下的xml文件也打包-->
+                            <include>**/*.xml</include>
+                        </includes>
+                    </resource>
+                    <resource>
+                        <filtering>false</filtering>
+                        <directory>src/test/java</directory>
+                        <includes>
+                            <!--src/main/java目录下的xml文件也打包-->
+                            <include>**/*.xml</include>
+                        </includes>
+                    </resource>
+                    <resource>
+                        <filtering>false</filtering>
+                        <directory>src/main/resources</directory>
+                    </resource>
+                </resources>
             </build>
         </profile>
     </profiles>

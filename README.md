@@ -10,7 +10,7 @@
     <parent>
         <groupId>cool.happycoding</groupId>
         <artifactId>happy-code-parent</artifactId>
-        <version>1.0.1-SNAPSHOT</version>
+        <version>1.0.1.RELEASE</version>
     </parent>
 ```
 然后在 `dependencies` 中添加自己所需使用的依赖即可使用
@@ -33,7 +33,7 @@
     - happy-code-starter-mq
 
 ## 版本更新记录
-### 1.0.1-SNAPSHOT[current]
+### 1.0.1.RELEASE
 - feat: 引入jetcache完善cache组件
 - feat: 完善mybatis组件引入乐观锁定义支持
 - feat: 引入阿里ThreadLocal组件
