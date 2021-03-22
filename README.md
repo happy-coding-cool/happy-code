@@ -34,6 +34,7 @@
 
 ## 版本更新记录
 ### 1.0.2-SNAPSHOT[current]
+- feat: 在banner打印中添加happy-code的版本号
 
 
 ### 1.0.1.RELEASE
