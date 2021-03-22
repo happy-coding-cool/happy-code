@@ -33,6 +33,9 @@
     - happy-code-starter-mq
 
 ## 版本更新记录
+### 1.0.2-SNAPSHOT[current]
+
+
 ### 1.0.1.RELEASE
 - feat: 引入jetcache完善cache组件
 - feat: 完善mybatis组件引入乐观锁定义支持
