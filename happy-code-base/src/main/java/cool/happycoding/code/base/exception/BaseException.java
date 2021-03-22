@@ -15,18 +15,22 @@ public class BaseException extends RuntimeException{
 
     public BaseException(String errMessage) {
         super(errMessage);
+        this.errMessage = errMessage;
     }
     public BaseException(String errMessage, Throwable throwable) {
         super(errMessage, throwable);
+        this.errMessage = errMessage;
     }
 
     public BaseException(String errCode, String errMessage) {
         super(errMessage);
         this.errCode = errCode;
+        this.errMessage = errMessage;
     }
 
     public BaseException(String errCode, String errMessage, Throwable e) {
         super(errMessage, e);
         this.errCode = errCode;
+        this.errMessage = errMessage;
     }
 }
