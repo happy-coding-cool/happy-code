@@ -1,2 +1,8 @@
+org.springframework.context.ApplicationListener=\
+cool.happycoding.code.web.HappyCodeVersionListener
+
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
   cool.happycoding.code.web.HappyWebAutoConfiguration
+
+#org.springframework.cloud.bootstrap.BootstrapConfiguration=\
+#  cool.happycoding.code.web.HappyCodeVersionProperty
