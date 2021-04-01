@@ -16,6 +16,10 @@
 然后在 `dependencies` 中添加自己所需使用的依赖即可使用
 注意: 引入该parent之后，在添加happy-code,spring-boot,spring cloud,spring alibaba cloud 组件时均不需要再指定版本号
 
+### 文档
+- [Happy Code文档](http://www.happycoding.cool)
+- [Happy Code配套脚手架工具](http://www.happycoding.cool/bootstrap/)
+
 ## 封装逻辑
 
 ## 模块介绍
