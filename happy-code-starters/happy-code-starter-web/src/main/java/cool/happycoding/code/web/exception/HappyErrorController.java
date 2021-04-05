@@ -46,7 +46,12 @@ public class HappyErrorController extends AbstractErrorController {
             int status = (int) attributes.get("status");
             String error = (String) attributes.get("error");
             String path = (String) attributes.get("path");
-            return ErrorDetail.error(String.valueOf(status), error, path, ImmutableMap.of("detail", StrUtil.blankToDefault(error, throwable.getMessage())));
+            if (throwable != null){
+                return ErrorDetail.error(String.valueOf(status),
+                        error, path, ImmutableMap.of("detail",
+                                StrUtil.blankToDefault(error, throwable.getMessage())));
+            }
+            return ErrorDetail.error(String.valueOf(status), error, path, ImmutableMap.of("detail", error));
         }
     }
 
