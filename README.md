@@ -37,6 +37,10 @@
     - happy-code-starter-mq
 
 ## 版本更新记录
+
+### 1.0.3-SNAPSHOT[current]
+
+
 ### 1.0.2.RELEASE
 - feat: 在banner打印中添加happy-code的版本号
 - fix: 修复打印Exception 出现errMessage丢失的问题
