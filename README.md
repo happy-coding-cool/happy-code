@@ -10,7 +10,7 @@
     <parent>
         <groupId>cool.happycoding</groupId>
         <artifactId>happy-code-parent</artifactId>
-        <version>1.0.1.RELEASE</version>
+        <version>1.0.2.RELEASE</version>
     </parent>
 ```
 然后在 `dependencies` 中添加自己所需使用的依赖即可使用
