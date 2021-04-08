@@ -44,7 +44,7 @@
 #### 框架选型
 - Spring Cloud 2020.0.2
 - Spring Cloud Alibaba 2020.0.RC1
-- Spring boot 2.4.2
+- Spring boot 2.4.3
 
 ### 1.0.2.RELEASE
 - feat: 在banner打印中添加happy-code的版本号
