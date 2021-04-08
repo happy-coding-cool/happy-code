@@ -42,7 +42,7 @@
         <!--框架依赖-->
         <happy-code.version>1.0.3-SNAPSHOT</happy-code.version>
         <spring.cloud.version>2020.0.2</spring.cloud.version>
-        <spring.boot.version>2.4.2</spring.boot.version>
+        <spring.boot.version>2.4.3</spring.boot.version>
         <spring-cloud-alibaba.version>2020.0.RC1</spring-cloud-alibaba.version>
         <!--公共包依赖-->
         <hutool.version>5.3.9</hutool.version>
