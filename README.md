@@ -40,6 +40,7 @@
 
 ### 1.0.3-SNAPSHOT[current]
 - feat: 升级SC和SCA版本
+- feat: 重构log组件补充feign调用场景下traceId的传递以及审计功能
 
 #### 框架选型
 - Spring Cloud 2020.0.2
