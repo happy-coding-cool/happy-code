@@ -25,6 +25,18 @@ compile 'cool.happycoding:happy-code-starter-log'
 - 提供了打印请求响应时间间隔特性
 - 提供MDC设置特性
 - 提供打印请求/响应数据的特性
+- 日志级别说明
+```
+    TRACE < DEBUG < INFO <  WARN < ERROR
+    日志级别越低意味着打印的日志量越大，如：
+    设置为：
+        TRACE时，级别为：TRACE、DEBUG、INFO、WARN、ERROR 会被打印
+        DEBUG时，级别为：DEBUG、INFO、WARN、ERROR 会被打印
+        INFO时，级别为：INFO、WARN、ERROR 会被打印
+        WARN时，级别为：WARN、ERROR 会被打印
+        ERROR时，级别为：ERROR 会被打印
+```
+
 
 注：由于返回的结果类型可能无法打印，因此组件只是提供了对返回类型为json的结果
 

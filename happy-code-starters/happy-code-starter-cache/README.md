@@ -1,6 +1,6 @@
 #### 使用约定
 
-已经引入了 happy-code-dependencies 父级依赖
+已经引入了 happy-code-parent 父级依赖
 
 #### 引入方式
 
