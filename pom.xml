@@ -154,6 +154,11 @@
             </dependency>
             <dependency>
                 <groupId>cool.happycoding</groupId>
+                <artifactId>happy-code-starter-lock</artifactId>
+                <version>${happy-code.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cool.happycoding</groupId>
                 <artifactId>happy-code-starter-test</artifactId>
                 <version>${happy-code.version}</version>
             </dependency>

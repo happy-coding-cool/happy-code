@@ -26,6 +26,7 @@
         <module>happy-code-starter-test</module>
         <module>happy-code-starter-excel</module>
         <module>happy-code-starter-store</module>
+        <module>happy-code-starter-lock</module>
     </modules>
 
     <dependencies>
