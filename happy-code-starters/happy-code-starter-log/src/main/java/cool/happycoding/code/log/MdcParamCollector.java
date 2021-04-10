@@ -1,5 +1,6 @@
 package cool.happycoding.code.log;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 /**
@@ -11,9 +12,9 @@ public interface MdcParamCollector {
 
     /**
      * 需要放置到mdc上下文中的参数内容
+     * @param request
      * @return
      */
-    Map<String, String> mdcParams();
-
+    Map<String, String> mdcParams(HttpServletRequest request);
 
 }

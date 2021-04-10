@@ -1,8 +1,8 @@
 package cool.happycoding.code.log;
 
-import cn.hutool.core.util.IdUtil;
 import com.google.common.collect.Maps;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 /**
@@ -13,9 +13,7 @@ import java.util.Map;
 public class DefaultMdcParamCollector implements MdcParamCollector{
 
     @Override
-    public Map<String, String> mdcParams() {
-        Map<String, String> mdcParams = Maps.newHashMap();
-        mdcParams.put("trace-id", IdUtil.fastSimpleUUID());
-        return mdcParams;
+    public Map<String, String> mdcParams(HttpServletRequest request) {
+        return Maps.newHashMap();
     }
 }
