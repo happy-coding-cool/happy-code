@@ -34,6 +34,8 @@
     - [happy-code-starter-validator](happy-code-starters/happy-code-starter-validator/README.md)
     - [happy-code-starter-web](happy-code-starters/happy-code-starter-web/README.md)
     - [happy-code-starter-cache](happy-code-starters/happy-code-starter-cache/README.md)
+    - happy-code-starter-lock
+    - happy-code-starter-dict
     - happy-code-starter-mq
 
 ## 版本更新记录
@@ -41,6 +43,8 @@
 ### 1.0.3-SNAPSHOT[current]
 - feat: 升级SC和SCA版本
 - feat: 重构log组件补充feign调用场景下traceId的传递以及审计功能
+- feat: 增加字典翻译组件
+- feat: 增加分布式锁组件
 
 #### 框架选型
 - Spring Cloud 2020.0.2

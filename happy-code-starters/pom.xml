@@ -27,6 +27,7 @@
         <module>happy-code-starter-excel</module>
         <module>happy-code-starter-store</module>
         <module>happy-code-starter-lock</module>
+        <module>happy-code-starter-dict</module>
     </modules>
 
     <dependencies>
