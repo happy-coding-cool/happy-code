@@ -57,6 +57,8 @@
         <jetcache.version>2.6.0</jetcache.version>
         <commons-pool2.version>2.9.0</commons-pool2.version>
         <transmittable.version>2.9.0</transmittable.version>
+        <redisson-starter.version>3.15.3</redisson-starter.version>
+        <dynamic-datasource.version>3.3.2</dynamic-datasource.version>
     </properties>
 
     <dependencyManagement>
@@ -91,6 +93,16 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+                <version>${dynamic-datasource.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson-spring-boot-starter</artifactId>
+                <version>${redisson-starter.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.alibaba</groupId>
