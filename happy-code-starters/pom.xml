@@ -28,6 +28,7 @@
         <module>happy-code-starter-store</module>
         <module>happy-code-starter-lock</module>
         <module>happy-code-starter-dict</module>
+        <module>happy-code-starter-dynamic-datasource</module>
     </modules>
 
     <dependencies>
