@@ -21,7 +21,7 @@
 - [Happy Code配套脚手架工具](http://www.happycoding.cool/bootstrap/)
 
 ## 规划
-![](happycode基础开发框架.jpg)
+![](happycode-plan.jpg)
 
 ## 模块介绍
 - happy-code-base
