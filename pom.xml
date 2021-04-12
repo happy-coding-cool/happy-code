@@ -57,6 +57,9 @@
         <jetcache.version>2.6.0</jetcache.version>
         <commons-pool2.version>2.9.0</commons-pool2.version>
         <transmittable.version>2.9.0</transmittable.version>
+        <amazonaws.version>1.11.934</amazonaws.version>
+        <minio.version>8.0.3</minio.version>
+        <fastdfs-client.version>1.27.2</fastdfs-client.version>
         <redisson-starter.version>3.15.3</redisson-starter.version>
         <dynamic-datasource.version>3.3.2</dynamic-datasource.version>
     </properties>
@@ -93,6 +96,21 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.tobato</groupId>
+                <artifactId>fastdfs-client</artifactId>
+                <version>${fastdfs-client.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.minio</groupId>
+                <artifactId>minio</artifactId>
+                <version>${minio.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.amazonaws</groupId>
+                <artifactId>aws-java-sdk-s3</artifactId>
+                <version>${amazonaws.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.baomidou</groupId>
