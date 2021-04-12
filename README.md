@@ -20,7 +20,8 @@
 - [Happy Code文档](http://www.happycoding.cool)
 - [Happy Code配套脚手架工具](http://www.happycoding.cool/bootstrap/)
 
-## 封装逻辑
+## 规划
+![](happycode基础开发框架.jpg)
 
 ## 模块介绍
 - happy-code-base
