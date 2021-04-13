@@ -22,7 +22,8 @@ public class SexValidator implements ConstraintValidator<Sex, String> {
     public boolean isValid(String value, ConstraintValidatorContext context) {
 
         if (StrUtil.isNotBlank(value)) {
-            return StrUtil.equalsAnyIgnoreCase("男", "女");
+            return StrUtil.equalsAnyIgnoreCase(value, "男")
+                    ||StrUtil.equalsAnyIgnoreCase(value, "女");
         }
 
         if (notNull) {
