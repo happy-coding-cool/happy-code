@@ -45,4 +45,6 @@ public class HappyLogProperties {
      */
     private List<String> excludes = Lists.newArrayList();
 
+
+
 }
