@@ -4,6 +4,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.reflect.MethodSignature;
+import org.springframework.beans.factory.annotation.Value;
+
+import java.time.LocalDateTime;
 
 /**
  * description
@@ -13,6 +17,9 @@ import org.aspectj.lang.annotation.Before;
 @Slf4j
 @Aspect
 public class HappyAuditAspect {
+
+    @Value("${spring.application.name}")
+    private String applicationName;
 
     private final HappyAuditRecorder happyAuditRecorder;
 
@@ -29,9 +36,21 @@ public class HappyAuditAspect {
             // 获取类上的注解
             happyAudit = joinPoint.getTarget().getClass().getDeclaredAnnotation(HappyAudit.class);
         }
-        // TODO 组织审计信息
-//        HappyAuditLog happyAuditLog = buildAudit(happyAudit, joinPoint);
-        HappyAuditLog happyAuditLog = new HappyAuditLog();
+        // 构造审计信息
+        HappyAuditLog happyAuditLog = buildAudit(happyAudit, joinPoint);
         happyAuditRecorder.record(happyAuditLog);
     }
+
+    private HappyAuditLog buildAudit(HappyAudit happyAudit, JoinPoint joinPoint) {
+        HappyAuditLog happyAuditLog = new HappyAuditLog();
+        happyAuditLog.setTimestamp(LocalDateTime.now());
+        happyAuditLog.setApplicationName(applicationName);
+        MethodSignature methodSignature = (MethodSignature)joinPoint.getSignature();
+        happyAuditLog.setMethodName(methodSignature.getName());
+        happyAuditLog.setClassName(methodSignature.getDeclaringTypeName());
+        happyAuditLog.setOperation(happyAudit.operation());
+        return happyAuditLog;
+    }
+
+
 }
