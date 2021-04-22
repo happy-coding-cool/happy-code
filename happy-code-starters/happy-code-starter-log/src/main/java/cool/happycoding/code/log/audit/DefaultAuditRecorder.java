@@ -12,6 +12,6 @@ public class DefaultAuditRecorder implements HappyAuditRecorder{
 
     @Override
     public void record(HappyAuditLog happyAuditLog) {
-
+        log.info("happyAuditLog:{}", happyAuditLog.toString());
     }
 }

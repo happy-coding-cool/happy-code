@@ -12,4 +12,5 @@ public interface HappyAuditRecorder {
      * @param happyAuditLog
      */
     void record(HappyAuditLog happyAuditLog);
+
 }

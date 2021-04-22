@@ -1,6 +1,7 @@
 package cool.happycoding.code.log.audit;
 
 import lombok.Data;
+import lombok.ToString;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -11,6 +12,7 @@ import java.time.LocalDateTime;
  * @author lanlanhappy 2021/04/10 5:14 下午
  */
 @Data
+@ToString
 public class HappyAuditLog implements Serializable {
 
     /**

@@ -1,5 +1,7 @@
 package cool.happycoding.code.log.audit;
 
+import cool.happycoding.code.base.user.User;
+import cool.happycoding.code.user.context.UserContextHolder;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
@@ -43,6 +45,9 @@ public class HappyAuditAspect {
 
     private HappyAuditLog buildAudit(HappyAudit happyAudit, JoinPoint joinPoint) {
         HappyAuditLog happyAuditLog = new HappyAuditLog();
+        User user = UserContextHolder.getUser();
+        happyAuditLog.setUserId(user.getUserId());
+        happyAuditLog.setUserName(user.getUserName());
         happyAuditLog.setTimestamp(LocalDateTime.now());
         happyAuditLog.setApplicationName(applicationName);
         MethodSignature methodSignature = (MethodSignature)joinPoint.getSignature();
