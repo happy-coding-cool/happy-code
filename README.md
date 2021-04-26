@@ -50,7 +50,7 @@
 - feat: 增加多数据源组件
 - fix: 修校验组件性别校验的bug
 
-#### 框架选型
+#### 依赖版本升级
 - Spring Cloud 2020.0.2
 - Spring Cloud Alibaba 2020.0.RC1
 - Spring boot 2.4.3
