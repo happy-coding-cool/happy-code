@@ -26,12 +26,12 @@ public class HappyRedissonDistributedLock implements HappyDistributedLock{
         try {
             RLock lock = getLock(key, fairLock);
             lock.lock(leaseTime, timeUnit);
-            log.info("-------->[{}]获取到锁。", key);
+            log.debug("-------->[{}]获取到锁。", key);
             return Boolean.TRUE;
         } catch (Exception e) {
             log.error("获取锁出现异常", e);
         }
-        log.info("-------->[{}]未获取到锁。", key);
+        log.debug("-------->[{}]未获取到锁。", key);
         return Boolean.FALSE;
     }
 
@@ -40,7 +40,7 @@ public class HappyRedissonDistributedLock implements HappyDistributedLock{
         RLock lock = getLock(key, fairLock);
         try {
             boolean flag = lock.tryLock(waitTime, leaseTime, timeUnit);
-            log.info("-------->tryLock[{}] {}到锁。", key, flag ? "获取" : "未获取");
+            log.debug("-------->tryLock[{}] {}到锁。", key, flag ? "获取" : "未获取");
             return flag;
         } catch (Exception e) {
             log.error("尝试锁出现异常", e);
@@ -52,7 +52,7 @@ public class HappyRedissonDistributedLock implements HappyDistributedLock{
     public Boolean isLock(String key) {
         RLock lock = getLock(key, false);
         Boolean flag = lock.isLocked();
-        log.info("-------->检测到key[{}]" + (flag ? "已" : "未") + "上锁", key);
+        log.debug("-------->检测到key[{}]" + (flag ? "已" : "未") + "上锁", key);
         return flag;
     }
 
@@ -60,7 +60,7 @@ public class HappyRedissonDistributedLock implements HappyDistributedLock{
     public void unlock(String key) {
         RLock lock = getLock(key, false);
         if (ObjectUtil.isNotNull(lock) && isLock(key)) {
-            log.info("-------->[{}]解锁", key);
+            log.debug("-------->[{}]解锁", key);
             lock.unlock();
         }
     }
