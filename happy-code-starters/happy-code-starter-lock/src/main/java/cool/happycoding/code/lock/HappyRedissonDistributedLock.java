@@ -15,10 +15,10 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class HappyRedissonDistributedLock implements HappyDistributedLock{
 
-    private final RedissonClient redissonClient;
+    private final RedissonClient redisson;
 
-    public HappyRedissonDistributedLock(RedissonClient redissonClient){
-        this.redissonClient = redissonClient;
+    public HappyRedissonDistributedLock(RedissonClient redisson){
+        this.redisson = redisson;
     }
     
     @Override
@@ -73,6 +73,6 @@ public class HappyRedissonDistributedLock implements HappyDistributedLock{
      * @return RLock
      */
     public RLock getLock(String key, Boolean fairLock) {
-        return fairLock ? redissonClient.getFairLock(key) : redissonClient.getLock(key);
+        return fairLock ? redisson.getFairLock(key) : redisson.getLock(key);
     }
 }
