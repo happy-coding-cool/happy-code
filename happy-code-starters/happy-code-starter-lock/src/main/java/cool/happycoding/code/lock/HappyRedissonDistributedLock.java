@@ -73,6 +73,6 @@ public class HappyRedissonDistributedLock implements HappyDistributedLock{
      * @return RLock
      */
     public RLock getLock(String key, Boolean fairLock) {
-        return fairLock ? redisson.getFairLock(key) : redisson.getLock(key);
+        return fairLock ? redisson.getFairLock(distributeKeyWrapper(key)) : redisson.getLock(distributeKeyWrapper(key));
     }
 }

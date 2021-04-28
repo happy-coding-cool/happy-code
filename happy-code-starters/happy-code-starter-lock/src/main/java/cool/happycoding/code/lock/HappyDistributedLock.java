@@ -1,5 +1,7 @@
 package cool.happycoding.code.lock;
 
+import cn.hutool.core.util.StrUtil;
+
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -8,6 +10,8 @@ import java.util.concurrent.TimeUnit;
  * @author lanlanhappy 2021/04/28 7:54 下午
  */
 public interface HappyDistributedLock {
+
+    String LOCK_KEY_PREFIX = "HAPPY_LOCK_KEY";
 
     /**
      * 获取分布式锁
@@ -92,4 +96,13 @@ public interface HappyDistributedLock {
      * @param key 锁的名字
      */
     void unlock(String key);
+
+    /**
+     * 包装分布式锁的key
+     * @param key
+     * @return
+     */
+    default String distributeKeyWrapper(String key){
+        return StrUtil.concat(false, LOCK_KEY_PREFIX, ":", key);
+    }
 }
