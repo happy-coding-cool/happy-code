@@ -38,7 +38,7 @@ public interface HappyDistributedLock {
      * 获取分布式锁
      *
      * @param key  锁的名字
-     * @param leaseTime 锁超时时间。超时后自动释放锁。
+     * @param leaseTime 锁超时时间，超时后自动释放锁；如果leaseTime为-1，则保持锁定直到显式解锁
      * @param timeUnit  时间粒度
      * @param fairLock  是否获取公平锁
      * @return Boolean
@@ -75,7 +75,7 @@ public interface HappyDistributedLock {
      *
      * @param key  锁的名字
      * @param waitTime  获取锁最长等待时间
-     * @param leaseTime 锁超时时间。超时后自动释放锁。
+     * @param leaseTime 锁超时时间，超时后自动释放锁；如果leaseTime为-1，则保持锁定直到显式解锁
      * @param timeUnit  时间粒度
      * @param fairLock  是否获取公平锁
      * @return Boolean
