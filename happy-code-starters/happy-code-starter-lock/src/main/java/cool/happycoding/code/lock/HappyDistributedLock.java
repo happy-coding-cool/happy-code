@@ -12,89 +12,84 @@ public interface HappyDistributedLock {
     /**
      * 获取分布式锁
      *
-     * @param lockName  锁的名字
+     * @param key 锁的名字
+     * @return Boolean
+     */
+    default Boolean lock(String key){
+        return lock(key, false);
+    }
+
+    /**
+     * 获取分布式锁
+     *
+     * @param key 锁的名字
+     * @param fairLock 是否获取公平锁
+     * @return Boolean
+     */
+    default Boolean lock(String key, Boolean fairLock){
+        return lock(key, -1, null, fairLock);
+    }
+
+    /**
+     * 获取分布式锁
+     *
+     * @param key  锁的名字
      * @param leaseTime 锁超时时间。超时后自动释放锁。
      * @param timeUnit  时间粒度
      * @param fairLock  是否获取公平锁
-     * @return HappyLock
+     * @return Boolean
      */
-    HappyLock lock(String lockName, Integer leaseTime, TimeUnit timeUnit, Boolean fairLock);
+    Boolean lock(String key, Integer leaseTime, TimeUnit timeUnit, Boolean fairLock);
 
     /**
-     * 获取分布式锁
+     * 尝试获取分布式锁
      *
-     * @param lockName 锁的名字
-     * @return HappyLock
+     * @param key 锁的名字
+     * @param waitTime 锁的名字
+     * @param timeUnit 时间粒度
+     * @return Boolean
      */
-    default HappyLock lock(String lockName){
-        return lock(lockName, false);
+    default Boolean tryLock(String key, Integer waitTime, TimeUnit timeUnit){
+        return tryLock(key, waitTime, timeUnit, false);
     }
 
     /**
-     * 获取分布式锁
+     * 尝试获取分布式锁
      *
-     * @param lockName 锁的名字
+     * @param key 锁的名字
+     * @param waitTime 锁的名字
+     * @param timeUnit 时间粒度
      * @param fairLock 是否获取公平锁
-     * @return HappyLock
+     * @return Boolean
      */
-    default HappyLock lock(String lockName, Boolean fairLock){
-        return lock(lockName, -1, null, fairLock);
-    }
-
-
-    /**
-     * 尝试获取分布式锁
-     *
-     * @param lockName 锁的名字
-     * @return HappyLock
-     */
-    default HappyLock tryLock(String lockName){
-        return tryLock(lockName, false);
+    default Boolean tryLock(String key, Integer waitTime, TimeUnit timeUnit, Boolean fairLock){
+        return tryLock(key, waitTime, -1, timeUnit, fairLock);
     }
 
     /**
      * 尝试获取分布式锁
      *
-     * @param lockName 锁的名字
-     * @param fairLock 是否获取公平锁
-     * @return HappyLock
-     */
-    HappyLock tryLock(String lockName, Boolean fairLock);
-
-    /**
-     * 尝试获取分布式锁
-     *
-     * @param lockName  锁的名字
+     * @param key  锁的名字
      * @param waitTime  获取锁最长等待时间
      * @param leaseTime 锁超时时间。超时后自动释放锁。
      * @param timeUnit  时间粒度
      * @param fairLock  是否获取公平锁
-     * @return HappyLock
+     * @return Boolean
      */
-    HappyLock tryLock(String lockName, Integer waitTime, Integer leaseTime, TimeUnit timeUnit, Boolean fairLock);
+    Boolean tryLock(String key, Integer waitTime, Integer leaseTime, TimeUnit timeUnit, Boolean fairLock);
 
     /**
      * 是否上锁
      *
-     * @param lockName 锁的名字
-     * @return HappyLock
+     * @param key 锁的名字
+     * @return Boolean
      */
-    HappyLock isLock(String lockName);
+    Boolean isLock(String key);
 
     /**
      * 关闭锁
      *
-     * @param lock 锁的名字
+     * @param key 锁的名字
      */
-    void unlock(Object lock);
-
-    /**
-     * 释放锁
-     * @param happyLock 锁抽象对象
-     */
-    default void unlock(HappyLock happyLock) {
-        if (happyLock != null) {
-            unlock(happyLock.getLock());
-        }
-    }
+    void unlock(String key);
 }

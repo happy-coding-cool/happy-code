@@ -1,6 +1,8 @@
 package cool.happycoding.code.lock;
 
+import cn.hutool.core.util.ObjectUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
 
 import java.util.concurrent.TimeUnit;
@@ -18,45 +20,59 @@ public class HappyRedissonDistributedLock implements HappyDistributedLock{
     public HappyRedissonDistributedLock(RedissonClient redissonClient){
         this.redissonClient = redissonClient;
     }
-
-
+    
     @Override
-    public HappyLock lock(String lockName) {
-        return null;
+    public Boolean lock(String key, Integer leaseTime, TimeUnit timeUnit, Boolean fairLock) {
+        try {
+            RLock lock = getLock(key, fairLock);
+            lock.lock(leaseTime, timeUnit);
+            log.info("-------->[{}]获取到锁。", key);
+            return Boolean.TRUE;
+        } catch (Exception e) {
+            log.error("获取锁出现异常", e);
+        }
+        log.info("-------->[{}]未获取到锁。", key);
+        return Boolean.FALSE;
     }
 
     @Override
-    public HappyLock lock(String lockName, Boolean fairLock) {
-        return null;
+    public Boolean tryLock(String key, Integer waitTime, Integer leaseTime, TimeUnit timeUnit, Boolean fairLock) {
+        RLock lock = getLock(key, fairLock);
+        try {
+            boolean flag = lock.tryLock(waitTime, leaseTime, timeUnit);
+            log.info("-------->tryLock[{}] {}到锁。", key, flag ? "获取" : "未获取");
+            return flag;
+        } catch (Exception e) {
+            log.error("尝试锁出现异常", e);
+            return false;
+        }
     }
 
     @Override
-    public HappyLock lock(String lockName, Integer leaseTime, TimeUnit timeUnit, Boolean fairLock) {
-        return null;
+    public Boolean isLock(String key) {
+        RLock lock = getLock(key, false);
+        Boolean flag = lock.isLocked();
+        log.info("-------->检测到key[{}]" + (flag ? "已" : "未") + "上锁", key);
+        return flag;
     }
 
     @Override
-    public HappyLock tryLock(String lockName) {
-        return null;
+    public void unlock(String key) {
+        RLock lock = getLock(key, false);
+        if (ObjectUtil.isNotNull(lock) && isLock(key)) {
+            log.info("-------->[{}]解锁", key);
+            lock.unlock();
+        }
     }
 
-    @Override
-    public HappyLock tryLock(String lockName, Boolean fairLock) {
-        return null;
-    }
-
-    @Override
-    public HappyLock tryLock(String lockName, Integer waitTime, Integer leaseTime, TimeUnit timeUnit, Boolean fairLock) {
-        return null;
-    }
-
-    @Override
-    public HappyLock isLock(String lockName) {
-        return null;
-    }
-
-    @Override
-    public void unlock(Object lock) {
-
+    /**
+     * 获取锁
+     *
+     * @param key 锁的名字
+     * @param fairLock 是否获取公平锁
+     * @return RLock
+     */
+    public RLock getLock(String key, Boolean fairLock) {
+        return fairLock ? redissonClient.getFairLock(key) : redissonClient.getLock(key);
     }
 }
