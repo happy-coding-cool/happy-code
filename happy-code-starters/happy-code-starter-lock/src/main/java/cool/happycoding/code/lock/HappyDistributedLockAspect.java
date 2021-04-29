@@ -1,6 +1,7 @@
 package cool.happycoding.code.lock;
 
 import cn.hutool.core.util.StrUtil;
+import cool.happycoding.code.base.exception.BizException;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.reflect.MethodSignature;
@@ -11,7 +12,6 @@ import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.expression.spel.support.StandardEvaluationContext;
 
 import java.util.Objects;
-import java.util.concurrent.TimeUnit;
 
 /**
  * description
@@ -49,12 +49,12 @@ public class HappyDistributedLockAspect {
                 return joinPoint.proceed();
              }else {
                 if (hLock.throwException()){
-                    throw new HappyLockException("Acquire distribute lock fail");
+                    throw new BizException("Acquire distribute lock fail");
                 }
                 return null;
              }
         }catch (Throwable throwable){
-            throw new HappyLockException(throwable.getMessage());
+            throw new BizException(throwable.getMessage());
         }finally {
             happyDistributedLock.unlock(key);
         }
