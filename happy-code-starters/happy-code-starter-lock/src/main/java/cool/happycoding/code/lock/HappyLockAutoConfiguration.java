@@ -26,4 +26,9 @@ public class HappyLockAutoConfiguration {
     public HappyDistributedLock distributedLock() {
         return new HappyRedissonDistributedLock(redisson);
     }
+
+    @Bean
+    public HappyDistributedLockAspect happyDistributedLockAspect(){
+        return new HappyDistributedLockAspect(distributedLock());
+    }
 }

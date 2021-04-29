@@ -41,17 +41,11 @@ public class HappyDistributedLockAspect {
     public Object invoke(ProceedingJoinPoint joinPoint, HLock hLock){
         MethodSignature methodSignature = (MethodSignature)joinPoint.getSignature();
         String key = getKey(joinPoint, methodSignature, hLock);
-        //等待时间
         Integer waitTime = hLock.waitTime();
-        //失效时间
         Integer leaseTime = hLock.leaseTime();
-        //时间粒度
         TimeUnit timeUnit = hLock.timeUnit();
-        //是否公平锁
         boolean fairLock = hLock.fairLock();
-        //是否尝试获取锁
         boolean tryLock = hLock.tryLock();
-        //是否获取到锁
         boolean lock = tryLock ? happyDistributedLock.tryLock(key, waitTime, leaseTime, timeUnit, fairLock) :
                          happyDistributedLock.lock(key, leaseTime, timeUnit, fairLock);
         try {
