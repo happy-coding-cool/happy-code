@@ -41,13 +41,9 @@ public class HappyDistributedLockAspect {
     public Object invoke(ProceedingJoinPoint joinPoint, HLock hLock){
         MethodSignature methodSignature = (MethodSignature)joinPoint.getSignature();
         String key = getKey(joinPoint, methodSignature, hLock);
-        Integer waitTime = hLock.waitTime();
-        Integer leaseTime = hLock.leaseTime();
-        TimeUnit timeUnit = hLock.timeUnit();
-        boolean fairLock = hLock.fairLock();
-        boolean tryLock = hLock.tryLock();
-        boolean lock = tryLock ? happyDistributedLock.tryLock(key, waitTime, leaseTime, timeUnit, fairLock) :
-                         happyDistributedLock.lock(key, leaseTime, timeUnit, fairLock);
+        boolean lock = hLock.tryLock() ? happyDistributedLock.tryLock(key,
+                        hLock.waitTime(), hLock.leaseTime(), hLock.timeUnit(), hLock.fairLock()) :
+                         happyDistributedLock.lock(key, hLock.leaseTime(), hLock.timeUnit(), hLock.fairLock());
         try {
              if (lock){
                 return joinPoint.proceed();
