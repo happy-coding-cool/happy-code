@@ -1,5 +1,6 @@
 package cool.happycoding.code.lock;
 
+import java.lang.annotation.*;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -10,6 +11,9 @@ import java.util.concurrent.TimeUnit;
  *
  * @author lanlanhappy 2021/04/29 4:33 下午
  */
+@Target({ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
 public @interface HLock {
 
     /**
