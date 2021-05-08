@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletRequest;
 public class HappySentinelAutoConfiguration {
 
     /**
-     * 限流、熔断统一处理类
+     * 限流、熔断统一处理类 Servlet
      */
     @Configuration
     @ConditionalOnClass(HttpServletRequest.class)
@@ -40,7 +40,7 @@ public class HappySentinelAutoConfiguration {
 
 
     /**
-     * 限流、熔断统一处理类
+     * 限流、熔断统一处理类 WebFlux
      */
     @Configuration
     @ConditionalOnClass(ServerResponse.class)
