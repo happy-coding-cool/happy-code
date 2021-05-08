@@ -202,6 +202,11 @@
                 <artifactId>happy-code-starter-test</artifactId>
                 <version>${happy-code.version}</version>
             </dependency>
+            <dependency>
+                <groupId>cool.happycoding</groupId>
+                <artifactId>happy-code-starter-sentinel</artifactId>
+                <version>${happy-code.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

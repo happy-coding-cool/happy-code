@@ -29,6 +29,7 @@
         <module>happy-code-starter-lock</module>
         <module>happy-code-starter-dict</module>
         <module>happy-code-starter-dynamic-datasource</module>
+        <module>happy-code-starter-sentinel</module>
     </modules>
 
     <dependencies>
