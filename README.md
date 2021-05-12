@@ -38,6 +38,7 @@
     - happy-code-starter-lock
     - happy-code-starter-dict
     - happy-code-starter-dynamic-datasource
+    - happy-code-starter-sentinel
     - happy-code-starter-mq
 
 ## 版本更新记录
