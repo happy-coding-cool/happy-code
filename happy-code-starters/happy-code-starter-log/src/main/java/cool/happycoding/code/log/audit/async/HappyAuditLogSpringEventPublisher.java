@@ -10,7 +10,7 @@ import org.springframework.context.ApplicationContextAware;
  *
  * @author lanlanhappy 2021/05/12 5:05 下午
  */
-public class SpringHappyAuditLogEventPublisher implements HappyAuditLogEventPublisher, ApplicationContextAware {
+public class HappyAuditLogSpringEventPublisher implements HappyAuditLogEventPublisher, ApplicationContextAware {
 
     private ApplicationContext applicationContext;
 

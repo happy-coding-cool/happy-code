@@ -2,7 +2,7 @@ package cool.happycoding.code.log.audit;
 
 import cool.happycoding.code.log.audit.async.HappyAuditLogEventListener;
 import cool.happycoding.code.log.audit.async.HappyAuditLogEventPublisher;
-import cool.happycoding.code.log.audit.async.SpringHappyAuditLogEventPublisher;
+import cool.happycoding.code.log.audit.async.HappyAuditLogSpringEventPublisher;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
@@ -26,7 +26,7 @@ public class HappyAuditConfiguration {
     @Bean
     @ConditionalOnMissingBean
     public HappyAuditLogEventPublisher happyAuditLogEventPublisher(){
-        return new SpringHappyAuditLogEventPublisher();
+        return new HappyAuditLogSpringEventPublisher();
     }
 
     @Bean
