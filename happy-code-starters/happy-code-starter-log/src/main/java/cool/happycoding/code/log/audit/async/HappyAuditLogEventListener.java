@@ -4,6 +4,7 @@ import cool.happycoding.code.log.audit.HappyAuditLog;
 import cool.happycoding.code.log.audit.HappyAuditRecorder;
 import org.springframework.context.event.EventListener;
 import org.springframework.scheduling.annotation.Async;
+import static cool.happycoding.code.web.Constants.HAPPY_THREAD_POOL_EXECUTOR;
 
 /**
  * description
@@ -18,7 +19,7 @@ public class HappyAuditLogEventListener {
         this.happyAuditRecorder = happyAuditRecorder;
     }
 
-    @Async
+    @Async(HAPPY_THREAD_POOL_EXECUTOR)
     @EventListener(HappyAuditLogEvent.class)
     public void record(HappyAuditLogEvent happyAuditLogEvent){
         HappyAuditLog happyAuditLog = (HappyAuditLog)happyAuditLogEvent.getSource();

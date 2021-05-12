@@ -12,5 +12,8 @@ public interface Constants {
      * <p>年-月-日 时:分:秒（标准北京时间）
      */
     String DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
-
+    /**
+     * happy code 统一线程池定义 运用 com.alibaba.ttl.threadpool.TtlExecutors 保证threadcontext传递
+     */
+    String HAPPY_THREAD_POOL_EXECUTOR = "happyThreadPoolExecutor";
 }
