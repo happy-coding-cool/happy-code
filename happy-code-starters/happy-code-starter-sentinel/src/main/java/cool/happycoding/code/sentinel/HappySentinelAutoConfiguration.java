@@ -25,33 +25,27 @@ public class HappySentinelAutoConfiguration {
     /**
      * 限流、熔断统一处理类 Servlet
      */
-    @Configuration
+    @Bean
     @ConditionalOnClass(HttpServletRequest.class)
-    public static class WebmvcHandler {
-        @Bean
-        public BlockExceptionHandler webmvcBlockExceptionHandler() {
-            return (request, response, e) -> {
-                response.setStatus(HttpStatus.TOO_MANY_REQUESTS.value());
-                Result result = Result.failure(String.valueOf(HttpStatus.TOO_MANY_REQUESTS.value()), e.getMessage());
-                response.getWriter().print(JSONUtil.toJsonStr(result));
-            };
-        }
+    public BlockExceptionHandler webmvcBlockExceptionHandler() {
+        return (request, response, e) -> {
+            response.setStatus(HttpStatus.TOO_MANY_REQUESTS.value());
+            Result result = Result.failure(String.valueOf(HttpStatus.TOO_MANY_REQUESTS.value()), e.getMessage());
+            response.getWriter().print(JSONUtil.toJsonStr(result));
+        };
     }
-
 
     /**
      * 限流、熔断统一处理类 WebFlux
      */
-    @Configuration
+    @Bean
     @ConditionalOnClass(ServerResponse.class)
-    public static class WebfluxHandler {
-        @Bean
-        public BlockRequestHandler webfluxBlockExceptionHandler() {
-            return (exchange, t) ->
-                    ServerResponse.status(HttpStatus.TOO_MANY_REQUESTS)
-                            .contentType(MediaType.APPLICATION_JSON)
-                            .body(BodyInserters.fromValue(Result.failure(String.valueOf(HttpStatus.TOO_MANY_REQUESTS.value()), t.getMessage())));
-        }
+    public BlockRequestHandler webfluxBlockExceptionHandler() {
+        return (exchange, t) ->
+                ServerResponse.status(HttpStatus.TOO_MANY_REQUESTS)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .body(BodyInserters.fromValue(
+                                Result.failure(String.valueOf(HttpStatus.TOO_MANY_REQUESTS.value()),
+                                        t.getMessage())));
     }
-
 }
