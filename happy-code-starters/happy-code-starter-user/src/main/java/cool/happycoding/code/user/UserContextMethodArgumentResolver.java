@@ -1,6 +1,7 @@
 package cool.happycoding.code.user;
 
 import cn.hutool.core.bean.BeanUtil;
+import cool.happycoding.code.base.user.User;
 import cool.happycoding.code.user.context.UserContextHolder;
 import org.springframework.core.MethodParameter;
 import org.springframework.web.bind.support.WebDataBinderFactory;
@@ -17,11 +18,13 @@ public class UserContextMethodArgumentResolver implements HandlerMethodArgumentR
 
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
-        return parameter.hasParameterAnnotation(CurrentUser.class);
+        return parameter.hasParameterAnnotation(CurrentUser.class)
+                && parameter.getParameterType().equals(User.class);
     }
 
     @Override
-    public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer, NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
+    public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer,
+                                  NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
         return BeanUtil.copyProperties(UserContextHolder.getUser(), parameter.getParameterType());
     }
 }
