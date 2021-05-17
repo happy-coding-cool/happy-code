@@ -1,2 +1,3 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  cool.happycoding.code.log.HappyLogAutoConfiguration
+  cool.happycoding.code.log.HappyLogAutoConfiguration,\
+  cool.happycoding.code.log.trace.FeignTraceInterceptorConfig

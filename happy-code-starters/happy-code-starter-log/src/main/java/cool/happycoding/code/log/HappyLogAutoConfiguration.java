@@ -1,15 +1,8 @@
 package cool.happycoding.code.log;
 
-import cn.hutool.core.util.StrUtil;
-import cool.happycoding.code.log.audit.DefaultAuditRecorder;
-import cool.happycoding.code.log.audit.HappyAuditAspect;
-import cool.happycoding.code.log.audit.HappyAuditRecorder;
 import cool.happycoding.code.log.filter.MdcParamFilter;
 import cool.happycoding.code.log.filter.PrintRequestAndResponseFilter;
 import cool.happycoding.code.log.filter.TimeIntervalFilter;
-import cool.happycoding.code.log.trace.MDCTraceUtil;
-import feign.RequestInterceptor;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -17,9 +10,6 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
-import org.springframework.web.context.request.RequestContextHolder;
-
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * description
@@ -75,17 +65,5 @@ public class HappyLogAutoConfiguration {
         return printRequestAndResponseFilter;
     }
 
-    @Bean
-    @ConditionalOnClass(value = {RequestInterceptor.class})
-    public RequestInterceptor feignTraceInterceptor(HappyLogProperties happyLogProperties) {
-        return template -> {
-            if (happyLogProperties.isEnableMdc()) {
-                // 传递日志traceId
-                String traceId = MDCTraceUtil.getTraceId();
-                if (!StrUtil.isBlank(traceId)) {
-                    template.header(MDCTraceUtil.TRACE_ID_HEADER, traceId);
-                }
-            }
-        };
-    }
+
 }
