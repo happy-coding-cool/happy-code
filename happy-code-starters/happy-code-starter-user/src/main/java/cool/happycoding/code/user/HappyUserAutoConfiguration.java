@@ -1,6 +1,5 @@
 package cool.happycoding.code.user;
 
-import cool.happycoding.code.base.user.UserContextService;
 import cool.happycoding.code.base.user.UserDetailService;
 import cool.happycoding.code.user.context.UserContextLoadInnerFilter;
 import cool.happycoding.code.user.filter.UserContextLoadFilter;

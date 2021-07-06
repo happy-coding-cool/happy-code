@@ -1,9 +1,7 @@
 package cool.happycoding.code.user.context;
 
 import cn.hutool.core.util.ObjectUtil;
-import cn.hutool.core.util.StrUtil;
 import cool.happycoding.code.base.user.User;
-import cool.happycoding.code.base.user.UserContextService;
 import cool.happycoding.code.base.user.UserDetailService;
 import cool.happycoding.code.user.DefaultUser;
 import cool.happycoding.code.user.UserContextProperties;

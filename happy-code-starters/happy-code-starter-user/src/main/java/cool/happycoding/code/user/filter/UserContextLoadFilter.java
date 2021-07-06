@@ -1,7 +1,6 @@
 package cool.happycoding.code.user.filter;
 
 import cool.happycoding.code.user.UserInnerFilter;
-import cool.happycoding.code.user.context.UserContextHolder;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
