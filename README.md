@@ -51,6 +51,7 @@
 - feat: 增加分布式锁组件
 - feat: 增加多数据源组件
 - feat: 引入Sentinel逐渐并对BlockException进行了统一配置处理
+- refactor: 重构新增UserDetailService接口定义，并逐渐废弃UserContextService接口的使用
 - fix: 修校验组件性别校验的bug
 
 #### 依赖版本升级
