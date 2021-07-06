@@ -4,6 +4,7 @@ import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
 import cool.happycoding.code.base.user.User;
 import cool.happycoding.code.base.user.UserContextService;
+import cool.happycoding.code.base.user.UserDetailService;
 import cool.happycoding.code.user.DefaultUser;
 import cool.happycoding.code.user.UserContextProperties;
 import cool.happycoding.code.user.UserInnerFilter;
@@ -19,10 +20,10 @@ import javax.servlet.http.HttpServletRequest;
 @Slf4j
 public class UserContextLoadInnerFilter implements UserInnerFilter {
 
-    private final UserContextService userContextService;
+    private final UserDetailService userContextService;
     private final UserContextProperties userContextProperties;
 
-    public UserContextLoadInnerFilter(UserContextService userContextService, UserContextProperties userContextProperties) {
+    public UserContextLoadInnerFilter(UserDetailService userContextService, UserContextProperties userContextProperties) {
         this.userContextService = userContextService;
         this.userContextProperties = userContextProperties;
     }

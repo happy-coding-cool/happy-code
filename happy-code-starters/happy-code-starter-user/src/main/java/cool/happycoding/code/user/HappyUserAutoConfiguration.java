@@ -1,6 +1,7 @@
 package cool.happycoding.code.user;
 
 import cool.happycoding.code.base.user.UserContextService;
+import cool.happycoding.code.base.user.UserDetailService;
 import cool.happycoding.code.user.context.UserContextLoadInnerFilter;
 import cool.happycoding.code.user.filter.UserContextLoadFilter;
 import org.springframework.beans.factory.ObjectProvider;
@@ -29,19 +30,20 @@ public class HappyUserAutoConfiguration implements WebMvcConfigurer {
 
     @Bean
     @ConditionalOnMissingBean
-    public UserContextService userContextService(UserContextProperties userContextProperties){
+    public UserDetailService userContextService(UserContextProperties userContextProperties){
         return new DefaultUserContextService(userContextProperties);
     }
 
+
+
     @Bean
-    public UserInnerFilter userInnerFilter(UserContextService userContextService,
+    public UserInnerFilter userInnerFilter(UserDetailService userContextService,
                                            UserContextProperties userContextProperties){
         return new UserContextLoadInnerFilter(userContextService, userContextProperties);
     }
 
     @Bean
     public FilterRegistrationBean<UserContextLoadFilter> filterRegistrationBean(ObjectProvider<List<UserInnerFilter>> userInnerFilterProvider,
-                                                                                UserContextService userContextService,
                                                                                 UserContextProperties userContextProperties){
         FilterRegistrationBean<UserContextLoadFilter> registrationBean = new FilterRegistrationBean<>();
         List<UserInnerFilter> userInnerFilters = userInnerFilterProvider.getIfAvailable();
