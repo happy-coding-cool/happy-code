@@ -3,6 +3,8 @@ package cool.happycoding.code.user;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
+import java.util.List;
+
 import static cool.happycoding.code.base.common.Constants.*;
 
 /**
@@ -34,6 +36,5 @@ public class UserContextProperties {
      * filter order 优先级
      */
     private int filterOrder = 1;
-
 
 }
