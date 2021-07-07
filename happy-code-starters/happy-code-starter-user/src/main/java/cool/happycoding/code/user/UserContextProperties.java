@@ -3,6 +3,8 @@ package cool.happycoding.code.user;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
+import static cool.happycoding.code.base.common.Constants.*;
+
 /**
  * description
  *
@@ -17,16 +19,16 @@ public class UserContextProperties {
     /**
      * 默认用户Id
      */
-    private String defaultUserId = "-1";
+    private String defaultUserId = DEFAULT_USER_ID;
     /**
      * 默认用户名
      */
-    private String defaultUserName = "system";
+    private String defaultUserName = DEFAULT_USER_NAME;
 
     /**
      * 用户Id字段名
      */
-    private String userIdField = "x-user-id";
+    private String userIdField = HEADER_USER_ID;
 
     /**
      * filter order 优先级
