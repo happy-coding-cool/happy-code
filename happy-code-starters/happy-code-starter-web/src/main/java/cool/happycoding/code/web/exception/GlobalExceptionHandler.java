@@ -2,7 +2,6 @@ package cool.happycoding.code.web.exception;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.ObjectUtil;
-import cn.hutool.core.util.StrUtil;
 import cool.happycoding.code.base.common.HappyStatus;
 import cool.happycoding.code.base.exception.BizException;
 import cool.happycoding.code.base.exception.UnauthorizedException;
@@ -134,7 +133,6 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(UnauthorizedException.class)
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     public Result handleUnauthorizedException(UnauthorizedException ex, HttpServletRequest request) {
-        String path = getRequestPath(request);
         log.error("exception: ", ex);
         return ErrorDetail.error(ex.getErrCode(), ex.getErrMessage(), getRequestPath(request));
     }
