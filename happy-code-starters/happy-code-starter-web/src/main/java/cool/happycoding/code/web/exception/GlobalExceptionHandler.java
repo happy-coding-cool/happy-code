@@ -1,6 +1,8 @@
 package cool.happycoding.code.web.exception;
 
 import cn.hutool.core.collection.CollUtil;
+import cn.hutool.core.util.ObjectUtil;
+import cn.hutool.core.util.StrUtil;
 import cool.happycoding.code.base.common.HappyStatus;
 import cool.happycoding.code.base.exception.BizException;
 import cool.happycoding.code.base.result.Result;
@@ -35,7 +37,7 @@ public class GlobalExceptionHandler {
     @ResponseBody
     @ExceptionHandler(ConstraintViolationException.class)
     public Result handleConstraintViolationException(ConstraintViolationException ex, HttpServletRequest request) {
-        String path = request.getRequestURI();
+        String path = getRequestPath(request);
         Map<String, Object> error = ex.getConstraintViolations()
                 .stream()
                 // 解决 key 值相同的问题
@@ -68,7 +70,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(BizException.class)
     public Result handleAppException(BizException ex, HttpServletRequest request) {
         log.error("exception:", ex);
-        return ErrorDetail.error(ex.getErrCode(), ex.getErrMessage(), request.getRequestURI());
+        return ErrorDetail.error(ex.getErrCode(), ex.getErrMessage(), getRequestPath(request));
     }
 
     /**
@@ -81,7 +83,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler({MethodArgumentNotValidException.class})
     public Result handleInvalidRequest(MethodArgumentNotValidException ex, HttpServletRequest request) {
 
-        String path = request.getRequestURI();
+        String path = getRequestPath(request);
         Map<String, Object> error = ex.getBindingResult()
                 .getFieldErrors().stream()
                 // 解决 key 值相同的问题
@@ -114,9 +116,20 @@ public class GlobalExceptionHandler {
     @ResponseBody
     @ExceptionHandler(Throwable.class)
     public Result handleGeneralException(Throwable ex, HttpServletRequest request) {
-        String path = request.getRequestURI();
+        String path = getRequestPath(request);
         log.error("exception: ", ex);
         return ErrorDetail.error(HappyStatus.INTERNAL_SYSTEM_ERROR, path);
+    }
+
+    private String getRequestPath(HttpServletRequest request){
+
+        // 解决error控制器中抛出异常时，获取request path 不准确的问题
+        Object errorPath = request.getAttribute("javax.servlet.error.request_uri");
+        if (ObjectUtil.isNotNull(errorPath)){
+            return errorPath.toString();
+        }
+
+        return request.getRequestURI();
     }
 
 }
