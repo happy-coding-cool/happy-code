@@ -7,6 +7,7 @@ import com.google.common.collect.Maps;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 import java.util.Enumeration;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -37,7 +38,7 @@ public class HttpServletRequestHeaderWrapper extends HttpServletRequestWrapper {
     @Override
     public Enumeration<String> getHeaderNames() {
         Enumeration<String> headerNames = super.getHeaderNames();
-        Set<String> headerNamesSet = customerHeaders.keySet();
+        Set<String> headerNamesSet = new HashSet<>(customerHeaders.keySet());
         CollectionUtil.addAll(headerNamesSet, headerNames);
         return CollectionUtil.asEnumeration(headerNamesSet.iterator());
     }
