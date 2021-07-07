@@ -53,6 +53,7 @@
 - refactor: 重构新增UserDetailService接口定义，并逐渐废弃UserContextService接口的使用
 - fix: 修校验组件性别校验的bug
 - fix: 修复user组件requestWrapper类出现的集合操作异常
+- fix：修复从error控制器中复抛异常时request path获取不准确的问题
 
 #### 依赖版本升级
 - Spring Cloud 2020.0.2
