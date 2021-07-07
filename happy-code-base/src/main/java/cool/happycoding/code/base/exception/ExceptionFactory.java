@@ -17,6 +17,10 @@ public class ExceptionFactory {
         return new BizException(error.getCode(), error.getMessage(), throwable);
     }
 
+    public static UnauthorizedException unauthorizedException(ResultCode error){
+        return unauthorizedException(error.getCode(), error.getMessage());
+    }
+
     public static SystemException systemException(ResultCode error){
         return systemException(error.getCode(), error.getMessage());
     }
@@ -39,5 +43,13 @@ public class ExceptionFactory {
 
     public static SystemException systemException(String errorCode, String errorMessage, Throwable e) {
         return new SystemException(errorCode, errorMessage, e);
+    }
+
+    public static UnauthorizedException unauthorizedException(String errorCode, String errorMessage, Throwable e) {
+        return new UnauthorizedException(errorCode, errorMessage, e);
+    }
+
+    public static UnauthorizedException unauthorizedException(String errorCode, String errorMessage) {
+        return new UnauthorizedException(errorCode, errorMessage);
     }
 }

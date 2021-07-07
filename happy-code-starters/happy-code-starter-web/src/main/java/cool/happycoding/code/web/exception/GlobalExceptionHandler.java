@@ -5,13 +5,16 @@ import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
 import cool.happycoding.code.base.common.HappyStatus;
 import cool.happycoding.code.base.exception.BizException;
+import cool.happycoding.code.base.exception.UnauthorizedException;
 import cool.happycoding.code.base.result.Result;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.ConstraintViolation;
@@ -119,6 +122,21 @@ public class GlobalExceptionHandler {
         String path = getRequestPath(request);
         log.error("exception: ", ex);
         return ErrorDetail.error(HappyStatus.INTERNAL_SYSTEM_ERROR, path);
+    }
+
+    /**
+     * 对401单独处理
+     * @param ex
+     * @param request
+     * @return
+     */
+    @ResponseBody
+    @ExceptionHandler(UnauthorizedException.class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public Result handleUnauthorizedException(UnauthorizedException ex, HttpServletRequest request) {
+        String path = getRequestPath(request);
+        log.error("exception: ", ex);
+        return ErrorDetail.error(ex.getErrCode(), ex.getErrMessage(), getRequestPath(request));
     }
 
     private String getRequestPath(HttpServletRequest request){
