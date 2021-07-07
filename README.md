@@ -47,12 +47,12 @@
 - feat: 升级SC和SCA版本
 - feat: 重构log组件补充feign调用场景下traceId的传递以及审计功能
 - feat: 重构log组件将审计记录功能通过事件进行异步处理以提高效率
-- feat: 增加字典翻译组件
 - feat: 增加分布式锁组件
 - feat: 增加多数据源组件
 - feat: 引入Sentinel逐渐并对BlockException进行了统一配置处理
 - refactor: 重构新增UserDetailService接口定义，并逐渐废弃UserContextService接口的使用
 - fix: 修校验组件性别校验的bug
+- fix: 修复user组件requestWrapper类出现的集合操作异常
 
 #### 依赖版本升级
 - Spring Cloud 2020.0.2
