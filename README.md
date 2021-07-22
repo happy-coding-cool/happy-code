@@ -43,7 +43,7 @@
 
 ## 版本更新记录
 
-### 1.0.3-SNAPSHOT[current]
+### 1.0.3.RELEASE
 - feat: 升级SC和SCA版本
 - feat: 重构log组件补充feign调用场景下traceId的传递以及审计功能
 - feat: 重构log组件将审计记录功能通过事件进行异步处理以提高效率
