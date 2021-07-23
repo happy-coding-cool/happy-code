@@ -42,6 +42,8 @@
     - happy-code-starter-mq
 
 ## 版本更新记录
+### 1.0.4-SNAPSHOT[current]
+
 
 ### 1.0.3.RELEASE
 - feat: 升级SC和SCA版本
