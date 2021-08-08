@@ -34,9 +34,9 @@ public class TimeIntervalFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
-        TimeInterval interval = new TimeInterval();
         final String requestUri = ((HttpServletRequest)request).getRequestURI();
         log.info("Start RequestUri:[{}]", requestUri);
+        TimeInterval interval = new TimeInterval();
         chain.doFilter(request, response);
         long mills = interval.intervalMs();
         // 超过 3s 打出警告日志
