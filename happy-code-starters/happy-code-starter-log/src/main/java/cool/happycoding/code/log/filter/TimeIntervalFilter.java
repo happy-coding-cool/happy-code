@@ -36,13 +36,14 @@ public class TimeIntervalFilter implements Filter {
             throws IOException, ServletException {
         TimeInterval interval = new TimeInterval();
         final String requestUri = ((HttpServletRequest)request).getRequestURI();
+        log.info("Start RequestUri:[{}]", requestUri);
         chain.doFilter(request, response);
         long mills = interval.intervalMs();
         // 超过 3s 打出警告日志
         if (mills > WARN_TIME_INTERVAL_MILLS){
-            log.warn("RequestUri:[{}] , execute spend:[{}]ms, more than:[{}]ms 请优化程序逻辑!", requestUri, mills, WARN_TIME_INTERVAL_MILLS);
+            log.warn("End RequestUri:[{}] , execute spend:[{}]ms, more than:[{}]ms 请优化程序逻辑!", requestUri, mills, WARN_TIME_INTERVAL_MILLS);
         }else{
-            log.info("RequestUri:[{}] , execute spend:[{}]ms", requestUri, mills);
+            log.info("End RequestUri:[{}] , execute spend:[{}]ms", requestUri, mills);
         }
     }
 }
