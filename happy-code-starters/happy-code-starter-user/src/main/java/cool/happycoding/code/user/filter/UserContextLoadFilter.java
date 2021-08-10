@@ -25,13 +25,13 @@ public class UserContextLoadFilter implements Filter {
     public UserContextLoadFilter(List<UserInnerFilter> userInnerFilters){
 
         this.userInnerFilters = userInnerFilters;
-        skipUrls.add("/happy/auth/**");
-        skipUrls.add("/happy/captcha/**");
-        skipUrls.add("/actuator/health/**");
-        skipUrls.add("/doc.html");
-        skipUrls.add("/webjars/**");
-        skipUrls.add("/v2/api-docs/**");
-        skipUrls.add("/swagger-resources");
+        skipUrls.add("/**/happy/auth/**");
+        skipUrls.add("/**/happy/captcha/**");
+        skipUrls.add("/**/actuator/health/**");
+        skipUrls.add("/**/doc.html");
+        skipUrls.add("/**/webjars/**");
+        skipUrls.add("/**/v2/api-docs/**");
+        skipUrls.add("/**/swagger-resources");
     }
 
     @Override
