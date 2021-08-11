@@ -43,7 +43,7 @@
 
 ## 版本更新记录
 ### 1.0.4-SNAPSHOT[current]
-
+-  refactor: 重构user组件的filter逻辑，去除糟糕的接口设计
 
 ### 1.0.3.RELEASE
 - feat: 升级SC和SCA版本
