@@ -6,7 +6,12 @@ package cool.happycoding.code.base.user;
  * @since  UserDetailService
  * @author lanlanhappy 2020/12/03 9:21 下午
  */
-@Deprecated
-public interface UserContextService extends UserDetailService{
+public interface UserContextService {
 
+    /**
+     * 获取用户的详情信息
+     * @param userId
+     * @return user
+     */
+    User loadUserDetailById(String userId);
 }

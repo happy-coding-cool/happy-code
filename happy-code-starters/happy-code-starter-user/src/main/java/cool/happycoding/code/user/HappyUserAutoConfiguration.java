@@ -1,5 +1,6 @@
 package cool.happycoding.code.user;
 
+import cool.happycoding.code.base.user.UserContextService;
 import cool.happycoding.code.base.user.UserDetailService;
 import cool.happycoding.code.user.context.UserContextLoadInnerFilter;
 import cool.happycoding.code.user.filter.UserContextLoadFilter;
@@ -29,14 +30,14 @@ public class HappyUserAutoConfiguration implements WebMvcConfigurer {
 
     @Bean
     @ConditionalOnMissingBean
-    public UserDetailService userContextService(UserContextProperties userContextProperties){
+    public UserContextService userContextService(UserContextProperties userContextProperties){
         return new DefaultUserContextService(userContextProperties);
     }
 
 
 
     @Bean
-    public UserInnerFilter userInnerFilter(UserDetailService userContextService,
+    public UserInnerFilter userInnerFilter(UserContextService userContextService,
                                            UserContextProperties userContextProperties){
         return new UserContextLoadInnerFilter(userContextService, userContextProperties);
     }

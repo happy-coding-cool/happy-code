@@ -2,6 +2,7 @@ package cool.happycoding.code.user.context;
 
 import cn.hutool.core.util.ObjectUtil;
 import cool.happycoding.code.base.user.User;
+import cool.happycoding.code.base.user.UserContextService;
 import cool.happycoding.code.base.user.UserDetailService;
 import cool.happycoding.code.user.DefaultUser;
 import cool.happycoding.code.user.UserContextProperties;
@@ -18,10 +19,10 @@ import javax.servlet.http.HttpServletRequest;
 @Slf4j
 public class UserContextLoadInnerFilter implements UserInnerFilter {
 
-    private final UserDetailService userContextService;
+    private final UserContextService userContextService;
     private final UserContextProperties userContextProperties;
 
-    public UserContextLoadInnerFilter(UserDetailService userContextService, UserContextProperties userContextProperties) {
+    public UserContextLoadInnerFilter(UserContextService userContextService, UserContextProperties userContextProperties) {
         this.userContextService = userContextService;
         this.userContextProperties = userContextProperties;
     }
@@ -30,7 +31,7 @@ public class UserContextLoadInnerFilter implements UserInnerFilter {
     public void filter(HttpServletRequest request) {
         String userId = request.getHeader(userContextProperties.getUserIdField());
         log.warn("request header user-id:{}", userId);
-        User user = userContextService.loadUserDetail(userId);
+        User user = userContextService.loadUserDetailById(userId);
         if (ObjectUtil.isNull(user)) {
             user = DefaultUser.defaultUser(userContextProperties.getDefaultUserId(), userContextProperties.getDefaultUserName());
         }

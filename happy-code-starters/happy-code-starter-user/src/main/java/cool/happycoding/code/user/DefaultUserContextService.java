@@ -1,5 +1,6 @@
 package cool.happycoding.code.user;
 
+import cool.happycoding.code.base.user.User;
 import cool.happycoding.code.base.user.UserContextService;
 
 /**
@@ -16,7 +17,7 @@ public class DefaultUserContextService implements UserContextService {
     }
 
     @Override
-    public DefaultUser loadUserDetail(String username) {
+    public User loadUserDetailById(String userId) {
         return DefaultUser.defaultUser(userContextProperties.getDefaultUserId(),
                 userContextProperties.getDefaultUserName());
     }

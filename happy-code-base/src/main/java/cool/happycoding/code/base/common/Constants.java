@@ -19,4 +19,5 @@ public interface Constants {
     String AUTHORIZATION        = "Authorization";
     String PARAM_ACCESS_TOKEN   = "access_token";
     String HEADER_USER_ID       = "x-user-id";
+    String HEADER_USER_NAME       = "x-user-name";
 }

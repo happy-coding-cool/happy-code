@@ -23,7 +23,6 @@ public class UserContextLoadFilter implements Filter {
     private final AntPathMatcher antPathMatcher = new AntPathMatcher();
 
     public UserContextLoadFilter(List<UserInnerFilter> userInnerFilters){
-
         this.userInnerFilters = userInnerFilters;
         skipUrls.add("/**/happy/auth/**");
         skipUrls.add("/**/happy/captcha/**");
