@@ -17,6 +17,11 @@ public class HappyWebProperties {
     public final static String DEFAULT_MEDIA_TYPE = MediaType.APPLICATION_JSON_VALUE;
 
     /**
+     * 是否启动国际化配置
+     */
+    private boolean i18n = false;
+
+    /**
      * 序列化配置
      */
     private Serializer serializer = new Serializer();
