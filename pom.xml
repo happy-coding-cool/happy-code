@@ -207,6 +207,11 @@
                 <artifactId>happy-code-starter-sentinel</artifactId>
                 <version>${happy-code.version}</version>
             </dependency>
+            <dependency>
+                <groupId>cool.happycoding</groupId>
+                <artifactId>happy-code-starter-feign</artifactId>
+                <version>${happy-code.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

@@ -1,13 +1,17 @@
 package cool.happycoding.code.base.util;
 
 import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
 import cool.happycoding.code.base.common.ResultCode;
 import cool.happycoding.code.base.exception.Assert;
 import cool.happycoding.code.base.exception.BizException;
 import cool.happycoding.code.base.exception.ExceptionFactory;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -49,4 +53,19 @@ public final class HappyCodeUtil {
                 .map(e-> BeanUtil.copyProperties(e, clazz))
                 .collect(Collectors.toList());
     }
+
+
+    public static <E> List<E> nullToEmpty(List<E> list){
+        return CollUtil.isEmpty(list) ? Collections.emptyList() : list;
+    }
+
+    public static <E> Set<E> nullToEmpty(Set<E> set){
+        return CollUtil.isEmpty(set) ? Collections.emptySet() : set;
+    }
+
+    public static <K,V> Map<K,V> nullToEmpty(Map<K,V> map){
+        return CollUtil.isEmpty(map) ? Collections.emptyMap() : map;
+    }
+
+
 }
