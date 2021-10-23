@@ -11,13 +11,16 @@ import java.util.Map;
 class LRUMap<K,V> extends LinkedHashMap<K,V> {
 
     /**
-     * 默认最大容量 100
+     * 默认最大容量 256
      */
-    private static final int DEFAULT_MAX_CAPACITY = 100;
+    private static final int DEFAULT_MAX_CAPACITY = 256;
     /**
      * 默认初始容量 32
      */
     private static final int INITIAL_CAPACITY = 32;
+    /**
+     * 最大容量
+     */
     private final int maxCapacity;
 
     public LRUMap(){
