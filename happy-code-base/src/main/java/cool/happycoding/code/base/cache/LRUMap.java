@@ -4,7 +4,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * description
+ * 利用 LinkedHashMap 实现LRU算法
  *
  * @author lanlanhappy 2021/10/23 11:18 上午
  */

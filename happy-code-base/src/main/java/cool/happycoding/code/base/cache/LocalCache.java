@@ -9,21 +9,19 @@ import java.util.Map;
  */
 public class LocalCache<K,V> implements Cache<K,V>{
 
-    private final Map<K, CacheObject<K,V>> localCache;
-
-    public LocalCache(int capacity){
-        // 利用LinkedHashMap的特性实现LRU算法，避免出现OOM的问题
-        this.localCache = new LRUMap<>(capacity);
-    }
+    private final Map<K, CacheObject<K,V>> cache;
 
     public LocalCache(){
-        // 利用LinkedHashMap的特性实现LRU算法，避免出现OOM的问题
-        this.localCache = new LRUMap<>(DEFAULT_CAPACITY);
+        this(DEFAULT_CAPACITY);
+    }
+
+    public LocalCache(int capacity){
+        this.cache = new LRUMap<>(capacity);
     }
 
     @Override
     public void put(K key, V val, long expire) {
-        localCache.put(key, new CacheObject<>(key, val, expire));
+        cache.put(key, new CacheObject<>(key, val, expire));
     }
 
     @Override
@@ -31,22 +29,22 @@ public class LocalCache<K,V> implements Cache<K,V>{
         if (exists(key)){
             return null;
         }
-        return localCache.get(key).getVal();
+        return cache.get(key).getVal();
     }
 
     @Override
     public void remove(K key) {
-        localCache.remove(key);
+        cache.remove(key);
     }
 
     @Override
     public void clean() {
-        localCache.clear();
+        cache.clear();
     }
 
     @Override
     public boolean exists(K key) {
-        CacheObject<K,V> valObj = localCache.get(key);
+        CacheObject<K,V> valObj = cache.get(key);
         return valObj.getVal() == null;
     }
 }
