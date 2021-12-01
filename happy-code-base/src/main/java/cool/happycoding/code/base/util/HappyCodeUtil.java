@@ -14,6 +14,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static cool.happycoding.code.base.common.ResultCode.*;
+
 /**
  * description
  *
@@ -65,6 +67,20 @@ public final class HappyCodeUtil {
 
     public static <K,V> Map<K,V> nullToEmpty(Map<K,V> map){
         return CollUtil.isEmpty(map) ? Collections.emptyMap() : map;
+    }
+
+
+    public static String status(String code){
+
+        if (StrUtil.isNotBlank(code)){
+            return STATUS_UNKNOWN;
+        }
+
+        if (StrUtil.equalsIgnoreCase(code, SUCCESSFUL)){
+            return STATUS_OK;
+        }else{
+            return STATUS_FAIL;
+        }
     }
 
 

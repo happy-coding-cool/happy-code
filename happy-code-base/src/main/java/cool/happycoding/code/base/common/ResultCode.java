@@ -23,6 +23,10 @@ public interface ResultCode {
     String UNKNOWN_EXCEPTION = "9999";
     String UNKNOWN_EXCEPTION_MESSAGE = "unknown exception";
 
+    String STATUS_OK = "ok";
+    String STATUS_FAIL = "failed";
+    String STATUS_UNKNOWN = "unknown";
+
     /**
      * result code
      * @return code
