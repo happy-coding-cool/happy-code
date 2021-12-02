@@ -1,8 +1,10 @@
 package cool.happycoding.code.ws.client.spring;
 
 import cn.hutool.core.collection.CollUtil;
+import com.google.common.collect.Lists;
 import cool.happycoding.code.ws.client.annotation.EnableWsClients;
 import cool.happycoding.code.ws.client.annotation.WsClient;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.AnnotatedBeanDefinition;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.BeanDefinitionHolder;
@@ -22,10 +24,8 @@ import org.springframework.util.Assert;
 import org.springframework.util.ClassUtils;
 import org.springframework.util.StringUtils;
 
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.Map;
-import java.util.Set;
+import java.beans.Introspector;
+import java.util.*;
 import java.util.stream.Stream;
 
 /**
@@ -33,6 +33,7 @@ import java.util.stream.Stream;
  *
  * @author lanlanhappy 2021/11/27 8:59 下午
  */
+@Slf4j
 public class WsClientsRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoaderAware, EnvironmentAware {
 
     private static final String BASE_PACKAGE = "basePackages";
@@ -53,14 +54,17 @@ public class WsClientsRegistrar implements ImportBeanDefinitionRegistrar, Resour
         scanner.addIncludeFilter(new AnnotationTypeFilter(WsClient.class));
         Set<String> basePackages = getBasePackages(metadata);
         basePackages.forEach(basePackage->candidateComponents.addAll(scanner.findCandidateComponents(basePackage)));
+        List<String> classNames = Lists.newArrayList();
         candidateComponents.stream()
                 .filter(candidateComponent -> candidateComponent instanceof AnnotatedBeanDefinition)
                 .map(candidateComponent -> (AnnotatedBeanDefinition)candidateComponent)
                 .forEach(beanDefinition ->{
                     AnnotationMetadata annotationMetadata = beanDefinition.getMetadata();
                     Assert.isTrue(annotationMetadata.isInterface(), "@WsClient can only be specified on an interface");
+                    classNames.add(annotationMetadata.getClassName());
                     registerFeignClient(registry, annotationMetadata);
                 });
+        log.info("scan ");
     }
 
     protected ClassPathScanningCandidateComponentProvider getScanner() {
@@ -96,14 +100,20 @@ public class WsClientsRegistrar implements ImportBeanDefinitionRegistrar, Resour
 
     private void registerFeignClient(BeanDefinitionRegistry registry, AnnotationMetadata annotationMetadata) {
         String className = annotationMetadata.getClassName();
-        Class<?> clazz = ClassUtils.resolveClassName(className, null);
+        Class<?> clazz = ClassUtils.resolveClassName(className, ClassUtils.getDefaultClassLoader());
         WsClientFactoryBean<?> factoryBean = new WsClientFactoryBean<>(clazz);
         BeanDefinitionBuilder definition = BeanDefinitionBuilder.genericBeanDefinition(factoryBean.getClass());
         definition.setLazyInit(true);
         definition.addConstructorArgValue(clazz);
         definition.setAutowireMode(AbstractBeanDefinition.AUTOWIRE_BY_TYPE);
-        BeanDefinitionHolder holder = new BeanDefinitionHolder(definition.getBeanDefinition(), className);
+        BeanDefinitionHolder holder = new BeanDefinitionHolder(definition.getBeanDefinition(), generatorBeanName(clazz));
         BeanDefinitionReaderUtils.registerBeanDefinition(holder, registry);
+        WsClientDescriptorCache.put(clazz);
+    }
+
+    public String generatorBeanName(Class<?> clz) {
+        String shortClassName = ClassUtils.getShortName(clz.getSimpleName());
+        return "wsClient"+ Introspector.decapitalize(shortClassName);
     }
 
     @Override

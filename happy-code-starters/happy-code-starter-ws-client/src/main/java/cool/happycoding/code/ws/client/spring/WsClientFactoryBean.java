@@ -1,5 +1,6 @@
 package cool.happycoding.code.ws.client.spring;
 
+import cool.happycoding.code.ws.client.spring.proxy.WsClientProxyFactory;
 import org.springframework.beans.factory.FactoryBean;
 
 /**
@@ -17,7 +18,8 @@ public class WsClientFactoryBean<T> implements FactoryBean<T> {
 
     @Override
     public T getObject() throws Exception {
-        return null;
+        WsClientProxyFactory<T> factory = new WsClientProxyFactory<>(clientInterface);
+        return factory.newInstance();
     }
 
     @Override
