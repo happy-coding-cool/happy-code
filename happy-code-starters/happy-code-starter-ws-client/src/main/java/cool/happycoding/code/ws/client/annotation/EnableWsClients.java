@@ -15,5 +15,10 @@ import java.lang.annotation.*;
 @Documented
 @Import(WsClientsRegistrar.class)
 public @interface EnableWsClients {
+
+    /**
+     *
+     * @return return basePackages
+     */
     String[] basePackages() default {};
 }

@@ -13,6 +13,9 @@
     <description>web service client</description>
 
     <dependencies>
-
+        <dependency>
+            <groupId>org.springframework.ws</groupId>
+            <artifactId>spring-ws-core</artifactId>
+        </dependency>
     </dependencies>
 </project>

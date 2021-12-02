@@ -9,7 +9,11 @@ import org.springframework.beans.factory.FactoryBean;
  */
 public class WsClientFactoryBean<T> implements FactoryBean<T> {
 
-    private Class<T> clientInterface;
+    private final Class<T> clientInterface;
+
+    public WsClientFactoryBean(Class<T> clientInterface){
+        this.clientInterface = clientInterface;
+    }
 
     @Override
     public T getObject() throws Exception {
