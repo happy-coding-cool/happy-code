@@ -64,7 +64,8 @@ public class WsClientsRegistrar implements ImportBeanDefinitionRegistrar, Resour
                     classNames.add(annotationMetadata.getClassName());
                     registerFeignClient(registry, annotationMetadata);
                 });
-        log.info("scan ");
+        log.info("scan wsclient: {}", classNames.size());
+        classNames.forEach(name->log.info("ws client:{}", name));
     }
 
     protected ClassPathScanningCandidateComponentProvider getScanner() {
