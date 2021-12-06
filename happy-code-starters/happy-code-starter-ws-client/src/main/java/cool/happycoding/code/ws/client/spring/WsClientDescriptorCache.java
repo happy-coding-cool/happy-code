@@ -14,11 +14,11 @@ public abstract class WsClientDescriptorCache {
     private static final ConcurrentHashMap<String, WsClientDescriptor> WS_CLIENT_CACHE = new ConcurrentHashMap<>();
 
 
-    public static void put(Class<?> clientInterface){
+    static void put(Class<?> clientInterface){
         put(clientInterface.getName(), WsClientDescriptor.of(clientInterface));
     }
 
-    public static void put(String name, WsClientDescriptor wsClientDescriptor){
+    static void put(String name, WsClientDescriptor wsClientDescriptor){
         if (ObjectUtil.isNotNull(wsClientDescriptor)){
             WS_CLIENT_CACHE.put(name, wsClientDescriptor);
         }
@@ -28,5 +28,9 @@ public abstract class WsClientDescriptorCache {
         return WS_CLIENT_CACHE.get(name);
     }
 
+
+    public static void clean(){
+        WS_CLIENT_CACHE.clear();
+    }
 
 }
