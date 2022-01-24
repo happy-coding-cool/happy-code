@@ -9,6 +9,7 @@ import java.util.List;
  *
  * @author lanlanhappy 2020/11/29 4:55 下午
  */
+@Deprecated
 public class ListResult<T> extends BaseResult<List<T>> {
 
     public ListResult(List<T> data){

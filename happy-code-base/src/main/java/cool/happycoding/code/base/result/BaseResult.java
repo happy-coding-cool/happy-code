@@ -7,6 +7,7 @@ import cool.happycoding.code.base.common.ResultCode;
  *
  * @author lanlanhappy 2020/11/29 4:54 下午
  */
+@Deprecated
 public class BaseResult<T> extends Result {
 
     private T data;

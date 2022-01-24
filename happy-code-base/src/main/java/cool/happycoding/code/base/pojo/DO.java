@@ -12,5 +12,5 @@ import lombok.ToString;
  */
 @Data
 @ToString
-public class DO implements D {
+public class DO extends DTO {
 }

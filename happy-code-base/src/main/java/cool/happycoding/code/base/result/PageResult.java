@@ -11,6 +11,7 @@ import java.util.List;
  * @author lanlanhappy 2020/11/29 4:57 下午
  */
 @Data
+@Deprecated
 public class PageResult<T> extends BaseResult<List<T>> {
 
     private long current;

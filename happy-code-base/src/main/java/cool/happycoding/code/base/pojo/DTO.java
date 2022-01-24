@@ -12,6 +12,6 @@ import lombok.ToString;
  */
 @Data
 @ToString
-public class DTO implements DT {
+public class DTO implements H {
 
 }

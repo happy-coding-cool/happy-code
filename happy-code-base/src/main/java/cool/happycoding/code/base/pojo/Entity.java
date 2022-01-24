@@ -11,6 +11,7 @@ import lombok.ToString;
  */
 @Data
 @ToString
+@Deprecated
 public class Entity implements E {
 
     /**

@@ -12,6 +12,7 @@ import lombok.ToString;
  */
 @Data
 @ToString
+@Deprecated
 public class Form implements F {
 
     /**
