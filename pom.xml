@@ -189,11 +189,6 @@
             </dependency>
             <dependency>
                 <groupId>cool.happycoding</groupId>
-                <artifactId>happy-code-starter-dict</artifactId>
-                <version>${happy-code.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cool.happycoding</groupId>
                 <artifactId>happy-code-starter-dynamic-datasource</artifactId>
                 <version>${happy-code.version}</version>
             </dependency>

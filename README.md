@@ -28,15 +28,14 @@
 - happy-code-dependencies
 - happy-code-parent
 - happy-code-starters
-    - [happy-code-starter-log](happy-code-starters/happy-code-starter-log/README.md)
-    - [happy-code-starter-mybatis](happy-code-starters/happy-code-starter-mybatis/README.md)
-    - [happy-code-starter-user](happy-code-starters/happy-code-starter-user/README.md)
-    - [happy-code-starter-swagger](happy-code-starters/happy-code-starter-swagger/README.md)
-    - [happy-code-starter-validator](happy-code-starters/happy-code-starter-validator/README.md)
-    - [happy-code-starter-web](happy-code-starters/happy-code-starter-web/README.md)
-    - [happy-code-starter-cache](happy-code-starters/happy-code-starter-cache/README.md)
+    - happy-code-starter-log
+    - happy-code-starter-mybatis
+    - happy-code-starter-user
+    - happy-code-starter-swagger
+    - happy-code-starter-validator
+    - happy-code-starter-web
+    - happy-code-starter-cache
     - happy-code-starter-lock
-    - happy-code-starter-dict
     - happy-code-starter-dynamic-datasource
     - happy-code-starter-sentinel
     - happy-code-starter-mq

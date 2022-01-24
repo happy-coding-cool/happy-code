@@ -27,7 +27,6 @@
         <module>happy-code-starter-excel</module>
         <module>happy-code-starter-store</module>
         <module>happy-code-starter-lock</module>
-        <module>happy-code-starter-dict</module>
         <module>happy-code-starter-dynamic-datasource</module>
         <module>happy-code-starter-sentinel</module>
         <module>happy-code-starter-feign</module>
